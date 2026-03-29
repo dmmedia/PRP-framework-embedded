@@ -123,7 +123,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
 |---|-------|-------------|--------|----------|---------|----------|
 | 1 | Inventory & design | Full grep of Claude artifacts and design adapter API | complete | - | - | - |
-| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | in-progress | - | 1 | - |
+| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | in-progress | - | 1 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode.plan.md |
 | 3 | Docs & prompts | Convert key prompt templates to SKILL.md and write `COPILOT.md` | pending | - | 2 | - |
 | 4 | VS Code integration | Add `.vscode` settings, `extensions.json`, and register command-palette entries (small extension or tasks) | pending | with 5 | 2 | - |
 | 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | pending | with 4 | 2 | - |
