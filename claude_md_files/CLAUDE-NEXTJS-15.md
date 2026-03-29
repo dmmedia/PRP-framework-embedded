@@ -1,4 +1,4 @@
-# CLAUDE.md
+# DEPRECATED: This guide is for Claude workflows only. For Copilot/VS Code, see copilot_md_files/copilot-prp-quickstart.md
 
 This file provides comprehensive guidance to Claude Code when working with Next.js 15 applications with React 19 and TypeScript.
 
@@ -245,7 +245,7 @@ export const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']),
   NEXT_PUBLIC_APP_URL: z.string().url(),
   DATABASE_URL: z.string().min(1),
-  NEXTAUTH_SECRET: z.string().min(1),
+  NEXTAUTH_SECRET: z.string().min(32),
   NEXTAUTH_URL: z.string().url(),
 });
 

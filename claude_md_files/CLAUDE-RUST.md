@@ -1,9 +1,10 @@
+# DEPRECATED: This guide is for Claude workflows only. For Copilot/VS Code, see copilot_md_files/copilot-prp-quickstart.md
+
 Below is the complete **CLAUDE‑RUST.md** guide, modelled after the language‑specific files in your repository.
 All version numbers, tools and best‑practice links are current as of **Rust 1.88 (2025‑06‑26)**.
 
 ---
 
-````markdown
 # CLAUDE‑RUST.md
 
 This file provides comprehensive guidance to **Claude Code** when working with Rust 1.88+ projects.

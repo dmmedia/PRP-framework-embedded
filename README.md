@@ -2,6 +2,10 @@
 
 A collection of prompts for AI-assisted embedded development with Github CoPilot in VS Code.
 
+**Now supports Copilot/VS Code natively!**
+
+See copilot_md_files/copilot-prp-quickstart.md for migration details.
+
 Heavily based on [PRP framework](https://github.com/Wirasm/PRPs-agentic-eng) by [Rasmus Widing](https://www.rasmuswiding.com/)
 
 ## What is PRP?
