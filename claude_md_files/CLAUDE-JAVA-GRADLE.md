@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+# DEPRECATED: This guide is for Claude workflows only.
+
 This file provides comprehensive guidance to Claude Code when working with Java code in this repository.
 
 ## Core Development Philosophy

@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+# DEPRECATED: This guide is for Claude workflows only.
+
 Below is the complete **CLAUDE‑RUST.md** guide, modelled after the language‑specific files in your repository.
 All version numbers, tools and best‑practice links are current as of **Rust 1.88 (2025‑06‑26)**.
 

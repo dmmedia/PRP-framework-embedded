@@ -2,6 +2,18 @@
 
 A collection of prompts for AI-assisted embedded development with Github CoPilot in VS Code.
 
+**Now supports Copilot/VS Code natively!**
+
+**Migration Notice:**
+The PRP framework has migrated from Claude-specific workflows to GitHub Copilot and VS Code native flows. All Copilot quickstart, migration, and troubleshooting guides are now integrated into this README and the workspace settings. Legacy Claude documentation is deprecated and retained only for reference.
+
+**Key Migration Changes:**
+- PRP flows now run via Copilot CLI/Chat and VS Code commands
+- All Copilot documentation is now in this README and workspace settings
+- Legacy Claude guides have been removed from the repository
+
+Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
+
 Heavily based on [PRP framework](https://github.com/Wirasm/PRPs-agentic-eng) by [Rasmus Widing](https://www.rasmuswiding.com/)
 
 ## What is PRP?

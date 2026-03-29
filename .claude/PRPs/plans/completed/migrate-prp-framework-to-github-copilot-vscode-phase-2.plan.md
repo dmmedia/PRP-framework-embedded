@@ -238,3 +238,42 @@ python -m py_compile PRPs/scripts/invoke_copilot.py
 - Migration is staged; legacy files retained for transition period.
 - Adapter must support both Copilot and Claude for rollback.
 - All validation gates must be preserved in new flows.
+
+# Implementation Complete
+
+**Plan**: `.claude\PRPs\plans\migrate-prp-framework-to-github-copilot-vscode.plan.md`
+**Source Issue**: N/A
+**Branch**: main
+**Status**: ✅ Complete
+
+### Validation Summary
+
+| Check      | Result          |
+| ---------- | --------------- |
+| Type check | ✅              |
+| Lint       | ✅              |
+| Tests      | ✅ (manual)     |
+| Build      | ✅              |
+
+### Files Changed
+
+- 1 file created (adapter)
+- 2 files updated (VS Code config)
+- 3 Copilot docs created
+- 8 Claude docs updated
+- 2 main docs updated
+- 1 plugin hooks updated
+
+### Deviations
+Implementation matched the plan.
+
+### Artifacts
+
+- Report: `.claude/PRPs/reports/migrate-prp-framework-to-github-copilot-vscode-report.md`
+- Plan archived to: `.claude/PRPs/plans/completed/`
+
+### Next Steps
+
+1. Review the report
+2. Create PR: `gh pr create` or `/prp-pr`
+3. Merge when approved

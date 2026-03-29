@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+# DEPRECATED: This guide is for Claude workflows only.
+
 This file provides comprehensive guidance to Claude Code when working with Next.js 15 applications with React 19 and TypeScript.
 
 ## Core Development Philosophy

@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+# DEPRECATED: This guide is for Claude workflows only.
+
 This file provides comprehensive guidance to Claude Code when working with Python code in this repository.
 
 ## Core Development Philosophy
@@ -425,7 +427,8 @@ Never include claude code, or written by claude code in commit messages
 <body>
 
 <footer>
-``
+```
+
 Types: feat, fix, docs, style, refactor, test, chore
 
 Example:
@@ -439,7 +442,7 @@ feat(auth): add two-factor authentication
 
 Closes #123
 
-````
+```
 
 ## 🗄️ Database Naming Standards
 
@@ -453,7 +456,7 @@ leads.lead_id UUID PRIMARY KEY
 messages.message_id UUID PRIMARY KEY
 daily_metrics.daily_metric_id UUID PRIMARY KEY
 agencies.agency_id UUID PRIMARY KEY
-````
+```
 
 ### Field Naming Conventions
 

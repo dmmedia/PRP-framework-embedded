@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+# DEPRECATED: This guide is for Claude workflows only.
+
 This file provides comprehensive guidance to Claude Code when working with Node.js 23 applications.
 
 ## Core Development Philosophy

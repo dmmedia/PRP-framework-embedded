@@ -1,0 +1,13 @@
+{
+  "github.copilot.enable": true,
+  "github.copilot-chat.enable": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.showWords": true,
+  "files.exclude": {
+    "**/.claude": false,
+    "**/old-prp-commands": true,
+    "claude_md_files": false,
+    "copilot_md_files": false
+  },
+  "python.defaultInterpreterPath": ".venv/bin/python"
+}

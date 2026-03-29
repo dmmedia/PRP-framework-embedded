@@ -20,7 +20,9 @@ Create a migration that replaces Claude-specific runtime and documentation with 
 - An adapter layer (e.g., `invoke_copilot.py`) that maps existing command templates to Copilot Chat or Copilot CLI invocations, used by `prp_workflow.py` and related scripts.
 - Re-author prompt templates as Copilot Chat-compatible prompts and store them in a discoverable location (e.g., `.github/prompts/`).
 - Add VS Code workspace integration: `.vscode/extensions.json`, `.vscode/settings.json`, and optionally a small extension to register command-palette entries that call Copilot Chat with prefilled prompts.
-- Update documentation: create `COPILOT.md` (or extend `CLAUDE.md`), update `README.md`, and migrate language-specific docs from `claude_md_files/` to show Copilot + VS Code workflows.
+- Update documentation: create `COPILOT.md` with the same structure and conventions as `CLAUDE.md`, update `README.md`, and migrate language-specific guides from `claude_md_files/` to show Copilot + VS Code workflows.
+- Every Claude agent guide in `claude_md_files/CLAUDE-*.md` must have a Copilot/VS Code equivalent in `copilot_md_files/`, with the same structure and conventions, updated for Copilot workflows.
+- Add a deprecation header to each legacy Claude guide, referencing the new Copilot equivalent.
 - Provide a compatibility/feature-flag (e.g., `PRP_TOOL_ADAPTER=claude|copilot`) to allow incremental migration and rollback.
 
 ## Key Hypothesis
@@ -44,7 +46,7 @@ We believe providing a lightweight adapter plus VS Code integration will make th
 
 - [x] Does the organization have Copilot / Copilot Chat entitlements for CI/automation? — Answer: This PRP framework is intentionally generic and supports use with either personal or organization GitHub accounts, and with free or paid Copilot subscriptions. The framework assumes only that Copilot (the extension or service) is available to users, but it does NOT assume organization-level entitlements for CI/automation. Any CI-level automation that requires service/machine accounts, Copilot CLI access, or paid seats must be implemented as optional components and documented as requiring additional entitlements.
 - [x] Which `prp-*` commands are critical for v1? — Answer: The critical commands for v1 are `prp-prd`, `prp-plan`, and `prp-implement`. These cover the core PRP lifecycle: PRD creation, plan generation, and implementation/execution. The adapter, prompt templates, and docs should prioritize these flows and include tests verifying end-to-end behavior.
-- [x] Do we prefer renaming directories (e.g., `claude_md_files/` → `copilot_md_files/`) or keeping them for a transition period? — Answer: Keep the directories for a transition period. Create a new `copilot_md_files/` (or `copilot_docs/`) for Copilot-specific guidance, add a clear deprecation header to existing `claude_md_files/*` pointing to the new location, and prefer the new path in updated docs and adapter while falling back to the legacy path for compatibility. Schedule removal of legacy files after a defined transition window (suggestion: 1–2 releases) once CI, plugins, and consumers have migrated.
+- [x] Do we prefer renaming directories (e.g., `claude_md_files/` → `copilot_md_files/`) or keeping them for a transition period? — Answer: Keep the directories for a transition period. Create a new `copilot_md_files/` for Copilot-specific guidance, add a clear deprecation header to existing `claude_md_files/*` pointing to the new location, and prefer the new path in updated docs and adapter while falling back to the legacy path for compatibility. Schedule removal of legacy files after a defined transition window (suggestion: 1–2 releases) once CI, plugins, and consumers have migrated.
 
 ---
 
@@ -75,13 +77,13 @@ Owners of `old-prp-commands/` (historical scripts) — these are intentionally n
 | Must | Updated docs + `.vscode/extensions.json` | Onboarding and extension recommendations are essential |
 | Should | Convert prompt templates to Copilot Chat-compatible prompts in `.github/prompts/` | Makes prompts discoverable to Copilot Chat and reusable |
 | Could | Small VS Code extension that registers extra UI & telemetry | Improves discoverability and integration |
-| Should | Keep legacy docs during transition | Retain `claude_md_files/` and introduce `copilot_md_files/` to minimize disruption during migration |
+| Should | Keep legacy docs during transition | Retain `claude_md_files/` and `CLAUDE.md`, introduce `copilot_md_files/` and `COPILOT.md` to minimize disruption during migration |
 | Must | Interactive fallback mode | Adapter must work without CI entitlements; CI automation optional |
 | Won't | Migrate `old-prp-commands/` | Historical; out of scope per requirements |
 
 ### MVP Scope
 
-The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire `prp_workflow.py` to adapter, 3) document three core flows in `COPILOT.md`, 4) add `.vscode/extensions.json` recommending Copilot extensions, and 5) create `copilot_md_files/` with initial migrated guides while adding deprecation headers to legacy `claude_md_files/`.
+The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire `prp_workflow.py` to adapter, 3) document three core flows in `README.md`, 4) add `.vscode/extensions.json` recommending Copilot extensions, and 5) create `copilot_md_files/` with one-to-one migrated guides, following the same structure and conventions, while adding deprecation headers to legacy `claude_md_files/`.
 
 ### User Flow
 
@@ -107,6 +109,9 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 - The adapter must support an interactive/manual fallback mode when CI/automation entitlements are not available; optional CI integrations should be gated behind configuration and feature flags.
 - Adapter responsibilities (v1): map `prp-prd`, `prp-plan`, and `prp-implement` to Copilot Chat or Copilot CLI invocations; produce the same PRP artifact layout (`.claude/PRPs/*` or configurable path) and include end-to-end tests that validate generated PRD, plan, and implementation artifacts.
 - Provide a docs-mapping shim and fallback: adapters and tooling should prefer `copilot_md_files/` for new content but support a mapping or lookup that resolves legacy `claude_md_files/` paths to the new location. Include a small `docs_map.json` or script to maintain compatibility during the transition.
+- Only agent/technology-specific guides go in `copilot_md_files/`.
+- No human-facing guides should remain in `copilot_md_files/`—these are for agent/technology-specific content only.
+- All human-facing documents should be placed in the project root.
 
 **Technical Risks**
 
@@ -123,10 +128,11 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
 |---|-------|-------------|--------|----------|---------|----------|
 | 1 | Inventory & design | Full grep of Claude artifacts and design adapter API | complete | - | - | - |
-| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | in-progress | - | 1 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode.plan.md |
-| 3 | Docs & prompts | Convert key prompt templates to SKILL.md and write `COPILOT.md` | pending | - | 2 | - |
+| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | complete | - | 1 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-2-v-2.plan.md |
+| 3 | Docs & prompts | Write `COPILOT.md` based on `CLAUDE.md` and convert guides from `claude_md_files/` | pending | - | 2 | - |
 | 4 | VS Code integration | Add `.vscode` settings, `extensions.json`, and register command-palette entries (small extension or tasks) | pending | with 5 | 2 | - |
 | 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | pending | with 4 | 2 | - |
+| 6 | Remaining agent guides | Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` with deprecation headers in legacy files | pending | - | 3 | - |
 
 ### Phase Details
 
@@ -142,7 +148,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 
 **Phase 3: Docs & prompts**
 - **Goal**: Update user-facing docs, prompt templates, and examples to Copilot + VS Code idioms.  
-- **Scope**: `COPILOT.md`, updates to `README.md`, create `copilot_md_files/` and copy/convert three language guides from `claude_md_files/` into it, add deprecation headers to the legacy `claude_md_files/` entries, and update references in top-level docs, templates, and adapters.
+- **Scope**: Copy/convert `CLAUDE.md` to `COPILOT.md` retaining the guide structure, updates to `README.md`, create `copilot_md_files/` and copy/convert three language guides from `claude_md_files/` into it, add deprecation headers to the legacy `claude_md_files/` entries, and update references in top-level docs, templates, and adapters.
 - **Deliverables**:
   - Create `copilot_md_files/` and migrate three representative guides (e.g., Python, Node, React).  
   - Add a deprecation header to each file in `claude_md_files/` pointing to the new location and the migration schedule.
@@ -155,6 +161,11 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 
 **Phase 5: Hooks & plugin updates**
 - **Goal**: Update plugin hooks to use configurable adapter paths and ensure backward compatibility.  
+
+**Phase 6: Remaining agent guides**
+- **Goal**: Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` following the same structure and conventions, adapted to Copilot, with deprecation headers in legacy files.
+- **Scope**: Files located in `claude_md_files/` that are agent/technology specific. Destination folder is `copilot_md_files/`. Files should be migrated one-to-one, maintaining the same structure and conventions, but updated to reflect Copilot workflows and capabilities.
+- **Success signal**: All agent guides have Copilot equivalents in `copilot_md_files/`, with deprecation headers in legacy files, and all references updated to prefer the new location.
 
 ### Parallelism Notes
 
@@ -183,15 +194,15 @@ Phases 3 and 4 can run in parallel (docs + VS Code integration) since they touch
 - Key files to update (sample):  
   - `.github/PRPs/scripts/invoke_command.py` — calls `claude` binary (replace with adapter).  
   - `.github/PRPs/scripts/prp_workflow.py` — orchestrator to point to adapter.  
-  - `CLAUDE.md`, `claude_md_files/*` — documentation to update.  
+  - `CLAUDE.md`, `claude_md_files/*` — agent guides to update.  
   - `plugins/prp-core/hooks/*` and `plugins/prp-core/commands/*` — many references to `.claude`.  
 - Primary technical risks: auth/entitlements, prompt drift, and automation surface mismatch between Claude APIs and Copilot extension/CLI.
 - Priority mapping note: the migration should prioritize support for `prp-prd` (PRD generation), `prp-plan` (plan generation), and `prp-implement` (implementation) as the minimal end-to-end validation surface for Copilot/VS Code adapters.
-- Docs rename approach: staged transition — create `copilot_md_files/` for new Copilot-specific docs, copy/convert the key guides, add deprecation headers to `claude_md_files/`, and update adapters/docs to prefer the new location. Remove legacy files after a short, announced transition window (1–2 releases).
+- Agent guides rename approach: staged transition — create `copilot_md_files/` for new Copilot-specific guides, copy/convert the key guides, add deprecation headers to `claude_md_files/`, and update adapters/docs to prefer the new location. Remove legacy files after a short, announced transition window (1–2 releases).
 
 **Entitlements note**: This framework is intentionally license-agnostic and designed to work with personal or organization accounts and with free or paid Copilot subscriptions. The PRP core assumes only that Copilot access exists for interactive users; it does not assume organization-level entitlements for CI/automation. Any automation requiring seats, machine/service accounts, or Copilot CLI access must be implemented as optional, clearly documented components and gated behind configuration and feature flags.
 
 ---
 
-*Generated: 2026-03-28T12:00:00Z*
+*Generated: 2026-03-29T18:21:11Z*
 *Status: DRAFT - needs validation*
