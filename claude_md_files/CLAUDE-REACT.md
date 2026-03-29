@@ -1,4 +1,6 @@
-# DEPRECATED: This guide is for Claude workflows only. For Copilot/VS Code, see copilot_md_files/copilot-prp-quickstart.md
+# CLAUDE.md
+
+# DEPRECATED: This guide is for Claude workflows only.
 
 This file provides guidance to Claude Code when working with React 19 applications.
 
