@@ -5,6 +5,7 @@ All version numbers, tools and best‑practice links are current as of **Rust 
 
 ---
 
+````markdown
 # CLAUDE‑RUST.md
 
 This file provides comprehensive guidance to **Claude Code** when working with Rust 1.88+ projects.

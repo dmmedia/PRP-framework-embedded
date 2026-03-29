@@ -245,7 +245,7 @@ export const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']),
   NEXT_PUBLIC_APP_URL: z.string().url(),
   DATABASE_URL: z.string().min(1),
-  NEXTAUTH_SECRET: z.string().min(32),
+  NEXTAUTH_SECRET: z.string().min(1),
   NEXTAUTH_URL: z.string().url(),
 });
 

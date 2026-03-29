@@ -4,9 +4,9 @@
   "editor.inlineSuggest.enabled": true,
   "editor.suggest.showWords": true,
   "files.exclude": {
-    "**/.claude": true,
+    "**/.claude": false,
     "**/old-prp-commands": true,
-    "claude_md_files": true
+    "claude_md_files": false
   },
   "python.defaultInterpreterPath": ".venv/bin/python"
 }
