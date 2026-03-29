@@ -1,6 +1,7 @@
-# CLAUDE.md
 
-# DEPRECATED: This guide is for Claude workflows only.
+> ⚠️ **DEPRECATED:** This guide is for Claude workflows only. For GitHub Copilot/VS Code, see [copilot_md_files/COPILOT-PYTHON-BASIC.md](../copilot_md_files/COPILOT-PYTHON-BASIC.md)
+
+# CLAUDE.md
 
 This file provides comprehensive guidance to Claude Code when working with Python code in this repository.
 
