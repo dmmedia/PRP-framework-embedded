@@ -1,6 +1,9 @@
 # CLAUDE.md
 
-**DEPRECATED: This file is for Claude workflows only. For Copilot/VS Code, see copilot_md_files/copilot-prp-quickstart.md**
+**DEPRECATED: This file is for Claude workflows only.**
+
+> **Migration Notice:**
+> The PRP framework now uses GitHub Copilot and VS Code as the primary workflow.
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 

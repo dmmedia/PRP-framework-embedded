@@ -20,7 +20,7 @@ Create a migration that replaces Claude-specific runtime and documentation with 
 - An adapter layer (e.g., `invoke_copilot.py`) that maps existing command templates to Copilot Chat or Copilot CLI invocations, used by `prp_workflow.py` and related scripts.
 - Re-author prompt templates as Copilot Chat-compatible prompts and store them in a discoverable location (e.g., `.github/prompts/`).
 - Add VS Code workspace integration: `.vscode/extensions.json`, `.vscode/settings.json`, and optionally a small extension to register command-palette entries that call Copilot Chat with prefilled prompts.
-- Update documentation: create `COPILOT.md` (or extend `CLAUDE.md`), update `README.md`, and migrate language-specific docs from `claude_md_files/` to show Copilot + VS Code workflows.
+- Update documentation: create `COPILOT.md` with the same structure and conventions as `CLAUDE.md`, update `README.md`, and migrate language-specific guides from `claude_md_files/` to show Copilot + VS Code workflows.
 - Every Claude agent guide in `claude_md_files/CLAUDE-*.md` must have a Copilot/VS Code equivalent in `copilot_md_files/`, with the same structure and conventions, updated for Copilot workflows.
 - Add a deprecation header to each legacy Claude guide, referencing the new Copilot equivalent.
 - Provide a compatibility/feature-flag (e.g., `PRP_TOOL_ADAPTER=claude|copilot`) to allow incremental migration and rollback.
@@ -77,13 +77,13 @@ Owners of `old-prp-commands/` (historical scripts) — these are intentionally n
 | Must | Updated docs + `.vscode/extensions.json` | Onboarding and extension recommendations are essential |
 | Should | Convert prompt templates to Copilot Chat-compatible prompts in `.github/prompts/` | Makes prompts discoverable to Copilot Chat and reusable |
 | Could | Small VS Code extension that registers extra UI & telemetry | Improves discoverability and integration |
-| Should | Keep legacy docs during transition | Retain `claude_md_files/` and introduce `copilot_md_files/` to minimize disruption during migration |
+| Should | Keep legacy docs during transition | Retain `claude_md_files/` and `CLAUDE.md`, introduce `copilot_md_files/` and `COPILOT.md` to minimize disruption during migration |
 | Must | Interactive fallback mode | Adapter must work without CI entitlements; CI automation optional |
 | Won't | Migrate `old-prp-commands/` | Historical; out of scope per requirements |
 
 ### MVP Scope
 
-The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire `prp_workflow.py` to adapter, 3) document three core flows in `COPILOT.md`, 4) add `.vscode/extensions.json` recommending Copilot extensions, and 5) create `copilot_md_files/` with one-to-one migrated guides, following the same structure and conventions, while adding deprecation headers to legacy `claude_md_files/`.
+The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire `prp_workflow.py` to adapter, 3) document three core flows in `README.md`, 4) add `.vscode/extensions.json` recommending Copilot extensions, and 5) create `copilot_md_files/` with one-to-one migrated guides, following the same structure and conventions, while adding deprecation headers to legacy `claude_md_files/`.
 
 ### User Flow
 
@@ -128,8 +128,8 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
 |---|-------|-------------|--------|----------|---------|----------|
 | 1 | Inventory & design | Full grep of Claude artifacts and design adapter API | complete | - | - | - |
-| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | in-progress | - | 1 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode.plan.md |
-| 3 | Docs & prompts | Convert key prompt templates to SKILL.md and write `COPILOT.md` | pending | - | 2 | - |
+| 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | complete | - | 1 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-2-v-2.plan.md |
+| 3 | Docs & prompts | Write `COPILOT.md` based on `CLAUDE.md` and convert guides from `claude_md_files/` | pending | - | 2 | - |
 | 4 | VS Code integration | Add `.vscode` settings, `extensions.json`, and register command-palette entries (small extension or tasks) | pending | with 5 | 2 | - |
 | 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | pending | with 4 | 2 | - |
 | 6 | Remaining agent guides | Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` with deprecation headers in legacy files | pending | - | 3 | - |
@@ -148,7 +148,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 
 **Phase 3: Docs & prompts**
 - **Goal**: Update user-facing docs, prompt templates, and examples to Copilot + VS Code idioms.  
-- **Scope**: `COPILOT.md`, updates to `README.md`, create `copilot_md_files/` and copy/convert three language guides from `claude_md_files/` into it, add deprecation headers to the legacy `claude_md_files/` entries, and update references in top-level docs, templates, and adapters.
+- **Scope**: Copy/convert `CLAUDE.md` to `COPILOT.md` retaining the guide structure, updates to `README.md`, create `copilot_md_files/` and copy/convert three language guides from `claude_md_files/` into it, add deprecation headers to the legacy `claude_md_files/` entries, and update references in top-level docs, templates, and adapters.
 - **Deliverables**:
   - Create `copilot_md_files/` and migrate three representative guides (e.g., Python, Node, React).  
   - Add a deprecation header to each file in `claude_md_files/` pointing to the new location and the migration schedule.
