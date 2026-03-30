@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "PRP: Create PRD",
+      "type": "shell",
+      "command": "uv run .github/PRPs/scripts/prp_workflow.py --no-commit --no-pr \"Create PRD workflow\"",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PRP: Plan",
+      "type": "shell",
+      "command": "uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode-phase-4.plan.md --no-commit --no-pr",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "PRP: Implement",
+      "type": "shell",
+      "command": "uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode-phase-4.plan.md --no-pr",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
