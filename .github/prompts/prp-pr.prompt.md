@@ -226,10 +226,19 @@ From commit messages, find patterns like:
 
 Include these in the PR body under "Related Issues".
 
+### 4.4 Escape shell-specific special characters in the PR body to prevent CLI issues
+
+For all shells escape:
+- double quotes `"` as `\"`
+
+For `bash` escape:
+- backticks `` ` `` as ``\` ``
+
 **PHASE_4_CHECKPOINT:**
 - [ ] PR body generated (from template or default)
 - [ ] Title is clear and follows convention
 - [ ] Related issues linked
+- [ ] Special characters escaped in the PR body
 
 ---
 
