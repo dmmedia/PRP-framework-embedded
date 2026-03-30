@@ -13,6 +13,8 @@ argument-hint: <path/to/plan.md> [--base <branch>]
 
 Execute the plan end-to-end with rigorous self-validation. You are autonomous.
 
+> For Copilot/VS Code migration plans, prefer `AGENTS.md` and `copilot_md_files/COPILOT-*.md` patterns over legacy `claude_md_files`.
+
 **Core Philosophy**: Validation loops catch mistakes early. Run checks after every change. Fix issues immediately. The goal is a working implementation, not just code that exists.
 
 **Golden Rule**: If a validation fails, fix it before moving on. Never accumulate broken state.

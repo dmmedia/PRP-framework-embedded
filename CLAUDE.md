@@ -4,6 +4,8 @@
 
 > **Migration Notice:**
 > The PRP framework now uses GitHub Copilot and VS Code as the primary workflow.
+>
+> For the current Copilot workflow reference, see [AGENTS.md](AGENTS.md).
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 

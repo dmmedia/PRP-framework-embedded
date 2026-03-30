@@ -1,0 +1,10 @@
+{
+  "CLAUDE-ASTRO": "copilot_md_files/COPILOT-ASTRO.md",
+  "CLAUDE-JAVA-GRADLE": "copilot_md_files/COPILOT-JAVA-GRADLE.md",
+  "CLAUDE-JAVA-MAVEN": "copilot_md_files/COPILOT-JAVA-MAVEN.md",
+  "CLAUDE-NEXTJS-15": "copilot_md_files/COPILOT-NEXTJS-15.md",
+  "CLAUDE-NODE": "copilot_md_files/COPILOT-NODE.md",
+  "CLAUDE-PYTHON-BASIC": "copilot_md_files/COPILOT-PYTHON-BASIC.md",
+  "CLAUDE-REACT": "copilot_md_files/COPILOT-REACT.md",
+  "CLAUDE-RUST": "copilot_md_files/COPILOT-RUST.md"
+}
