@@ -129,7 +129,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 |---|-------|-------------|--------|----------|---------|----------|
 | 1 | Inventory & design | Full grep of Claude artifacts and design adapter API | complete | - | - | - |
 | 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | complete | - | 1 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-2-v-2.plan.md |
-| 3 | Docs & prompts | Write `AGENTS.md` based on `CLAUDE.md` and convert guides from `claude_md_files/` | in-progress | - | 2 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode.plan.md |
+| 3 | Docs & prompts | Write `AGENTS.md` based on `CLAUDE.md` and convert guides from `claude_md_files/` | complete | - | 2 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode.plan.md |
 | 4 | VS Code integration | Add `.vscode` settings, `extensions.json`, and register command-palette entries (small extension or tasks) | pending | with 5 | 2 | - |
 | 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | pending | with 4 | 2 | - |
 | 6 | Remaining agent guides | Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` with deprecation headers in legacy files | pending | - | 3 | - |
@@ -163,9 +163,9 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 - **Goal**: Update plugin hooks to use configurable adapter paths and ensure backward compatibility.  
 
 **Phase 6: Remaining agent guides**
-- **Goal**: Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` following the same structure and conventions, adapted to Copilot, with deprecation headers in legacy files.
-- **Scope**: Files located in `claude_md_files/` that are agent/technology specific. Destination folder is `copilot_md_files/`. Files should be migrated one-to-one, maintaining the same structure and conventions, but updated to reflect Copilot workflows and capabilities.
-- **Success signal**: All agent guides have Copilot equivalents in `copilot_md_files/`, with deprecation headers in legacy files, and all references updated to prefer the new location.
+- **Goal**: Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` following the same structure and conventions, adapted to Copilot, with deprecation headers in legacy files. Also migrate `CLAUDE.md` to `AGENTS.md` with the same approach. Check that initially migrated guides have proper content and update them as needed to achieve success signal.
+- **Scope**: Files located in `claude_md_files/` that are agent/technology specific. Destination folder is `copilot_md_files/`. Files should be migrated one-to-one, maintaining the same structure and conventions, but updated to reflect Copilot workflows and capabilities. `CLAUDE.md` is located in the root and should be migrated to `AGENTS.md` also located in the root and following the same approach as the files from `claude_md_files/`.
+- **Success signal**: All agent guides have Copilot equivalents in `copilot_md_files/`, with deprecation headers in legacy files, and all references updated to prefer the new location. `AGENTS.md` is created as the new root agent guide, with `CLAUDE.md` updated to reference it and marked as deprecated. All new guides have about similar file size, but the content is updated to reflect Copilot workflow and capabilities.
 
 ### Parallelism Notes
 
