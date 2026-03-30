@@ -13,5 +13,8 @@
     "claude_md_files": false,
     "copilot_md_files": false
   },
-  "python.defaultInterpreterPath": ".venv/bin/python"
+  "python.defaultInterpreterPath": ".venv/bin/python",
+  "terminal.integrated.env.windows": {
+    "PRP_TOOL_ADAPTER": "copilot"
+  }
 }

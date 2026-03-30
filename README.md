@@ -27,6 +27,7 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
    - `uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path <plan> --no-commit --no-pr`
 
 > Note: Set `PRP_TOOL_ADAPTER=copilot` to try Copilot CLI path; fallback to `claude` is available by default.
+> Optionally set `PRP_TOOL_WORKDIR=<path>` to use an alternate workspace root (e.g. `.copilot`) for `.claude` command resolution.
 
 Heavily based on [PRP framework](https://github.com/Wirasm/PRPs-agentic-eng) by [Rasmus Widing](https://www.rasmuswiding.com/)
 

@@ -161,6 +161,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 
 **Phase 5: Hooks & plugin updates**
 - **Goal**: Update plugin hooks to use configurable adapter paths and ensure backward compatibility.  
+- **Status**: complete  
 
 **Phase 6: Remaining agent guides**
 - **Goal**: Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` following the same structure and conventions, adapted to Copilot, with deprecation headers in legacy files. Also migrate `CLAUDE.md` to `AGENTS.md` with the same approach. Check that initially migrated guides have proper content and update them as needed to achieve success signal.
