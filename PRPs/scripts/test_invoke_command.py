@@ -1,5 +1,6 @@
 import importlib.util
 import os
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -49,6 +50,22 @@ class TestInvokeCommandAdapter(unittest.TestCase):
             self.assertIn("invoke_copilot.py", " ".join(str(x) for x in called))
         finally:
             tmp_file.unlink()
+
+    def test_resolve_command_path_with_workdir_override(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            os.environ["PRP_TOOL_WORKDIR"] = tmp_dir
+            commands_dir = Path(tmp_dir) / ".claude" / "commands"
+            commands_dir.mkdir(parents=True, exist_ok=True)
+            test_cmd = commands_dir / "custom-command.md"
+            test_cmd.write_text("Test command")
+
+            resolved = ic.resolve_command_path("custom-command")
+            self.assertEqual(resolved.resolve(), test_cmd.resolve())
+
+    def test_workdir_invalid_path_fatals(self):
+        os.environ["PRP_TOOL_WORKDIR"] = "nonexistent-dir-for-testing"
+        with self.assertRaises(SystemExit):
+            ic.get_workdir()
 
 
 if __name__ == "__main__":

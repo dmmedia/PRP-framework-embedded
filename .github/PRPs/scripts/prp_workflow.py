@@ -26,6 +26,9 @@ from pathlib import Path
 from typing import Optional
 
 ROOT = Path(__file__).resolve().parent.parent.parent.parent
+WORKDIR = Path(os.getenv("PRP_TOOL_WORKDIR", str(ROOT))).expanduser().resolve()
+if not WORKDIR.exists():
+    sys.exit(f"[ERROR] PRP_TOOL_WORKDIR path does not exist: {WORKDIR}")
 
 
 def print_box(title: str, content: str = "", icon: str = "🚀") -> None:
@@ -57,9 +60,10 @@ def run_command(
     Returns:
         Tuple of (exit_code, output_text)
     """
+    invoke_cmd = WORKDIR / ".github" / "PRPs" / "scripts" / "invoke_command.py"
     cmd = [
         "uv", "run",
-        str(ROOT / ".claude/PRPs/scripts/invoke_command.py"),
+        str(invoke_cmd),
         command_name,
         arguments,
         "--output-format", output_format
@@ -67,8 +71,9 @@ def run_command(
 
     env = os.environ.copy()
     env["PRP_TOOL_ADAPTER"] = adapter
+    env["PRP_TOOL_WORKDIR"] = str(WORKDIR)
 
-    print(f"→ Running: {command_name} {arguments} (adapter: {adapter})", file=sys.stderr)
+    print(f"→ Running: {command_name} {arguments} (adapter: {adapter}, workdir: {WORKDIR})", file=sys.stderr)
 
     if capture_output:
         result = subprocess.run(cmd, capture_output=True, text=True, env=env)
@@ -282,8 +287,8 @@ Examples:
         if not prp_path:
             sys.exit(1)
 
-    # Verify PRP file exists
-    full_prp_path = ROOT / prp_path
+    # Verify PRP file exists using workdir base path
+    full_prp_path = WORKDIR / prp_path
     if not full_prp_path.exists():
         sys.exit(f"❌ PRP file not found: {full_prp_path}")
 

@@ -18,6 +18,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent.parent  # project root
 
 
+def get_workdir() -> Path:
+    """Get effective root path from PRP_TOOL_WORKDIR or fallback to project root."""
+    workdir_env = os.getenv("PRP_TOOL_WORKDIR")
+    if workdir_env:
+        workdir = Path(workdir_env).expanduser()
+        if not workdir.exists():
+            sys.exit(f"[ERROR] PRP_TOOL_WORKDIR path does not exist: {workdir}")
+        return workdir.resolve()
+    return ROOT
+
+
 def get_adapter() -> str:
     """Get adapter from environment variable."""
     adapter = os.getenv("PRP_TOOL_ADAPTER", "claude").strip().lower()
@@ -36,15 +47,16 @@ def resolve_command_path(command: str) -> Path:
     Returns:
         Path to the command .md file
     """
-    # If it's already a path, use it
+    # If it's already a path, use it (absolute or relative to workdir)
     if command.endswith(".md"):
         path = Path(command)
         if path.is_absolute():
             return path
-        return ROOT / path
+        return get_workdir() / path
 
-    # Otherwise, search in .claude/commands/
-    commands_dir = ROOT / ".claude" / "commands"
+    # Otherwise, search in .claude/commands/ under effective workdir
+    workdir = get_workdir()
+    commands_dir = workdir / ".claude" / "commands"
 
     # Try common locations
     search_paths = [

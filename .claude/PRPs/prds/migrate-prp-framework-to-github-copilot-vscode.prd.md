@@ -131,7 +131,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 | 2 | Adapter scaffold | Implement `invoke_copilot.py` adapter and minimal integration | complete | - | 1 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-2-v-2.plan.md |
 | 3 | Docs & prompts | Write `AGENTS.md` based on `CLAUDE.md` and convert guides from `claude_md_files/` | complete | - | 2 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-3.plan.md |
 | 4 | VS Code integration | Add `.vscode` settings, `extensions.json`, and register command-palette entries (small extension or tasks) | complete | with 5 | 2 | .claude/PRPs/plans/completed/migrate-prp-framework-to-github-copilot-vscode-phase-4.plan.md |
-| 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | pending | with 4 | 2 | - |
+| 5 | Hooks & plugins update | Update `plugins/prp-core` hooks to use configurable workdir and adapter env vars | in-progress | with 4 | 2 | .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode-phase-5.plan.md |
 | 6 | Remaining agent guides | Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` with deprecation headers in legacy files | pending | - | 3 | - |
 
 ### Phase Details
@@ -161,6 +161,7 @@ The minimum to validate the hypothesis: 1) `invoke_copilot.py` adapter, 2) wire 
 
 **Phase 5: Hooks & plugin updates**
 - **Goal**: Update plugin hooks to use configurable adapter paths and ensure backward compatibility.  
+- **Status**: complete  
 
 **Phase 6: Remaining agent guides**
 - **Goal**: Migrate remaining agent guides from `claude_md_files/` to `copilot_md_files/` following the same structure and conventions, adapted to Copilot, with deprecation headers in legacy files. Also migrate `CLAUDE.md` to `AGENTS.md` with the same approach. Check that initially migrated guides have proper content and update them as needed to achieve success signal.
