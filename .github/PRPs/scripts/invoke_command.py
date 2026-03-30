@@ -10,11 +10,21 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent.parent  # project root
+
+
+def get_adapter() -> str:
+    """Get adapter from environment variable."""
+    adapter = os.getenv("PRP_TOOL_ADAPTER", "claude").strip().lower()
+    if adapter not in {"claude", "copilot"}:
+        print(f"[WARN] Unsupported PRP_TOOL_ADAPTER='{adapter}', falling back to 'claude'", file=sys.stderr)
+        return "claude"
+    return adapter
 
 
 def resolve_command_path(command: str) -> Path:
@@ -112,27 +122,44 @@ def invoke_command(
     template = command_path.read_text()
     prompt = expand_template(template, arguments)
 
-    # Build command
-    if interactive:
-        # Interactive mode: pipe via stdin
+    adapter = get_adapter()
+
+    if adapter == "copilot":
+        # Copilot path routes through `PRPs/scripts/invoke_copilot.py` adapter.
+        # The adapter itself handles CLI availability and fallback.
         cmd = [
-            "claude",
-            "--allowedTools",
-            allowed_tools,
-        ]
-        subprocess.run(cmd, input=prompt.encode(), check=True)
-    else:
-        # Headless mode: use -p flag
-        cmd = [
-            "claude",
-            "-p",
+            "uv",
+            "run",
+            str(ROOT / "PRPs" / "scripts" / "invoke_copilot.py"),
+            "--chat",
+            "query",
             prompt,
-            "--allowedTools",
-            allowed_tools,
-            "--output-format",
-            output_format,
         ]
+        if interactive:
+            # Copilot CLI interactive behavior is not implemented in this adapter yet.
+            print("[WARN] Copilot interactive mode is not fully supported; running as headless.", file=sys.stderr)
+
         subprocess.run(cmd, check=True)
+    else:
+        # Claude path (default)
+        if interactive:
+            cmd = [
+                "claude",
+                "--allowedTools",
+                allowed_tools,
+            ]
+            subprocess.run(cmd, input=prompt.encode(), check=True)
+        else:
+            cmd = [
+                "claude",
+                "-p",
+                prompt,
+                "--allowedTools",
+                allowed_tools,
+                "--output-format",
+                output_format,
+            ]
+            subprocess.run(cmd, check=True)
 
 
 def main() -> None:

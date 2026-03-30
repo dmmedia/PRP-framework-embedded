@@ -14,6 +14,20 @@ The PRP framework has migrated from Claude-specific workflows to GitHub Copilot 
 
 Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
 
+## VS Code + Copilot PRP Workflow
+
+1. Install recommended extensions (workspace prompts include Copilot, Copilot Chat, GitLens, and GitHub PR).  
+2. Use the command palette: `Tasks: Run Task` → choose one of:
+   - `PRP: Create PRD`
+   - `PRP: Plan`
+   - `PRP: Implement`
+3. Workspace tasks are defined in `.vscode/tasks.json` and execute the `prp_workflow.py` orchestrator via `uv run`.
+4. For manual usage, use:
+   - `uv run .github/PRPs/scripts/prp_workflow.py "<feature>" --no-commit --no-pr`
+   - `uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path <plan> --no-commit --no-pr`
+
+> Note: Set `PRP_TOOL_ADAPTER=copilot` to try Copilot CLI path; fallback to `claude` is available by default.
+
 Heavily based on [PRP framework](https://github.com/Wirasm/PRPs-agentic-eng) by [Rasmus Widing](https://www.rasmuswiding.com/)
 
 ## What is PRP?

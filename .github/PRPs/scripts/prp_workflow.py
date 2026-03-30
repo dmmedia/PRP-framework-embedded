@@ -18,6 +18,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import subprocess
 import sys
@@ -48,7 +49,8 @@ def run_command(
     command_name: str,
     arguments: str = "",
     output_format: str = "text",
-    capture_output: bool = False
+    capture_output: bool = False,
+    adapter: str = "claude"
 ) -> tuple[int, str]:
     """Run a slash command using invoke_command.py.
 
@@ -63,13 +65,16 @@ def run_command(
         "--output-format", output_format
     ]
 
-    print(f"→ Running: {command_name} {arguments}", file=sys.stderr)
+    env = os.environ.copy()
+    env["PRP_TOOL_ADAPTER"] = adapter
+
+    print(f"→ Running: {command_name} {arguments} (adapter: {adapter})", file=sys.stderr)
 
     if capture_output:
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env)
         return result.returncode, result.stdout
     else:
-        result = subprocess.run(cmd)
+        result = subprocess.run(cmd, env=env)
         return result.returncode, ""
 
 
@@ -93,7 +98,7 @@ def extract_prp_path(output: str) -> Optional[str]:
     return None
 
 
-def workflow_create(feature_description: str) -> Optional[str]:
+def workflow_create(feature_description: str, adapter: str = "claude") -> Optional[str]:
     """Step 1: Create PRP.
 
     Returns:
@@ -105,7 +110,8 @@ def workflow_create(feature_description: str) -> Optional[str]:
         "prp-core-create",
         feature_description,
         output_format="text",
-        capture_output=True
+        capture_output=True,
+        adapter=adapter,
     )
 
     # Print output
@@ -125,7 +131,7 @@ def workflow_create(feature_description: str) -> Optional[str]:
     return prp_path
 
 
-def workflow_execute(prp_path: str) -> bool:
+def workflow_execute(prp_path: str, adapter: str = "claude") -> bool:
     """Step 2: Execute PRP.
 
     Returns:
@@ -137,7 +143,8 @@ def workflow_execute(prp_path: str) -> bool:
         "prp-core-execute",
         prp_path,
         output_format="text",
-        capture_output=False
+        capture_output=False,
+        adapter=adapter,
     )
 
     if exit_code != 0:
@@ -148,7 +155,7 @@ def workflow_execute(prp_path: str) -> bool:
     return True
 
 
-def workflow_commit() -> bool:
+def workflow_commit(adapter: str = "claude") -> bool:
     """Step 3: Commit changes.
 
     Returns:
@@ -160,7 +167,8 @@ def workflow_commit() -> bool:
         "PRP-core-commit",
         "",
         output_format="text",
-        capture_output=False
+        capture_output=False,
+        adapter=adapter,
     )
 
     if exit_code != 0:
@@ -171,7 +179,7 @@ def workflow_commit() -> bool:
     return True
 
 
-def workflow_pr(pr_title: Optional[str] = None) -> bool:
+def workflow_pr(pr_title: Optional[str] = None, adapter: str = "claude") -> bool:
     """Step 4: Create PR.
 
     Returns:
@@ -184,7 +192,8 @@ def workflow_pr(pr_title: Optional[str] = None) -> bool:
         "prp-core-pr",
         title,
         output_format="text",
-        capture_output=False
+        capture_output=False,
+        adapter=adapter,
     )
 
     if exit_code != 0:
@@ -246,6 +255,12 @@ Examples:
         "--pr-title",
         help="Custom PR title (default: 'PRP Implementation')"
     )
+    parser.add_argument(
+        "--adapter",
+        choices=["claude", "copilot"],
+        default=os.getenv("PRP_TOOL_ADAPTER", "claude"),
+        help="Select tool adapter for PRP commands (default from PRP_TOOL_ADAPTER env or claude)",
+    )
 
     args = parser.parse_args()
 
@@ -263,7 +278,7 @@ Examples:
         prp_path = args.prp_path
         print(f"ℹ️  Using existing PRP: {prp_path}", file=sys.stderr)
     else:
-        prp_path = workflow_create(args.feature)
+        prp_path = workflow_create(args.feature, adapter=args.adapter)
         if not prp_path:
             sys.exit(1)
 
@@ -273,12 +288,12 @@ Examples:
         sys.exit(f"❌ PRP file not found: {full_prp_path}")
 
     # Step 2: Execute PRP
-    if not workflow_execute(prp_path):
+    if not workflow_execute(prp_path, adapter=args.adapter):
         sys.exit(1)
 
     # Step 3: Commit (optional)
     if not args.no_commit:
-        if not workflow_commit():
+        if not workflow_commit(adapter=args.adapter):
             sys.exit(1)
     else:
         print("ℹ️  Skipping commit (--no-commit)", file=sys.stderr)
@@ -286,7 +301,7 @@ Examples:
     # Step 4: Create PR (optional)
     if not args.no_pr:
         if not args.no_commit:
-            if not workflow_pr(args.pr_title):
+            if not workflow_pr(args.pr_title, adapter=args.adapter):
                 sys.exit(1)
         else:
             print("ℹ️  Skipping PR (no commit created)", file=sys.stderr)
