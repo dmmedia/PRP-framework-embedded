@@ -2,17 +2,33 @@
 
 A collection of prompts for AI-assisted embedded development with Github CoPilot in VS Code.
 
-**Now supports Copilot/VS Code natively!**
-
 **Migration Notice:**
-The PRP framework has migrated from Claude-specific workflows to GitHub Copilot and VS Code native flows. All Copilot quickstart, migration, and troubleshooting guides are now integrated into this README and the workspace settings. Legacy Claude documentation is deprecated and retained only for reference.
+The PRP framework is being migrated from Claude-specific workflows to GitHub Copilot and VS Code native flows. All Copilot quickstart, migration, and troubleshooting guides may be integrated into this README and the workspace settings. Legacy Claude documentation is deprecated and retained only for reference.
+
+- New top-level agent guide: [`AGENTS.md`](AGENTS.md)
+- Copilot user guides in `copilot_md_files/`
+- Deprecated legacy docs in `claude_md_files/` with deprecation headers
 
 **Key Migration Changes:**
 - PRP flows now run via Copilot CLI/Chat and VS Code commands
 - All Copilot documentation is now in this README and workspace settings
-- Legacy Claude guides have been removed from the repository
+- Legacy Claude guides have been removed from the repository?
 
 Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
+
+**TODO:**
+- Review new Copilot docs and extend content from migrated `claude_md_files/`.
+- Update all prompts and agent guides to use `.github` instead of `.claude` and move everything from `.claude` to `.github`.
+- Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
+- Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.
+- Created `.vscode/tasks.json` contains tasks with hardcoded parameters. Must be updated to support user input if possible or removed in favor of slash commands and CLI usage.
+- `PRPs` folder contents must be moved to `.github/PRPs` and all paths updated accordingly.
+- Add agent guide for C language similar to existing guides.
+- Add agent guide for C++ language similar to existing guides.
+- Migrate all prompts, agents and skills to use C/C++ examples instead of existing.
+- Add agent guide for STM32 series embedded development similar to existing guides.
+- Add agent guide for nRF microcontroller embedded development similar to existing guides.
+- Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 
 ## VS Code + Copilot PRP Workflow
 
