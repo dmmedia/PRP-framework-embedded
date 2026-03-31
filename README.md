@@ -23,6 +23,12 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 - Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.
 - Created `.vscode/tasks.json` contains tasks with hardcoded parameters. Must be updated to support user input if possible or removed in favor of slash commands and CLI usage.
 - `PRPs` folder contents must be moved to `.github/PRPs` and all paths updated accordingly.
+- Add agent guide for C language similar to existing guides.
+- Add agent guide for C++ language similar to existing guides.
+- Migrate all prompts, agents and skills to use C/C++ examples instead of existing.
+- Add agent guide for STM32 series embedded development similar to existing guides.
+- Add agent guide for nRF microcontroller embedded development similar to existing guides.
+- Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 
 ## VS Code + Copilot PRP Workflow
 
