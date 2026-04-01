@@ -17,7 +17,7 @@ The PRP framework is being migrated from Claude-specific workflows to GitHub Cop
 Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
 
 **TODO:**
-- Review new Copilot docs and extend content from migrated `claude_md_files/`.
+- Review new Copilot docs and extend content from migrated `claude_md_files/` where possible. Remove other files.
 - Update all prompts and agent guides to use `.github` instead of `.claude` and move everything from `.claude` to `.github`.
 - Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
 - Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.
@@ -26,9 +26,11 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 - Add agent guide for C language similar to existing guides.
 - Add agent guide for C++ language similar to existing guides.
 - Migrate all prompts, agents and skills to use C/C++ examples instead of existing.
+- Add agent guide for Zephyr application development.
 - Add agent guide for STM32 series embedded development similar to existing guides.
 - Add agent guide for nRF microcontroller embedded development similar to existing guides.
 - Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
+- Include use of Cppcheck into C and C++ `AGENTS.md` templates.
 
 ## VS Code + Copilot PRP Workflow
 
