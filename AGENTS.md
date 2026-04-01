@@ -24,7 +24,7 @@ Core Concept: **"PRP = PRD + curated codebase intelligence + agent/runbook"**. I
 ### AI Documentation Curation
 
 - `.github/PRPs/ai_docs/`: Curated documentation for context injection.
-- `.github/copilot_md_files/`: Framework-specific examples of `AGENTS.md`.
+- `.github/agents_md_files/`: Programming language- or framework-specific examples of `AGENTS.md`.
 
 ## Development Commands
 
@@ -121,5 +121,5 @@ A valid PRP must contain:
       templates/             # PRP templates with validation
       ai_docs/              # Curated Copilot documentation
       scripts/              # PRP runner and utilities
-   copilot_md_files/       # Language/Framework-specific AGENTS.md examples
+   agents_md_files/       # Language/Framework-specific AGENTS.md examples
 ```
