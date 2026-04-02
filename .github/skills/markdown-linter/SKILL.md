@@ -18,5 +18,5 @@ This guide covers essential markdown formatting and linting using Python librari
 
 ```console
 uv run mdformat path/to/document.md
-uv run pymarkdownlint -c config/pymarkdown.toml scan path/to/document.md
+uv run pymarkdownlnt -c .github/skills/markdown-linter/config/pymarkdown.toml scan path/to/document.md
 ```
