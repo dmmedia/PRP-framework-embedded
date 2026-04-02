@@ -19,7 +19,7 @@ Launch codebase agents in parallel first, then research agent second.
 </objective>
 
 <context>
-CLAUDE.md rules: @CLAUDE.md
+AGENTS.md rules: @AGENTS.md
 
 **Directory Discovery** (run these to understand project structure):
 - List root contents: `ls -la`
