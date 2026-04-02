@@ -1,6 +1,6 @@
 # PRP (Product Requirement Prompts)
 
-A collection of prompts for AI-assisted embedded development with Github CoPilot in VS Code.
+A collection of prompts, agents and skills for AI-assisted embedded development with Github CoPilot in VS Code.
 
 **Migration Notice:**
 The PRP framework is being migrated from Claude-specific workflows to GitHub Copilot and VS Code native flows. All Copilot quickstart, migration, and troubleshooting guides may be integrated into this README and the workspace settings. Legacy Claude documentation is deprecated and retained only for reference.
@@ -17,6 +17,8 @@ The PRP framework is being migrated from Claude-specific workflows to GitHub Cop
 Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
 
 **TODO:**
+- Review prompts: extract templates to separate files and reference them, exclude project specific information already covered in `AGENTS.md`, remove all duplications, minimize prompts.
+- Review agents: extract templates to separate files and reference them, remove all duplications, minimize prompts
 - Review new Copilot docs and extend content from migrated `claude_md_files/` where possible. Remove other files.
 - Update all prompts and agent guides to use `.github` instead of `.claude` and move everything from `.claude` to `.github`.
 - Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
@@ -34,13 +36,19 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 ## VS Code + Copilot PRP Workflow
 
-1. Install recommended extensions (workspace prompts include Copilot, Copilot Chat, GitLens, and GitHub PR).  
-2. Use the command palette: `Tasks: Run Task` → choose one of:
+1. Copy the `.github/` directory into your project root.
+2. Initialize Python environment and install dependencies:
+   ```console
+   pip install uv
+   uv sync
+   ```
+3. Open project in VS Code and install recommended extensions (workspace prompts include Copilot, Copilot Chat, GitLens, and GitHub PR).
+4. Use the command palette: `Tasks: Run Task` → choose one of:
    - `PRP: Create PRD`
    - `PRP: Plan`
    - `PRP: Implement`
-3. Workspace tasks are defined in `.vscode/tasks.json` and execute the `prp_workflow.py` orchestrator via `uv run`.
-4. For manual usage, use:
+5. Workspace tasks are defined in `.vscode/tasks.json` and execute the `prp_workflow.py` orchestrator via `uv run`.
+6. For manual usage, use:
    - `uv run .github/PRPs/scripts/prp_workflow.py "<feature>" --no-commit --no-pr`
    - `uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path <plan> --no-commit --no-pr`
 
@@ -73,16 +81,16 @@ A PRP keeps the goal and justification sections of a PRD yet adds AI-critical la
 
 ### Option 1: Copy Commands to Your Project
 
-```bash
+```console
 # From your project root
-cp -r /path/to/PRPs-framework-embedded/.github/prompts .github/prompts/
+cp -r /path/to/PRPs-framework-embedded/.github/ .github/
 ```
 
 ### Option 2: Clone Repository
 
-```bash
-git clone https://github.com/Wirasm/PRPs-agentic-eng.git
-cd PRPs-agentic-eng
+```console
+git clone https://github.com/dmmedia/PRP-framework-embedded.git
+cd PRP-framework-embedded
 ```
 
 ---
@@ -130,17 +138,17 @@ Based on [Geoffrey Huntley's Ralph Wiggum technique](https://ghuntley.com/ralph/
 
 ### How It Works
 
-```
+```console
 /prp-ralph .github/PRPs/plans/my-feature.plan.md --max-iterations 20
 ```
 
-1. CoPilot implements the plan tasks
+1. Copilot implements the plan tasks
 2. Runs all validation commands (type-check, lint, tests, build)
 3. If any validation fails → fixes and re-validates
 4. Loop continues until ALL validations pass
 5. Outputs `<promise>COMPLETE</promise>` and exits
 
-Each iteration, CoPilot sees its previous work in files and git history. It's not starting fresh - it's debugging itself.
+Each iteration, Copilot sees its previous work in files and git history. It's not starting fresh - it's debugging itself.
 
 ### Setup
 
@@ -165,7 +173,7 @@ The stop hook must be configured in `.github/settings.local.json`:
 
 ### Usage
 
-```bash
+```console
 # Create a plan
 /prp-plan "add user authentication with JWT"
 
@@ -189,7 +197,7 @@ The stop hook must be configured in `.github/settings.local.json`:
 
 ### Large Features: PRD → Plan → Implement
 
-```
+```text
 /prp-prd "user authentication system"
     ↓
 Creates PRD with Implementation Phases table
@@ -207,7 +215,7 @@ Repeat /prp-plan for next phase
 
 ### Medium Features: Direct to Plan
 
-```
+```text
 /prp-plan "add pagination to the API"
     ↓
 Creates implementation plan from description
@@ -217,7 +225,7 @@ Creates implementation plan from description
 
 ### Bug Fixes: Issue Workflow
 
-```
+```text
 /prp-issue-investigate 123
     ↓
 Analyzes issue, creates investigation artifact
@@ -233,7 +241,7 @@ Implements fix, creates PR
 
 All artifacts are stored in `.github/PRPs/`:
 
-```
+```text
 .github/PRPs/
 ├── prds/              # Product requirement documents
 ├── plans/             # Implementation plans
@@ -276,16 +284,17 @@ PRDs include an Implementation Phases table for tracking progress:
 
 ## Project Structure
 
-```
+```text
 your-project/
 ├── .github/
-│   ├── commands/prp-core/   # PRP commands
+│   ├── prompts/             # PRP commands
 │   ├── PRPs/                # Generated artifacts
-│   └── agents/              # Custom subagents
+│   ├── agents/              # Custom subagents
+│   └── skills/              # Agents skills
 ├── PRPs/
 │   ├── templates/           # PRP templates
 │   └── ai_docs/             # Library documentation
-├── CLAUDE.md                # Project-specific guidelines
+├── AGENTS.md                # Project-specific guidelines
 └── src/                     # Your source code
 ```
 
@@ -295,7 +304,7 @@ your-project/
 
 When PRD phases can run in parallel:
 
-```bash
+```console
 # Phase 3 and 4 can run concurrently
 git worktree add -b phase-3-ui ../project-phase-3
 git worktree add -b phase-4-tests ../project-phase-4
