@@ -138,7 +138,7 @@ Replace embedded template blocks with:
 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
 |---|-------|-------------|--------|----------|---------|----------|
-| 1 | Setup | Create `.github/PRPs/templates/` directory | in-progress | - | - | `.claude/PRPs/plans/extract-prompt-output-templates-phase-1-setup.plan.md` |
+| 1 | Setup | Create `.github/PRPs/templates/` directory | complete | - | - | `.claude/PRPs/plans/completed/extract-prompt-output-templates-phase-1-setup.plan.md` |
 | 2 | Extract | Extract 19 templates from all 13 prompt files into separate template files | pending | - | 1 | - |
 | 3 | Update | Update all 13 prompt files to reference their template files | pending | - | 2 | - |
 
