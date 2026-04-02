@@ -1,0 +1,5 @@
+# PyMarkdown configuration for the markdown-linter skill
+# Disable the maximum line length rule (MD013 / line-length)
+# This will ignore the default 80-character line length limit.
+[tool.pymarkdown.plugins.MD013]
+enabled = false
