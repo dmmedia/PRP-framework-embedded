@@ -13,18 +13,14 @@ Core Concept: **"PRP = PRD + curated codebase intelligence + agent/runbook"**. I
 
 ### Command-Driven System
 
-- **Pre-configured commands**: Located in `.github/prompts/`. AI agents should prioritize these commands for standard tasks.
+- **Pre-configured prompts**: Located in `.github/prompts/`. AI agents should prioritize these commands for standard tasks.
+- **Command-Line Automation**: Python scripts in `.github/PRPs/scripts/`.
 
 ### Template-Based Methodology
 
-- **PRP Templates**: Located in `.github/PRPs/templates/` follow a structured format with built-in validation loops.
+- **PRP Templates**: Follow a structured format with built-in validation loops.
 - **Context-Rich Approach**: Every PRP must include comprehensive documentation, examples, and known "gotchas".
 - **Validation-First Design**: Each PRP contains executable validation gates covering syntax, tests, and integration.
-
-### AI Documentation Curation
-
-- `.github/PRPs/ai_docs/`: Curated documentation for context injection.
-- `.github/agents_md_files/`: Programming language- or framework-specific examples of `AGENTS.md`.
 
 ## Development Commands
 
@@ -43,22 +39,25 @@ uv run .github/PRPs/scripts/prp_runner.py --prp [prp-name] --output-format json
 uv run .github/PRPs/scripts/prp_runner.py --prp [prp-name] --output-format stream-json
 ```
 
-### Key Copilot Commands
+### Key Agent Commands
 
 **Core PRP Workflow**:
+
 - `/prp-prd`: Create a comprehensive feature PRD with deep codebase analysis.
 - `/prp-plan`: Create a detailed plan with phases, tasks, and validation.
-- `/prp-implement`: Implement feature following PRP methodology.
+- `/prp-implement`: Implement feature or single phase following PRP methodology.
+
+**Git Workflow**:
+
+- `/prp-branch`: Create a feature or implementation phase branch.
 - `/prp-commit`: Create atomic git commits based on changes.
 - `/prp-pr`: Push changes and create a PR with comprehensive description.
+- `/prp-review-agents`: Run a suite of review agents on a PR or
+- `/prp-review`: Run a specific review agent.
 
 **Agent Skills**:
+
 - `prp-core-runner`: An autonomous skill that orchestrates the complete PRP workflow.
-
-**Legacy & Utilities**:
-
-- **Workflows**: `/prp-story-create`, `/prp-story-execute`, `/prp-base-create`, `/prp-base-execute`, `/prp-planning-create`.
-- **Utilities**: `/prime-core` (Project context), `/review-staged-unstaged` (PRP-based review), `/smart-commit` (AI analysis).
 
 ## Critical Success Patterns
 
@@ -82,7 +81,9 @@ A valid PRP must contain:
 
 ### Validation Gates (Must be Executable)
 
-1. **Syntax & Style**: `ruff check --fix && mypy .`
+1. **Syntax & Style**:
+   - **Python**: `uv run ruff check --fix && uv run mypy .`
+   - **Markdown**: use `markdown-linter` skill.
 2. **Unit Tests**: `uv run pytest tests/ -v`
 3. **Integration**: `uv run uvicorn main:app --reload` followed by API calls `curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" -d '{...}'`
 4. **Deployment**: MCP servers or creative self-validation methods.
@@ -114,12 +115,40 @@ A valid PRP must contain:
 
 ## Project Structure Understanding
 
-```
-.github/
-   prompts/                # Pre-configured Copilot commands
+```text
+.claude/
    PRPs/
-      templates/             # PRP templates with validation
-      ai_docs/              # Curated Copilot documentation
-      scripts/              # PRP runner and utilities
-   agents_md_files/       # Language/Framework-specific AGENTS.md examples
+      plans/                 # Plans created based on PRDs
+         completed/          # Executed plans
+      prds/                  # PRDs created from user requests
+      reports/               # Post-implementation reports
+.claude-plugin/              # Marketplace json
+.github/
+   agents/                   # Pre-configured agents for specific tasks
+   agents_md_files/          # Language/Framework-specific AGENTS.md examples
+   ai_docs/                  # Curated documentation for agents
+   hooks/                    # Copilot/Claude hooks for automation
+   prompts/                  # Pre-configured Copilot commands
+   PRPs/
+      features/              # Feature-specific PRDs
+         completed/          # Implemented feature PRDs
+      scripts/               # PRP runner and utilities
+   skills/                   # Autonomous agent skills
+   templates/                # PRP templates
+.venv/                       # Virtual environment for Python dependencies
+.vscode/                     # VS Code settings, extensions, tasks
+claude_md_files/             # CLAUDE.md examples for Claude Code
+old-prp-commands/            # Obsolete PRP framework developments
+plugins/
+   prp-core/                 # Core PRP framework. Copy of the .github/ contents
+PRPs/scripts/                # Obsolete location for scripts, being phased out in favor of .github/PRPs/scripts/
+tests/                       # Python unit tests for PRP framework
+.gitignore
+.python-version              # Python version for pyenv/uv
+AGENTS.md                    # This file - guidance for agents working with this codebase
+docs_map.json                # Map of migrated templates from claude_md_files/ to agents_md_files/
+pyproject.toml               # Python project configuration
+README-FOR-DUMMIES.md        # Simplified README for non-technical readers
+README.md                    # Main project README with comprehensive documentation
+uv.lock                      # Dependency lock file for uv
 ```
