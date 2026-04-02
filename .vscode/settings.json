@@ -9,7 +9,7 @@
   "editor.suggest.showWords": true,
   "files.exclude": {
     "**/.claude": false,
-    "**/old-prp-commands": true,
+    "**/old-prp-commands": false,
     "claude_md_files": false,
     "copilot_md_files": false
   },
