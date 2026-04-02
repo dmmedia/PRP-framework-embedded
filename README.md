@@ -17,20 +17,29 @@ The PRP framework is being migrated from Claude-specific workflows to GitHub Cop
 Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI integration.
 
 **TODO:**
-- Review prompts: extract templates to separate files and reference them, exclude project specific information already covered in `AGENTS.md`, remove all duplications, minimize prompts.
-- Review agents: extract templates to separate files and reference them, remove all duplications, minimize prompts
-- Review new Copilot docs and extend content from migrated `claude_md_files/` where possible. Remove other files.
+- Review prompts:
+   - extract templates to separate files and reference them
+   - review `.github\prompts\prp-issue-investigate.prompt.md` and output template as it looks inconsistent
+   - extract more templates, as it seems that the 1st extraction did not do all of them (e.g. `.github\prompts\prp-plan.prompt.md`), to separate files and reference them
+   - exclude project specific information already covered in `AGENTS.md`
+   - remove all duplications
+   - minimize prompts
+- Review agents:
+   - extract templates to separate files and reference them
+   - remove all duplications
+   - minimize prompts
+- Review new AGENT.md templates and extend content from migrated `claude_md_files/` where possible. Remove other files. Remove old `claude_md_files/`.
 - Update all prompts and agent guides to use `.github` instead of `.claude` and move everything from `.claude` to `.github`.
 - Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
 - Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.
 - Created `.vscode/tasks.json` contains tasks with hardcoded parameters. Must be updated to support user input if possible or removed in favor of slash commands and CLI usage.
 - `PRPs` folder contents must be moved to `.github/PRPs` and all paths updated accordingly.
-- Add agent guide for C language similar to existing guides.
-- Add agent guide for C++ language similar to existing guides.
-- Migrate all prompts, agents and skills to use C/C++ examples instead of existing.
-- Add agent guide for Zephyr application development.
-- Add agent guide for STM32 series embedded development similar to existing guides.
-- Add agent guide for nRF microcontroller embedded development similar to existing guides.
+- Add agent guide/skill for C language similar to existing guides.
+- Add agent guide/skill for C++ language similar to existing guides.
+- Migrate all prompts, agents and skills to use C/C++ examples instead of existing?.
+- Add agent guide/skill for Zephyr application development.
+- Add agent guide/skill for STM32 series embedded development similar to existing guides.
+- Add agent guide/skill for nRF microcontroller embedded development similar to existing guides.
 - Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 - Include use of Cppcheck into C and C++ `AGENTS.md` templates.
 
