@@ -133,8 +133,8 @@ A valid PRP must contain:
       features/              # Feature-specific PRDs
          completed/          # Implemented feature PRDs
       scripts/               # PRP runner and utilities
+      templates/             # PRP templates
    skills/                   # Autonomous agent skills
-   templates/                # PRP templates
 .venv/                       # Virtual environment for Python dependencies
 .vscode/                     # VS Code settings, extensions, tasks
 claude_md_files/             # CLAUDE.md examples for Claude Code
