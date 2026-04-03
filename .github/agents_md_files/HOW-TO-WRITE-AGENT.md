@@ -1,6 +1,6 @@
 # Writing a good `AGENTS.md` (`CLAUDE.md`)
 
-This guide is taken from the [Writing a good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) blog post.
+This guide is taken from the [Writing a good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) blog post and extended with more important and relevant information.
 
 ## Principle: LLMs are (mostly) stateless
 
@@ -140,11 +140,122 @@ But the `AGENTS.md` file affects **every single phase of your workflow** and eve
 +------------------------------------------------------------------------+
 ```
 
+### Syntax notes
+
+These are answers given by [Gemini](https://gemini.google.com/).
+
+- When using ordered lists in markdown use sequential numbering (1., 2., 3.) instead of repeating the same number (1., 1., 1.). This is because while the lists are rendered the same way, the LLM needs clarity. Explicit sequences provide a stronger "ordinal signal". Also, when referencing the certain item it is clearer for both human and AI to see the actual number instead of counting the items.
+- Avoid using excessive spaces in the markdown tables. While it may improve readability for humans, every space consumes tokens of context. It is enough to have a single space before and after the content in each cell. Also minimize the separators down to three dashes "|---|---|".
+- While horisontal spaces are a waste, pay **strong** attention to the empty lines. Those are **strong delimiters** that help the model's attention mechanism reset and focus on the new type of data structure.
+
+   | Element | Empty Line Before? | Empty Line After? | Why? |
+   |---|---|---|---|
+   | **Headers** | **Required** | Optional | Defines hierarchy. |
+   | **Lists** | **Recommended** | **Recommended** | "Prevents ""bleeding"" into prose." |
+   | **Code Blocks** | **Crucial** | **Crucial** | Separates instructions from code logic. |
+   | **Tables** | **Recommended** | **Recommended** | Isolates structured data from text. |
+
+- Use **bold** for hard constrainst and primary keywords. Think of bolding as a "High-Priority" flag.
+   - **Labels**: Use bolding to name your sections (e.g. **Constraints:**, **Output Format:**).
+   - **Negations**: Words like **NOT**, **NEVER**, or **WITHOUT** should be bolded to ensure the model doesn't miss the netative constraint.
+   - **Key Variables**: If you define a specific term the AI must use, bolding it helps anchor that term in the model's "memory"."
+   **Example**: "You must **NEVER** mention internal project names in the final summary."
+- Use **Italics** for style, persona, and nuance. Italics acts as a "soft" signal. They are less about the *what* and more about the *how*.
+   - **Tone Instructions**: If you want the AI to be *witty* or *professional*, italics help separate these stylistic descriptors from the actual task.
+   - **Meta-Comments**: Use italics for parethetical asides or minor examples that clarify a point without being a "hard-rule".
+   - **Subtle Emphasis**: Use them for words that change the *flavor* of a sentence but aren't structural deal-breakers.
+   **Example*: "Respond in a *conversational* yet *authoritative* tone."
+- Use **Bold + Italics** for critical warnings and "Golden Rules". This is your "Break Glass in Case of Emergency" formatting. If you use it everywhere, it creates massive context pollution because the AI won't know what is actually highest priority.
+   - **Absolute Requirements**: Use this for the one or two rules that, if broken, make the entire output useless.
+   - **The "Safety" Rule**: Often used for legal or safety boundaries within a prompt.
+   **Example**: "***Under no circumstances provide health or medical advice.***"
+
+   | Style | Purpose | Signal Strength | Frequency |
+   |---|---|---|---|
+   | **Bold** | Constraints / Labels | High | Frequent |
+   | *Italics* | Tone / Nuance | Low | Occasional |
+   | ***Both*** | Critical "Do Not Cross" | Extreme | Rare (once per prompt) |
+
+- Use **Blockquotes** as a way to tell the AI, "This information is a separete 'object' or 'package' that I want you to look at, but it is not the instruction itself."
+   - **Providing Examples (Few-Shot Prompting)**. This is the most common use. If you want to show the AI how to behave, wrap your examples in blockquotes. It prevents the AI from getting confused and thinking the *example's* content is a new instruction for the *current* task.
+   **Example:**
+
+   ```markdown
+   Use the following style for your summaries:
+
+   > **Input:** The cat sat on the mat.
+   > **Output:** Feline placement confirmed on floor covering.
+   ```
+
+   - **Separating Source Material**. If you're asking the AI to analyze a specific piece of text, an email, or a quote, blockquote it. This creates a "container" around the data, which helps the AI distinguish between "Your Directions" and "The Target Data".
+   - **Role-Play or Persona Background**. If you have a lengthy description of a persona (e.g. a "Customer Profile" or a "Historical Character"), putting it in a blockquote signals that this is a **background context** rather than the immediate task at hand.
+   - **Fight Instruction Drift**. When a prompt is very long, the AI can sometimes forget where your instructions ended and where the data began. By wrapping your data or examples in `>`:
+
+      1. You provide a visual and structural anchor.
+      2. You utilize the model's training on Markdown, where `>` usually denotes "quoted" or "external" content.
+      3. You make the prompt significantly easier fo *you* to read and maintain.
+
+   - **Using Blockquotes vs. Code Blocks:**
+
+   | Feature | Blockquotes (`>`) | Code Blocks (`` ` ``) |
+   |---|---|---|
+   | **Best For** | "Prose, examples, quotes, personas." | "Code, JSON, raw data, logs." |
+   | **AI Perception** | "This is a special passage of text." | "This is literal data/syntax to be parsed." |
+   | **Risk** | The AI might still try to "read" it as text. | The AI strictly treats it as a distinct block of logic. |
+
+- **The "Prompt Pyramid" Strategy**:
+
+   1. **Structure** with Headings (`#`, `##`).
+   2. **Organize** with Lists (`*`, `1.`).
+   3. **Highlight** with Bolding (`**`).
+   4. **Refine** with Italics (`*`).
+
+- ***NEVER use ASCII diagrams to explain logic for AI.*** ASCII diagrams while look good to humans are the nightmare for the AI. They are **Expensive Token Bloat**, **Whitespace Fragile**, and the source of **Instruction Confusion** when AI tries to interpret dashes and slashes as mathematical operators. There efficient alternatives:
+
+   - **Mermaid Syntax**. Most frontier models are trained extensively on code repositories (like GitHub) where **Mermaid.js** is the standard for diagrams. They understand them perfectly and it uses standard token-efficient and semantically clear logic.
+   **Instead of ASCII:**
+   
+   ```text
+   +------+                +--------+              +----+
+   | User | --(request)--> | Server | --(query)--> | DB |
+   +------+                +--------+              +----+
+   ```
+
+   **Use Mermaid:**
+   
+   ```mermaid
+   graph LR
+     User -- request --> Server
+     Server -- query --> Database
+   ```
+
+   - **Nested Indented Lists**. For hierarchical logic or simple sequential flows, nothing beats a nested list. It is the most "native" way for an LLM to process order and dependency.
+
+   ```markdown
+   - **Step 1**: User Initiation
+      - Trigger: Button Click
+      - Action: Send POST request to `/api/data`
+   - **Step 2**: API Layer
+      - Validation: Check Auth Token
+      - Next: Forward to Database
+   ```
+
+   - **Pseudocode or Logic Blocks**. If the flow is conditional (If/Then), use pseudocode. It removes the ambiguity of "arrows" and replaces them with strict logic.
+
+   ```pseudocode
+   FLOW:
+   IF user_authenticated:
+     GOTO database_fetch
+   ELSE:
+     RETURN 403_error
+   ```
+
 ## In Conclusion
 
 1. `AGENTS.md` is for onboarding agent into your codebase. It should define your project's **WHY**, **WHAT**, and **HOW**.
 2. **Less (instructions) is more**. While you shouldn't omit necessary instructions, you should include as few instructions as reasonably possible in the file.
 3. Keep the contents of your `AGENTS.md` **concise and universally applicable**.
 4. Use **Progressive Disclosure** - don't tell agent all the information you could possibly want it to know. Rather, tell it *how to find* important information so that it can find and use it, but only when it needs to to avoid bloating your context window or instruction count.
-5. Agent is not a linter. Use linters and code formatters, and use other features like Hooks and Slash Commands as necessary.
-6. `AGENTS.md` **is the highest leverage point of the harness**, so avoid auto-generating it. You should carefully craft its contents for best results.
+5. **Syntax matters**. Use markdown syntax strategically to minimize the context pollution and keeping your instructions clear and easy to follow for the model.
+6. Agent is not a linter. Use linters and code formatters, and use other features like Hooks and Slash Commands as necessary.
+7. `AGENTS.md` **is the highest leverage point of the harness**, so avoid auto-generating it. You should carefully craft its contents for best results.
