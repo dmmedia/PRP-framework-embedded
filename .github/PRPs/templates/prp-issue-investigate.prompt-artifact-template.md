@@ -78,7 +78,6 @@ Evidence: `file.ts:789` - `{problematic code}`
 // Line 45-50
 {actual current code}
 ```
-````
 
 **Required change:**
 
