@@ -223,6 +223,16 @@ These are answers given by [Gemini](https://gemini.google.com/).
 
    **Use Mermaid:**
    
+   ````markdown
+   ```mermaid
+   graph LR
+     User -- request --> Server
+     Server -- query --> Database
+   ```
+   ````
+
+   Renders as:
+
    ```mermaid
    graph LR
      User -- request --> Server
