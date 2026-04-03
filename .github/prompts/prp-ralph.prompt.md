@@ -121,33 +121,8 @@ Execute PRP plan and iterate until all validations pass.
 
 ### 2.2 Display Startup Message
 
-```markdown
-## PRP Ralph Loop Activated
-
-**Plan**: {file_path}
-**Iteration**: 1
-**Max iterations**: {N}
-
-The stop hook is now active. When you try to exit:
-- If validations incomplete → same prompt fed back
-- If all validations pass → loop exits
-
-To monitor: `cat .claude/prp-ralph.state.md`
-To cancel: `/prp-ralph-cancel`
-
----
-
-CRITICAL REQUIREMENTS:
-- Work through ALL tasks in the plan
-- Run ALL validation commands
-- Fix failures before proceeding
-- Only output <promise>COMPLETE</promise> when ALL validations pass
-- Do NOT lie to exit - the loop continues until genuinely complete
-
----
-
-Starting iteration 1...
-```
+> **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-setup-template.md`
+> Load this file and use its structure exactly when generating output.
 
 **PHASE_2_CHECKPOINT:**
 - [ ] State file created
@@ -220,30 +195,8 @@ After each significant change:
 
 Append to Progress Log section using this format:
 
-```markdown
-## Iteration {N} - {ISO timestamp}
-
-### Completed
-- {Task 1 summary}
-- {Task 2 summary}
-
-### Validation Status
-- Type-check: PASS/FAIL ({error count if failing})
-- Lint: PASS/FAIL
-- Tests: PASS/FAIL ({X/Y passing})
-- Build: PASS/FAIL
-
-### Learnings
-- {Pattern discovered: "this codebase uses X for Y"}
-- {Gotcha found: "don't forget to Z when doing W"}
-- {Context: "the component X is in directory Y"}
-
-### Next Steps
-- {What still needs to be done}
-- {Specific blockers to address}
-
----
-```
+> **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-progress-template.md`
+> Load this file and use its structure exactly when generating output.
 
 ### 3.9 Consolidate Codebase Patterns
 

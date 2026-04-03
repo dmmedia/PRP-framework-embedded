@@ -535,41 +535,8 @@ git push
 
 ## Phase 10: REPORT - Output to User
 
-```markdown
-## Implementation Complete
-
-**Issue**: #{number} - {title}
-**Branch**: `{branch-name}`
-**PR**: #{pr-number} - {pr-url}
-
-### Changes Made
-
-| File            | Change        |
-| --------------- | ------------- |
-| `src/x.ts`      | {description} |
-| `src/x.test.ts` | Added test    |
-
-### Validation
-
-| Check      | Result  |
-| ---------- | ------- |
-| Type check | ✅ Pass |
-| Tests      | ✅ Pass |
-| Lint       | ✅ Pass |
-
-### Self-Review
-
-{Summary of review findings}
-
-### Artifact
-
-📄 Archived to `.claude/PRPs/issues/completed/issue-{number}.md`
-
-### Next Steps
-
-- Human review of PR #{pr-number}
-- Merge when approved
-```
+> **Output Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-report-template.md`
+> Load this file and use its structure exactly when generating output.
 
 ---
 

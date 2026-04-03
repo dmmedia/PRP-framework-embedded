@@ -65,12 +65,8 @@ git commit -m "{type}: {description}"
 
 ## Phase 4: OUTPUT
 
-```markdown
-**Committed**: {hash} - {message}
-**Files**: {count} files (+{add}/-{del})
-
-Next: `git push` or `/prp-pr`
-```
+> **Output Template**: See `.github/PRPs/templates/prp-commit.prompt-output-template.md`
+> Load this file and use its structure exactly when generating output.
 
 ---
 

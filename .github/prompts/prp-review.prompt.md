@@ -1,4 +1,4 @@
----
+﻿---
 description: Comprehensive PR code review - checks diff, patterns, runs validation, comments on PR
 argument-hint: <pr-number|pr-url> [--approve|--request-changes]
 ---
@@ -335,107 +335,8 @@ mkdir -p .claude/PRPs/reviews
 
 **Path**: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`
 
-```markdown
----
-pr: {NUMBER}
-title: "{TITLE}"
-author: "{AUTHOR}"
-reviewed: {ISO_TIMESTAMP}
-recommendation: {approve|request-changes|block}
----
-
-# PR Review: #{NUMBER} - {TITLE}
-
-**Author**: @{author}
-**Branch**: {head} -> {base}
-**Files Changed**: {count} (+{additions}/-{deletions})
-
----
-
-## Summary
-
-{2-3 sentences: What this PR does and overall assessment}
-
----
-
-## Implementation Context
-
-| Artifact | Path |
-|----------|------|
-| Implementation Report | `{path}` or "Not found" |
-| Original Plan | `{path}` or "Not found" |
-| Documented Deviations | {count} or "N/A" |
-
-{If implementation report exists: Brief note about deviation documentation quality}
-
----
-
-## Changes Overview
-
-| File | Changes | Assessment |
-|------|---------|------------|
-| `{path/to/file.ts}` | +{N}/-{M} | {PASS/WARN/FAIL} |
-
----
-
-## Issues Found
-
-### Critical
-{If none: "No critical issues found."}
-
-- **`{file.ts}:{line}`** - {Issue description}
-  - **Why**: {Explanation of the problem}
-  - **Fix**: {Specific recommendation}
-
-### High Priority
-{Issues that should be fixed before merge}
-
-### Medium Priority
-{Issues worth addressing but not blocking}
-
-### Suggestions
-{Nice-to-haves and future improvements}
-
----
-
-## Validation Results
-
-| Check | Status | Details |
-|-------|--------|---------|
-| Type Check | {PASS/FAIL} | {notes} |
-| Lint | {PASS/WARN} | {count} warnings |
-| Tests | {PASS/FAIL} | {count} passed |
-| Build | {PASS/FAIL} | {notes} |
-
----
-
-## Pattern Compliance
-
-- [{x}] Follows existing code structure
-- [{x}] Type safety maintained
-- [{x}] Naming conventions followed
-- [{x}] Tests added for new code
-- [{x}] Documentation updated
-
----
-
-## What's Good
-
-{Acknowledge positive aspects - good patterns, clean code, thorough tests, etc.}
-
----
-
-## Recommendation
-
-**{APPROVE/REQUEST CHANGES/BLOCK}**
-
-{Clear explanation of recommendation and what needs to happen next}
-
----
-
-*Reviewed by Claude*
-*Report: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`*
-```
+> **Output Template**: See `.github/PRPs/templates/prp-review.prompt-report-template.md`
+> Load this file and use its structure exactly when generating output.
 
 **PHASE_6_CHECKPOINT:**
 - [ ] Report file created
@@ -475,43 +376,8 @@ gh pr view {NUMBER} --json reviews,comments --jq '.reviews[-1].url // .comments[
 
 ## Phase 8: OUTPUT - Report to User
 
-```markdown
-## PR Review Complete
-
-**PR**: #{NUMBER} - {TITLE}
-**URL**: {PR_URL}
-**Recommendation**: {APPROVE/REQUEST CHANGES/BLOCK}
-
-### Issues Found
-
-| Severity | Count |
-|----------|-------|
-| Critical | {N} |
-| High | {N} |
-| Medium | {N} |
-| Suggestions | {N} |
-
-### Validation
-
-| Check | Result |
-|-------|--------|
-| Type Check | {PASS/FAIL} |
-| Lint | {PASS/FAIL} |
-| Tests | {PASS/FAIL} |
-| Build | {PASS/FAIL} |
-
-### Artifacts
-
-- Report: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`
-- PR Comment: {comment_url}
-
-### Next Steps
-
-{Based on recommendation:}
-- APPROVE: "PR is ready for merge"
-- REQUEST CHANGES: "Author should address {N} high-priority issues"
-- BLOCK: "Fundamental issues need resolution before proceeding"
-```
+> **Output Template**: See `.github/PRPs/templates/prp-review.prompt-summary-template.md`
+> Load this file and use its structure exactly when generating output.
 
 ---
 

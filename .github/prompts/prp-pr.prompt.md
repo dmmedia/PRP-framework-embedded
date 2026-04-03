@@ -177,44 +177,8 @@ Read the template and fill in each section based on:
 
 ### 4.2 If No Template - Use Default Format
 
-```bash
-gh pr create \
-  --title "{title}" \
-  --base "{base-branch}" \
-  --body "$(cat <<'EOF'
-## Summary
-
-{1-2 sentence description of what this PR accomplishes}
-
-## Changes
-
-{List of commit summaries}
-- {commit 1}
-- {commit 2}
-
-## Files Changed
-
-{Count} files changed
-
-<details>
-<summary>File list</summary>
-
-{list of changed files}
-
-</details>
-
-## Testing
-
-- [ ] Type check passes
-- [ ] Tests pass
-- [ ] Manually verified
-
-## Related Issues
-
-{Any linked issues from commit messages, or "None"}
-EOF
-)"
-```
+> **Output Template**: See `.github/PRPs/templates/prp-pr.prompt-pr-template.md`
+> Load this file and use its content as the `--body` value for `gh pr create`.
 
 ### 4.3 Extract Issue References
 
@@ -266,37 +230,8 @@ gh pr checks
 
 ## Phase 6: OUTPUT - Report to User
 
-```markdown
-## Pull Request Created
-
-**PR**: #{number}
-**URL**: {url}
-**Title**: {title}
-**Base**: {base-branch} <- {current-branch}
-
-### Summary
-
-{Brief description of what the PR contains}
-
-### Changes
-
-- {N} commits
-- {M} files changed
-
-### Files
-
-{List of changed files}
-
-### Checks
-
-{Status of any CI checks, or "Pending"}
-
-### Next Steps
-
-- Wait for CI checks to pass
-- Request review if needed: `gh pr edit --add-reviewer @username`
-- View PR: `gh pr view --web`
-```
+> **Output Template**: See `.github/PRPs/templates/prp-pr.prompt-summary-template.md`
+> Load this file and use its structure exactly when generating output.
 
 ---
 
