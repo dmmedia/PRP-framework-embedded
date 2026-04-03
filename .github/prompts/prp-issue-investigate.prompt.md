@@ -344,7 +344,7 @@ gh issue comment {number} --body "$(cat <<'EOF'
 ```bash
 # Run project's validation commands (adapt to toolchain)
 {type-check-cmd} && {test-cmd} {pattern} && {lint-cmd}
-````
+```
 
 ---
 
@@ -406,7 +406,7 @@ EOF
 ### Next Step
 
 Run `/prp-issue-fix {number}` to execute the plan.
-````
+```
 
 ---
 
