@@ -5,7 +5,7 @@ license: MIT
 metadata:
    author: "dmmedia"
    version: "1.0"
-compatibility: Requires Python 3.12+, uv, mdformat and pymarkdownlnt.
+compatibility: Requires Python 3.12+, uv and pymarkdownlnt.
 ---
 
 # Markdown validation guide
@@ -17,6 +17,5 @@ This guide covers essential markdown formatting and linting using Python librari
 ## Quick Start
 
 ```console
-uv run mdformat path/to/document.md
 uv run pymarkdownlnt -c .github/skills/markdown-linter/config/pymarkdown.toml scan path/to/document.md
 ```
