@@ -40,6 +40,7 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 - Add agent guide/skill for nRF microcontroller embedded development similar to existing guides.
 - Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 - Include use of Cppcheck into C and C++ `AGENTS.md` templates.
+- Minimize all markdown tables to "|---|---|" to minimize context pollution.
 
 ## VS Code + Copilot PRP Workflow
 
