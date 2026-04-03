@@ -18,8 +18,6 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 **TODO:**
 - Review prompts:
-   - extract templates to separate files and reference them
-   - review `.github\prompts\prp-issue-investigate.prompt.md` and output template as it looks inconsistent
    - extract more templates, as it seems that the 1st extraction did not do all of them (e.g. `.github\prompts\prp-plan.prompt.md`), to separate files and reference them
    - exclude project specific information already covered in `AGENTS.md`
    - remove all duplications
