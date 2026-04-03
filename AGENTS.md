@@ -58,6 +58,8 @@ uv run .github/PRPs/scripts/prp_runner.py --prp [prp-name] --output-format strea
 **Agent Skills**:
 
 - `prp-core-runner`: An autonomous skill that orchestrates the complete PRP workflow.
+- `markdown-linter`: Formats markdown files and checks for common issues.
+- `text-file-content-extractor-replacer`: Extract a line-range block from a text file into a new file, replace a line-range block with new content, or do both. Supports PowerShell (Windows) and bash/sed (macOS/Linux).
 
 ## Critical Success Patterns
 
