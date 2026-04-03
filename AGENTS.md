@@ -127,7 +127,6 @@ A valid PRP must contain:
 .claude-plugin/              # Marketplace json
 .github/
    agents/                   # Pre-configured agents for specific tasks
-   agents_md_files/          # Language/Framework-specific AGENTS.md examples
    ai_docs/                  # Curated documentation for agents
    hooks/                    # Copilot/Claude hooks for automation
    prompts/                  # Pre-configured Copilot commands
@@ -139,6 +138,7 @@ A valid PRP must contain:
    skills/                   # Autonomous agent skills
 .venv/                       # Virtual environment for Python dependencies
 .vscode/                     # VS Code settings, extensions, tasks
+agents_md_files/             # Language/Framework-specific AGENTS.md examples
 claude_md_files/             # CLAUDE.md examples for Claude Code
 old-prp-commands/            # Obsolete PRP framework developments
 plugins/
