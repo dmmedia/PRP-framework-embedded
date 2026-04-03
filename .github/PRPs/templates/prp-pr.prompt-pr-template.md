@@ -5,6 +5,7 @@
 ## Changes
 
 {List of commit summaries}
+
 - {commit 1}
 - {commit 2}
 

@@ -8,7 +8,7 @@ description: Cancel active PRP Ralph loop
 
 ## Steps
 
-1. **Check if loop is active**
+1. **Check if loop is active**:
 
    ```bash
    test -f .claude/prp-ralph.state.md && echo "ACTIVE" || echo "NOT_FOUND"

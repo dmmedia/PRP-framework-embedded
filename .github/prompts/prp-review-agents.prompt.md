@@ -13,17 +13,20 @@ Run a multi-agent review on a pull request, with each agent focusing on a specif
 
 Before running reviews:
 
-1. **Identify the PR**
+1. **Identify the PR**:
+
    - If PR number provided: `gh pr view <number>`
    - If no number: `gh pr view` (current branch's PR)
    - Get PR branch name and changed files
 
-2. **Check PR State**
+2. **Check PR State**:
+
    - Is rebase needed? Check if behind base branch
    - Are there conflicts? Resolve intelligently if needed
    - Never push to main without explicit user approval
 
-3. **Get Changed Files**
+3. **Get Changed Files**:
+
    ```bash
    gh pr diff <number> --name-only
    ```
@@ -44,24 +47,29 @@ Before running reviews:
 ## Aspect Selection Logic
 
 **Always run**:
+
 - `code-reviewer` - Core quality check
 
 **Almost always run** (skip only for trivial PRs):
+
 - `docs-impact-agent` - Identifies stale or missing docs
 
 **Skip docs-impact-agent only when**:
+
 - Typo-only fixes (comments, strings)
 - Test-only changes (no production code)
 - Documentation-only changes
 - Config tweaks (CI, linting)
 
 **Run based on changes**:
+
 - Test files changed → `pr-test-analyzer`
 - Comments/docstrings added → `comment-analyzer`
 - Try-catch or error handling → `silent-failure-hunter`
 - New types or type modifications → `type-design-analyzer`
 
 **Run last**:
+
 - `code-simplifier` - After other reviews pass
 
 ## Execution
@@ -84,24 +92,31 @@ If user specifies "parallel", launch all applicable agents simultaneously using 
 When launching each agent via Task tool:
 
 **code-reviewer**:
+
 > Review PR #<number> for project guideline compliance, bugs, and quality issues. Focus on the diff. Report only high-confidence issues (80+).
 
 **docs-impact-agent**:
+
 > Review PR #<number> and identify any documentation affected by these changes. Check CLAUDE.md, README.md, and docs/ for stale, incorrect, or missing content. Report findings with specific file locations and suggested fixes. Do not modify files or commit.
 
 **pr-test-analyzer**:
+
 > Analyze test coverage for PR #<number>. Focus on behavioral coverage, identify critical gaps, rate recommendations by criticality.
 
 **comment-analyzer**:
+
 > Analyze code comments in PR #<number> for accuracy, completeness, and long-term value. Verify comments match actual code behavior.
 
 **silent-failure-hunter**:
+
 > Hunt for silent failures in PR #<number>. Check all error handling for proper logging, user feedback, and specific catch blocks.
 
 **type-design-analyzer**:
+
 > Analyze type design in PR #<number>. Rate encapsulation, invariant expression, usefulness, and enforcement. Focus on new or modified types.
 
 **code-simplifier**:
+
 > Identify simplification opportunities in PR #<number> for clarity while preserving functionality. No nested ternaries, prefer explicit over clever. Report findings with before/after suggestions. Do not modify files or commit.
 
 ## Result Aggregation
@@ -155,18 +170,21 @@ gh pr comment <PR_NUMBER> --body "<summary>"
 ## Workflow Integration
 
 **Before creating PR**:
+
 1. Run `/prp-review-agents` on current branch
 2. Fix critical and important issues
 3. Re-run to verify
 4. Create PR
 
 **During PR review**:
+
 1. Run `/prp-review-agents <pr-number>`
 2. Review posts summary to GitHub
 3. Address feedback
 4. Re-run targeted aspects
 
 **After making changes**:
+
 1. Run specific aspects: `/prp-review-agents <pr-number> tests code`
 2. Verify issues resolved
 3. Push updates

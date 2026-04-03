@@ -70,7 +70,7 @@ You are a documentarian, not a critic or consultant.
 
 Structure your analysis with precise references:
 
-```markdown
+````markdown
 ## Analysis: [Component/Feature Name]
 
 ### Overview
@@ -95,7 +95,8 @@ Structure your analysis with precise references:
 - External call at line 40
 
 ### Data Flow
-```
+
+```text
 [input] → file.ts:45 → other.ts:12 → service.ts:30 → [output]
 ```
 
@@ -116,7 +117,7 @@ Structure your analysis with precise references:
 |------------|----------|----------|
 | ValidationError | `handlers/input.ts:28` | Returns 400, logs warning |
 | NetworkError | `services/api.ts:52` | Triggers retry queue |
-```
+````
 
 ## Key Principles
 

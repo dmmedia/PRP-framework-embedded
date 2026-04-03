@@ -45,13 +45,17 @@ Determine the base branch for branching and syncing:
 
 1. **Check arguments**: If `$ARGUMENTS` contains `--base <branch>`, extract that value and remove the flag from the plan path argument
 2. **Auto-detect from remote**:
+
    ```bash
    git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'
    ```
+
 3. **Fallback if detection fails**:
+
    ```bash
    git remote show origin 2>/dev/null | grep 'HEAD branch' | awk '{print $NF}'
    ```
+
 4. **Last resort**: `main`
 
 **Store as `{base-branch}`** — use this value for ALL branch comparisons, rebasing, and syncing. Never hardcode `main` or `master`.
@@ -59,6 +63,7 @@ Determine the base branch for branching and syncing:
 ### 0.3 Identify Validation Scripts
 
 Check `package.json` (or equivalent) for available scripts:
+
 - Type checking: `type-check`, `typecheck`, `tsc`
 - Linting: `lint`, `lint:fix`
 - Testing: `test`, `test:unit`, `test:integration`
@@ -91,7 +96,7 @@ Locate and understand:
 
 **If plan not found:**
 
-```
+```text
 Error: Plan not found at $ARGUMENTS
 
 Create a plan first: /prp-plan "feature description"
@@ -117,12 +122,12 @@ git worktree list
 
 ### 2.2 Branch Decision
 
-| Current State              | Action                                               |
+| Current State | Action |
 | -------------------------- | ---------------------------------------------------- |
-| In worktree                | Use it (log: "Using worktree")                       |
-| On {base-branch}, clean    | Create branch: `git checkout -b feature/{plan-slug}` |
-| On {base-branch}, dirty    | STOP: "Stash or commit changes first"                |
-| On feature branch          | Use it (log: "Using existing branch")                |
+| In worktree | Use it (log: "Using worktree") |
+| On {base-branch}, clean | Create branch: `git checkout -b feature/{plan-slug}` |
+| On {base-branch}, dirty | STOP: "Stash or commit changes first" |
+| On feature branch | Use it (log: "Using existing branch") |
 
 ### 2.3 Sync with Remote
 
@@ -160,6 +165,7 @@ git pull --rebase origin {base-branch} 2>/dev/null || true
 **After EVERY file change, run the type-check command from the plan's Validation Commands section.**
 
 Common patterns:
+
 - `{runner} run type-check` (JS/TS projects)
 - `mypy .` (Python)
 - `cargo check` (Rust)
@@ -176,7 +182,7 @@ Common patterns:
 
 Log each task as you complete it:
 
-```
+```text
 Task 1: CREATE src/features/x/models.ts ✅
 Task 2: CREATE src/features/x/service.ts ✅
 Task 3: UPDATE src/routes/index.ts ✅
@@ -204,6 +210,7 @@ If you must deviate from the plan:
 **Run the type-check and lint commands from the plan's Validation Commands section.**
 
 Common patterns:
+
 - JS/TS: `{runner} run type-check && {runner} run lint`
 - Python: `ruff check . && mypy .`
 - Rust: `cargo check && cargo clippy`
@@ -230,6 +237,7 @@ If lint errors:
 **Write tests**, then run the test command from the plan.
 
 Common patterns:
+
 - JS/TS: `{runner} test` or `{runner} run test`
 - Python: `pytest` or `uv run pytest`
 - Rust: `cargo test`
@@ -248,6 +256,7 @@ Common patterns:
 **Run the build command from the plan's Validation Commands section.**
 
 Common patterns:
+
 - JS/TS: `{runner} run build`
 - Python: N/A (interpreted) or `uv build`
 - Rust: `cargo build --release`
@@ -260,6 +269,7 @@ Common patterns:
 **If the plan involves API/server changes, use the integration test commands from the plan.**
 
 Example pattern:
+
 ```bash
 # Start server in background (command varies by project)
 {runner} run dev &
@@ -305,6 +315,7 @@ mkdir -p .claude/PRPs/reports
 ### 5.3 Update Source PRD (if applicable)
 
 **Check if plan was generated from a PRD:**
+
 - Look in the plan file for `Source PRD:` reference
 - Or check if plan filename matches a phase pattern
 
@@ -313,7 +324,9 @@ mkdir -p .claude/PRPs/reports
 1. Read the PRD file
 2. Find the phase row in the Implementation Phases table
 3. Update the phase:
+
    - Change Status from `in-progress` to `complete`
+
 4. Save the PRD
 
 ### 5.4 Archive Plan

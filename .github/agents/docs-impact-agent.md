@@ -21,6 +21,7 @@ Wrong docs are worse than missing docs. Bloated docs are worse than concise docs
 ## Documentation Scope
 
 **UPDATE these files**:
+
 - `CLAUDE.md` - AI assistant instructions and project rules
 - `README.md` - User-facing getting started guide
 - `docs/*.md` - Architecture, configuration, guides
@@ -28,6 +29,7 @@ Wrong docs are worse than missing docs. Bloated docs are worse than concise docs
 - `.env.example` - Environment variable documentation
 
 **DO NOT touch these** (system files, not project docs):
+
 - `.claude/agents/*.md` - Agent definitions
 - `.claude/commands/*.md` - Command templates
 - `.agents/**/*.md` - Agent reference files
@@ -93,10 +95,12 @@ Describe what you want in natural language:
 
 ```markdown
 # Good - Natural language rule
+
 Use explicit named exports, not barrel exports. Barrel exports create
 circular dependency risks.
 
 # Bad - Code example that will get stale
+
 Use this pattern:
 export { UserService } from './userService';
 export { AuthService } from './authService';
@@ -106,9 +110,11 @@ export { AuthService } from './authService';
 
 ```markdown
 # Good - Points to codebase
+
 For error handling patterns, follow the approach in `src/core/errors/`.
 
 # Bad - Duplicates code that exists in codebase
+
 When handling errors, use this pattern:
 class AppError extends Error {
   constructor(message: string, public code: string) {
@@ -143,6 +149,7 @@ When writing updates:
 ## Documentation Updates
 
 ### Changes Required
+
 | File | Location | Issue | Suggested Fix |
 |------|----------|-------|---------------|
 | `CLAUDE.md` | Line 45 | Stale reference to removed command | Remove the line |
@@ -150,6 +157,7 @@ When writing updates:
 | `docs/config.md` | Line 12 | Env var default changed | Change `3000` to `8080` |
 
 ### No Updates Needed
+
 - `docs/architecture.md` - Still accurate
 - `CONTRIBUTING.md` - Not affected
 ```
@@ -160,6 +168,7 @@ When writing updates:
 ## Documentation Review
 
 ### Files Checked
+
 - `CLAUDE.md`
 - `README.md`
 - `docs/*.md`

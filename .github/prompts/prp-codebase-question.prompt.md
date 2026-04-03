@@ -53,6 +53,7 @@ If the user mentions specific files, read them FULLY first (no limit/offset) bef
 - Note any `--follow-up` flag for appending to existing research
 
 **PHASE_1_CHECKPOINT:**
+
 - [ ] Mentioned files read in full
 - [ ] Query type classified
 - [ ] Research scope identified
@@ -66,7 +67,7 @@ If the user mentions specific files, read them FULLY first (no limit/offset) bef
 
 Break the query into 2-5 composable research areas:
 
-```
+```text
 RESEARCH QUESTION: {user's question}
 
 AREAS:
@@ -84,11 +85,13 @@ AREAS:
 | `prp-core:web-researcher` | Only when `--web` flag is set or user explicitly asks for external docs |
 
 **Strategy:**
+
 1. Start with `prp-core:codebase-explorer` to find what exists
 2. Then use `prp-core:codebase-analyst` on the most relevant findings to trace how they work
 3. Run agents in parallel when they're searching for different areas
 
 **PHASE_2_CHECKPOINT:**
+
 - [ ] Query decomposed into 2-5 research areas
 - [ ] Agent assigned to each area
 - [ ] Parallel vs sequential execution planned
@@ -105,7 +108,7 @@ For each research area, use the appropriate agent:
 
 **`prp-core:codebase-explorer`:**
 
-```
+```text
 Find all code relevant to: {research area}
 
 LOCATE:
@@ -119,7 +122,7 @@ Remember: Document what exists, no suggestions or improvements.
 
 **`prp-core:codebase-analyst`:**
 
-```
+```text
 Analyze the implementation of: {research area}
 
 TRACE:
@@ -134,7 +137,7 @@ Document what exists with precise file:line references. No suggestions.
 
 **`prp-core:web-researcher`:**
 
-```
+```text
 Research external documentation for: {topic}
 
 FIND:
@@ -149,6 +152,7 @@ Return findings with direct links and citations.
 **IMPORTANT**: Wait for ALL agents to complete before proceeding.
 
 **PHASE_3_CHECKPOINT:**
+
 - [ ] All agents launched (parallel where possible)
 - [ ] All agents completed
 - [ ] Results collected from each agent
@@ -181,6 +185,7 @@ Note any areas that couldn't be fully documented:
 - {Question that remains open}
 
 **PHASE_4_CHECKPOINT:**
+
 - [ ] All agent results synthesized
 - [ ] Findings connected across components
 - [ ] Original question answered with evidence
@@ -214,6 +219,7 @@ mkdir -p .claude/PRPs/research
 **Path**: `.claude/PRPs/research/{YYYY-MM-DD}-{kebab-case-topic}.md`
 
 Examples:
+
 - `2025-01-08-authentication-flow.md`
 - `2025-01-15-database-migration-patterns.md`
 
@@ -244,6 +250,7 @@ If `--follow-up` flag and existing research file:
 5. Save updated document
 
 **PHASE_5_CHECKPOINT:**
+
 - [ ] Metadata gathered
 - [ ] Research file created (or existing file updated for follow-up)
 - [ ] All sections filled with evidence-based content
@@ -280,17 +287,11 @@ If `--follow-up` flag and existing research file:
 ## Critical Reminders
 
 1. **Document, don't evaluate.** Describe what IS, never what SHOULD BE.
-
 2. **Evidence required.** Every claim needs a `file:line` reference.
-
 3. **Agents are parallel.** Launch multiple agents simultaneously when researching different areas.
-
 4. **Wait for completion.** Never synthesize until ALL agents have returned.
-
 5. **Read first.** If the user mentions files, read them fully before spawning agents.
-
 6. **No placeholders.** Every field in the research document must have real values.
-
 7. **Codebase is truth.** Live code always overrides documentation or assumptions.
 
 ---

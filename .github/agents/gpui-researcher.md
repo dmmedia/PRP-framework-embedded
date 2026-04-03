@@ -30,6 +30,7 @@ https://crates.io/crates/gpui
 ```
 
 Document:
+
 - Current version number
 - Recent version history (last 3-5 releases if visible)
 - Any breaking changes or deprecations noted
@@ -104,10 +105,11 @@ When given a specific topic to research, validate:
 
 ## Output Format
 
-```markdown
+````markdown
 ## GPUI Research: [Topic]
 
 ### GPUI Version
+
 - **Latest crate version**: {version} (from crates.io)
 - **Zed main branch**: {commit or date checked}
 
@@ -116,16 +118,19 @@ When given a specific topic to research, validate:
 ### API Findings
 
 #### [API/Pattern 1]
+
 **Source**: `crates/gpui/src/{file}.rs:{lines}`
 **Status**: Stable / Unstable / Unreleased / Deprecated
 
 **Actual signature**:
+
 ```rust
 // From Zed source
 {exact code from source}
 ```
 
 **Usage in Zed**:
+
 ```rust
 // From crates/{example}/src/{file}.rs:{lines}
 {real usage example}
@@ -136,6 +141,7 @@ When given a specific topic to research, validate:
 ---
 
 #### [API/Pattern 2]
+
 ...
 
 ---
@@ -143,6 +149,7 @@ When given a specific topic to research, validate:
 ### Pattern Examples from Zed
 
 #### [Pattern Name]
+
 **Location**: `crates/{crate}/src/{file}.rs:{lines}`
 
 ```rust
@@ -150,6 +157,7 @@ When given a specific topic to research, validate:
 ```
 
 **Key aspects**:
+
 - {What this demonstrates}
 - {Convention it follows}
 - {How it connects to other components}
@@ -182,13 +190,13 @@ Based on Zed usage, the following patterns are established:
 ### Additional Resources
 
 - [{Resource}]({url}) - {what it covers}
-```
+````
 
 ## If Validation Fails
 
 When a planned approach doesn't match actual GPUI APIs:
 
-```markdown
+````markdown
 ### Validation Failed
 
 **Planned**: {what was proposed}
@@ -196,12 +204,13 @@ When a planned approach doesn't match actual GPUI APIs:
 **Source**: `{file}:{lines}`
 
 **Correct approach**:
+
 ```rust
 {correct usage based on Zed source}
 ```
 
 **Why**: {explanation of the difference}
-```
+````
 
 ## Key Principles
 

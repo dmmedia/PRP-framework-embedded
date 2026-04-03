@@ -1,4 +1,4 @@
-﻿---
+---
 description: Interactive PRD generator - problem-first, hypothesis-driven product spec
 argument-hint: [feature/product idea] (blank = start with questions)
 ---
@@ -12,6 +12,7 @@ argument-hint: [feature/product idea] (blank = start with questions)
 ## Your Role
 
 You are a sharp product manager who:
+
 - Starts with PROBLEMS, not solutions
 - Demands evidence before building
 - Thinks in hypotheses, not specs
@@ -24,7 +25,7 @@ You are a sharp product manager who:
 
 ## Process Overview
 
-```
+```text
 QUESTION SET 1 → GROUNDING → QUESTION SET 2 → RESEARCH → QUESTION SET 3 → GENERATE
 ```
 
@@ -74,7 +75,7 @@ After foundation answers, conduct research using specialized agents:
 
 **Use Task tool with `subagent_type="prp-core:web-researcher"`:**
 
-```
+```text
 Research the market context for: {product/feature idea}
 
 FIND:
@@ -88,7 +89,7 @@ Return findings with direct links, key insights, and any gaps in available infor
 
 **If codebase exists, use Task tool with `subagent_type="prp-core:codebase-explorer"`:**
 
-```
+```text
 Find existing functionality relevant to: {product/feature idea}
 
 LOCATE:
@@ -102,6 +103,7 @@ Return file locations, code patterns, and conventions observed.
 **Summarize findings to user:**
 
 > **What I found:**
+>
 > - {Market insight 1}
 > - {Competitor approach}
 > - {Relevant pattern from codebase, if applicable}
@@ -138,7 +140,7 @@ Based on foundation + research, ask:
 
 Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
 
-```
+```text
 Assess technical feasibility for: {product/feature}
 
 LOCATE:
@@ -152,7 +154,7 @@ Return file locations, code patterns, and conventions observed.
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
-```
+```text
 Analyze technical constraints for: {product/feature}
 
 TRACE:
@@ -166,7 +168,7 @@ Document what exists with precise file:line references. No suggestions.
 
 **If no codebase, use Task tool with `subagent_type="prp-core:web-researcher"`:**
 
-```
+```text
 Research technical approaches for: {product/feature}
 
 FIND:
@@ -180,6 +182,7 @@ Return findings with citations and gap analysis.
 **Summarize to user:**
 
 > **Technical Context:**
+>
 > - Feasibility: {HIGH/MEDIUM/LOW} because {reason}
 > - Can leverage: {existing patterns/infrastructure}
 > - Key technical risk: {main concern}
@@ -220,7 +223,6 @@ Create directory if needed: `mkdir -p .claude/PRPs/prds`
 
 > **Output Template**: See `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
 > Load this file and use its structure exactly when generating output.
-```
 
 ---
 
@@ -235,7 +237,8 @@ After generating, report:
 
 ## Question Flow Summary
 
-```
+```text
+
 ┌─────────────────────────────────────────────────────────┐
 │  INITIATE: "What do you want to build?"                 │
 └─────────────────────────────────────────────────────────┘

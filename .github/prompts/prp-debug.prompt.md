@@ -40,6 +40,7 @@ Find the **actual root cause** - the specific code, config, or logic that, if ch
 **Restate the symptom in one sentence. What is actually failing?**
 
 **PHASE_1_CHECKPOINT:**
+
 - [ ] Input type classified
 - [ ] Mode determined (quick/deep)
 - [ ] Symptom restated clearly
@@ -62,6 +63,7 @@ Based on the symptom, generate 2-4 hypotheses. For each:
 Start with the most probable hypothesis.
 
 **PHASE_2_CHECKPOINT:**
+
 - [ ] 2-4 hypotheses generated
 - [ ] Ranked by likelihood
 - [ ] Leading hypothesis selected
@@ -72,7 +74,7 @@ Start with the most probable hypothesis.
 
 Execute the 5 Whys protocol for your leading hypothesis:
 
-```
+```text
 WHY 1: Why does [symptom] occur?
 → Because [intermediate cause A]
 → Evidence: [code reference, log, or test that proves this]
@@ -103,6 +105,7 @@ WHY 5: Why does [intermediate cause D] happen?
 | Test you executed that proves behavior | Explaining how technology works in general |
 
 **Rules:**
+
 - Stop when you hit code you can change
 - Every "because" MUST have evidence
 - If evidence refutes a hypothesis, pivot to the next one
@@ -114,7 +117,7 @@ WHY 5: Why does [intermediate cause D] happen?
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
-```
+```text
 Analyze the implementation around: [suspected area / error location]
 
 TRACE:
@@ -127,23 +130,27 @@ Document what exists with precise file:line references. No suggestions.
 ```
 
 **For code issues:**
+
 - Grep for error messages, function names
 - Read full context around suspicious code
 - Check git blame for when/why code was written
 - **Run the suspicious code** with edge case inputs
 
 **For runtime issues:**
+
 - Check environment/config differences
 - Look for initialization order dependencies
 - Search for race conditions
 
 **For "it worked before" issues:**
+
 ```bash
 git log --oneline -20
 git diff HEAD~10 [suspicious files]
 ```
 
 **PHASE_3_CHECKPOINT:**
+
 - [ ] 5 Whys executed (or 2-3 for quick mode)
 - [ ] Each step has concrete evidence
 - [ ] Root cause identified with file:line reference
@@ -170,6 +177,7 @@ git blame [affected file] | grep -A2 -B2 [line number]
 ```
 
 **Document:**
+
 - When was the problematic code introduced?
 - What commit/PR added it?
 - Has it changed recently or been stable?
@@ -184,6 +192,7 @@ For deep mode, document why other hypotheses were rejected:
 | {H3} | {evidence that disproved it} |
 
 **PHASE_4_CHECKPOINT:**
+
 - [ ] All three tests pass
 - [ ] Git history documented (deep mode)
 - [ ] Alternative hypotheses ruled out (deep mode)
@@ -206,6 +215,7 @@ mkdir -p .claude/PRPs/debug
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_5_CHECKPOINT:**
+
 - [ ] Report created
 - [ ] All sections filled
 - [ ] Fix specification is actionable
@@ -243,15 +253,10 @@ mkdir -p .claude/PRPs/debug
 ## Critical Reminders
 
 1. **Symptoms lie.** The error message tells you what failed, not why.
-
 2. **First explanation is often wrong.** Resist the urge to stop early.
-
 3. **No evidence = no claim.** "Likely", "probably", "may" are not allowed.
-
 4. **Test, don't just read.** Execution proves behavior; reading proves intent.
-
 5. **Git history is mandatory.** In deep mode, you must include when/who/why.
-
 6. **The fix should be obvious.** If your root cause is correct, the fix writes itself.
 
 ---

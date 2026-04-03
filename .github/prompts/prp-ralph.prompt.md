@@ -24,6 +24,7 @@ Start an autonomous Ralph loop that executes a PRP plan iteratively until all va
 ### 1.1 Parse Arguments
 
 Extract from input:
+
 - **File path**: Must end in `.plan.md` or `.prd.md`
 - **Max iterations**: `--max-iterations N` (default: 20)
 
@@ -37,7 +38,8 @@ Extract from input:
 | No input | STOP with message below |
 
 **If invalid input:**
-```
+
+```text
 Ralph requires a PRP plan or PRD file.
 
 Create one first:
@@ -59,6 +61,7 @@ test -f "{file_path}" && echo "EXISTS" || echo "NOT_FOUND"
 ### 1.4 If PRD File - Select Next Phase
 
 If input is a `.prd.md` file:
+
 1. Read the PRD
 2. Parse Implementation Phases table
 3. Find first phase with `Status: pending` where dependencies are `complete`
@@ -66,6 +69,7 @@ If input is a `.prd.md` file:
 5. Note: The loop will create and execute a plan for this phase
 
 **PHASE_1_CHECKPOINT:**
+
 - [ ] Input parsed (file path + max iterations)
 - [ ] File exists and is valid type
 - [ ] If PRD: next phase identified
@@ -125,6 +129,7 @@ Execute PRP plan and iterate until all validations pass.
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_2_CHECKPOINT:**
+
 - [ ] State file created
 - [ ] Archive directory exists
 - [ ] Startup message displayed
@@ -136,6 +141,7 @@ Execute PRP plan and iterate until all validations pass.
 ### 3.1 Read Context First
 
 Before implementing anything:
+
 1. Read the state file - check "Codebase Patterns" section
 2. Read the plan file - understand all tasks
 3. Check git status - what's already changed?
@@ -144,6 +150,7 @@ Before implementing anything:
 ### 3.2 Identify Work
 
 From the plan, identify:
+
 - Tasks not yet completed
 - Validation commands to run
 - Acceptance criteria to meet
@@ -151,6 +158,7 @@ From the plan, identify:
 ### 3.3 Implement
 
 For each incomplete task:
+
 1. Read the task requirements
 2. Read any MIRROR/pattern references
 3. Implement the change
@@ -187,6 +195,7 @@ bun run build || npm run build
 ### 3.7 Update Plan File
 
 After each significant change:
+
 - Mark completed tasks with checkboxes
 - Add notes about what was done
 - Document any deviations
@@ -213,6 +222,7 @@ If you discover a **reusable pattern**, add it to the "Codebase Patterns" sectio
 Only add patterns that are **general and reusable**, not iteration-specific.
 
 **PHASE_3_CHECKPOINT:**
+
 - [ ] Context read (patterns, previous progress)
 - [ ] All tasks attempted
 - [ ] All validations run
@@ -227,6 +237,7 @@ Only add patterns that are **general and reusable**, not iteration-specific.
 ### 4.1 Verify All Validations Pass
 
 ALL of these must be true:
+
 - [ ] All tasks in plan completed
 - [ ] Type check passes
 - [ ] Lint passes (0 errors)
@@ -236,7 +247,7 @@ ALL of these must be true:
 
 ### 4.2 If ALL Pass - Complete the Loop
 
-1. **Generate Implementation Report**
+1. **Generate Implementation Report**:
 
    Create `.claude/PRPs/reports/{plan-name}-report.md`:
 
@@ -271,7 +282,7 @@ ALL of these must be true:
    {Any changes made}
    ```
 
-2. **Archive the Ralph Run**
+2. **Archive the Ralph Run**:
 
    ```bash
    # Create archive directory
@@ -291,7 +302,7 @@ ALL of these must be true:
    cp .claude/PRPs/reports/{plan-name}-report.md "$ARCHIVE_DIR/learnings.md"
    ```
 
-3. **Update CLAUDE.md with Permanent Patterns (if applicable)**
+3. **Update CLAUDE.md with Permanent Patterns (if applicable)**:
 
    If any patterns from "Codebase Patterns" section are significant enough to be permanent project knowledge:
 
@@ -300,33 +311,35 @@ ALL of these must be true:
    - Avoid duplicating existing patterns
 
    Example addition:
+
    ```markdown
    ## Patterns Discovered via Ralph
    - {Pattern that should be permanent}
    ```
 
-4. **Archive Plan to Completed**
+4. **Archive Plan to Completed**:
 
    ```bash
    mkdir -p .claude/PRPs/plans/completed
    mv {plan_path} .claude/PRPs/plans/completed/
    ```
 
-5. **Clean Up State**
+5. **Clean Up State**:
 
    ```bash
    rm .claude/prp-ralph.state.md
    ```
 
-6. **Output Completion Promise**
+6. **Output Completion Promise**:
 
-   ```
+   ```text
    <promise>COMPLETE</promise>
    ```
 
 ### 4.3 If NOT All Pass - End Iteration
 
 If validations are not all passing:
+
 - Document current state in progress log
 - End your response normally
 - The stop hook will feed the prompt back for next iteration
@@ -340,6 +353,7 @@ If validations are not all passing:
 ### Max Iterations Reached
 
 If iteration count reaches max_iterations:
+
 - Document what's incomplete
 - Document what's blocking
 - Archive current state (even if incomplete)
@@ -349,6 +363,7 @@ If iteration count reaches max_iterations:
 ### Stuck on Same Issue
 
 If you notice you're stuck (same error multiple iterations):
+
 1. Document the blocker clearly in progress log
 2. Check "Codebase Patterns" - maybe there's a hint
 3. Try alternative approaches
@@ -357,6 +372,7 @@ If you notice you're stuck (same error multiple iterations):
 ### Plan Has Errors
 
 If the plan itself has issues:
+
 - Document the problems in progress log
 - Suggest corrections
 - Continue with what's executable
@@ -368,10 +384,12 @@ If the plan itself has issues:
 The Ralph loop captures learnings that can improve the system:
 
 ### During Loop
+
 - **Codebase Patterns**: Added to state file, read by future iterations
 - **Progress Log**: Detailed notes on what worked/failed
 
 ### After Completion
+
 - **Archive**: Full state preserved in `.claude/PRPs/ralph-archives/`
 - **Report**: Consolidated learnings in report file
 - **CLAUDE.md Updates**: Permanent patterns added to project config
@@ -379,6 +397,7 @@ The Ralph loop captures learnings that can improve the system:
 ### Using Archives for Improvement
 
 Archives can be used to:
+
 1. Train better PRP plan generation
 2. Identify common failure patterns
 3. Improve validation command suggestions

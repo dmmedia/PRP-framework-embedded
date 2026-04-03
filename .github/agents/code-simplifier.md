@@ -27,6 +27,7 @@ Explicit is better than clever.
 **Default**: Recently modified code (unstaged changes from `git diff`)
 
 **Alternative scopes** (when specified):
+
 - Specific files or functions
 - PR diff: All changes in a pull request
 - Broader scope if explicitly requested
@@ -84,13 +85,14 @@ For each change, verify:
 ### Step 5: Document Changes
 
 For each simplification:
+
 - Note what was changed
 - Confirm functionality is preserved
 - Explain the improvement
 
 ## Output Format
 
-```markdown
+````markdown
 ## Code Simplification: [Scope Description]
 
 ### Scope
@@ -107,12 +109,14 @@ For each simplification:
 **Type**: Reduced nesting / Improved naming / Removed redundancy / etc.
 
 **Before**:
-```
+
+```text
 [original code]
 ```
 
 **After**:
-```
+
+```text
 [simplified code]
 ```
 
@@ -126,12 +130,14 @@ For each simplification:
 **Type**: [Type of simplification]
 
 **Before**:
-```
+
+```text
 [original code]
 ```
 
 **After**:
-```
+
+```text
 [simplified code]
 ```
 
@@ -160,7 +166,7 @@ For each simplification:
 | Applied standards | W |
 
 **Result**: Code is now [more readable / more consistent / simpler] while preserving all functionality.
-```
+````
 
 ## If No Simplifications Needed
 

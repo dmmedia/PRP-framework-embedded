@@ -11,6 +11,7 @@ Transform "$ARGUMENTS" into a battle-tested implementation plan through systemat
 **Execution Order**: CODEBASE FIRST, RESEARCH SECOND. Solutions must fit existing patterns before introducing new ones.
 
 **Agent Strategy**: Use specialized agents for intelligence gathering:
+
 - `prp-core:codebase-explorer` — finds WHERE code lives and extracts implementation patterns
 - `prp-core:codebase-analyst` — analyzes HOW integration points work and traces data flow
 - `prp-core:web-researcher` — strategic web research with citations and gap analysis
@@ -22,11 +23,13 @@ Launch codebase agents in parallel first, then research agent second.
 AGENTS.md rules: @AGENTS.md
 
 **Directory Discovery** (run these to understand project structure):
+
 - List root contents: `ls -la`
 - Find main source directories: `ls -la */ 2>/dev/null | head -50`
 - Identify project type from config files (package.json, pyproject.toml, Cargo.toml, go.mod, etc.)
 
 **IMPORTANT**: Do NOT assume `src/` exists. Common alternatives include:
+
 - `app/` (Next.js, Rails, Laravel)
 - `lib/` (Ruby gems, Elixir)
 - `packages/` (monorepos)
@@ -50,16 +53,18 @@ Discover the actual structure before proceeding.
 | Free-form text | Description | Use directly as feature input |
 | Empty/blank | Conversation | Use conversation context as input |
 
-### If PRD File Detected:
+### If PRD File Detected
 
 1. **Read the PRD file**
 2. **Parse the Implementation Phases table** - find rows with `Status: pending`
 3. **Check dependencies** - only select phases whose dependencies are `complete`
 4. **Select the next actionable phase:**
+
    - First pending phase with all dependencies complete
    - If multiple candidates with same dependencies, note parallelism opportunity
 
 4. **Extract phase context:**
+
    ```
    PHASE: {phase number and name}
    GOAL: {from phase details}
@@ -69,6 +74,7 @@ Discover the actual structure before proceeding.
    ```
 
 5. **Report selection to user:**
+
    ```
    PRD: {prd file path}
    Selected Phase: #{number} - {name}
@@ -79,11 +85,12 @@ Discover the actual structure before proceeding.
    Proceeding with Phase #{number}...
    ```
 
-### If Free-form or Conversation Context:
+### If Free-form or Conversation Context
 
 - Proceed directly to Phase 1 with the input as feature description
 
 **PHASE_0_CHECKPOINT:**
+
 - [ ] Input type determined
 - [ ] If PRD: next phase selected and dependencies verified
 - [ ] Feature description ready for Phase 1
@@ -102,7 +109,7 @@ Discover the actual structure before proceeding.
 
 **FORMULATE user story:**
 
-```
+```text
 As a <user type>
 I want to <action/goal>
 So that <benefit/value>
@@ -129,7 +136,7 @@ Finds WHERE code lives and extracts implementation patterns.
 
 Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
 
-```
+```text
 Find all code relevant to implementing: [feature description].
 
 LOCATE:
@@ -152,7 +159,7 @@ Analyzes HOW integration points work and traces data flow.
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
-```
+```text
 Analyze the implementation details relevant to: [feature description].
 
 TRACE:
@@ -169,14 +176,14 @@ Document what exists with precise file:line references. No suggestions or improv
 
 Combine findings from both agents into a unified discovery table:
 
-| Category | File:Lines                                  | Pattern Description  | Code Snippet                              |
+| Category | File:Lines | Pattern Description | Code Snippet |
 | -------- | ------------------------------------------- | -------------------- | ----------------------------------------- |
-| NAMING   | `src/features/X/service.ts:10-15`           | camelCase functions  | `export function createThing()`           |
-| ERRORS   | `src/features/X/errors.ts:5-20`             | Custom error classes | `class ThingNotFoundError`                |
-| LOGGING  | `src/core/logging/index.ts:1-10`            | getLogger pattern    | `const logger = getLogger("domain")`      |
-| TESTS    | `src/features/X/tests/service.test.ts:1-30` | describe/it blocks   | `describe("service", () => {`             |
-| TYPES    | `src/features/X/models.ts:1-20`             | Drizzle inference    | `type Thing = typeof things.$inferSelect` |
-| FLOW     | `src/features/X/service.ts:40-60`           | Data transformation  | `input → validate → persist → respond`    |
+| NAMING | `src/features/X/service.ts:10-15` | camelCase functions | `export function createThing()` |
+| ERRORS | `src/features/X/errors.ts:5-20` | Custom error classes | `class ThingNotFoundError` |
+| LOGGING | `src/core/logging/index.ts:1-10` | getLogger pattern | `const logger = getLogger("domain")` |
+| TESTS | `src/features/X/tests/service.test.ts:1-30` | describe/it blocks | `describe("service", () => {` |
+| TYPES | `src/features/X/models.ts:1-20` | Drizzle inference | `type Thing = typeof things.$inferSelect` |
+| FLOW | `src/features/X/service.ts:40-60` | Data transformation | `input → validate → persist → respond` |
 
 **PHASE_2_CHECKPOINT:**
 
@@ -194,7 +201,7 @@ Combine findings from both agents into a unified discovery table:
 
 **Use Task tool with `subagent_type="prp-core:web-researcher"`:**
 
-```
+```text
 Research external documentation relevant to implementing: [feature description].
 
 FIND:
@@ -242,10 +249,10 @@ Return findings with:
 
 **DOCUMENT interaction changes:**
 
-| Location        | Before          | After       | User_Action | Impact        |
+| Location | Before | After | User_Action | Impact |
 | --------------- | --------------- | ----------- | ----------- | ------------- |
-| `/route`        | State A         | State B     | Click X     | Can now Y     |
-| `Component.tsx` | Missing feature | Has feature | Input Z     | Gets result W |
+| `/route` | State A | State B | Click X | Can now Y |
+| `Component.tsx` | Missing feature | Has feature | Input Z | Gets result W |
 
 **PHASE_4_CHECKPOINT:**
 
@@ -262,7 +269,7 @@ Return findings with:
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
-```
+```text
 Analyze the architecture around these integration points for: [feature description].
 
 INTEGRATION POINTS (from Phase 2):
@@ -332,6 +339,7 @@ Create directory if needed: `mkdir -p .claude/PRPs/plans`
 **If input was from PRD file**, also update the PRD:
 
 1. **Update phase status** in the Implementation Phases table:
+
    - Change the phase's Status from `pending` to `in-progress`
    - Add the plan file path to the PRP Plan column
 
@@ -358,30 +366,36 @@ To start: `git worktree add -b phase-{X} ../project-phase-{X} && cd ../project-p
 **Complexity**: {LOW/MEDIUM/HIGH} - {brief rationale}
 
 **Scope**:
+
 - {N} files to CREATE
 - {M} files to UPDATE
 - {K} total tasks
 
 **Key Patterns Discovered**:
+
 - {Pattern 1 from codebase-explorer/analyst with file:line}
 - {Pattern 2 from codebase-explorer/analyst with file:line}
 
 **External Research**:
+
 - {Key doc 1 with version}
 - {Key doc 2 with version}
 
 **UX Transformation**:
+
 - BEFORE: {one-line current state}
 - AFTER: {one-line new state}
 
 **Risks**:
+
 - {Primary risk}: {mitigation}
 
 **Confidence Score**: {1-10}/10 for one-pass implementation success
+
 - {Rationale for score}
 
 **Next Step**: To execute, run: `/prp-implement .claude/PRPs/plans/{feature-name}.plan.md`
-````
+```
 
 </output>
 

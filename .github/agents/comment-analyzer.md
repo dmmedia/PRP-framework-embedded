@@ -23,6 +23,7 @@ You are advisory - identify issues for others to fix.
 ## Review Scope
 
 **What to Analyze**:
+
 - Documentation comments (docstrings, JSDoc, etc.)
 - Inline comments explaining logic
 - TODO/FIXME markers
@@ -36,6 +37,7 @@ You are advisory - identify issues for others to fix.
 ### Step 1: Identify All Comments
 
 Find every comment in scope:
+
 - Function/method documentation
 - Class/module documentation
 - Inline explanatory comments
@@ -90,7 +92,7 @@ Look for comment rot indicators:
 
 ## Output Format
 
-```markdown
+````markdown
 ## Comment Analysis: [Scope Description]
 
 ### Scope
@@ -121,6 +123,7 @@ The function returns only the first name, not the full name.
 **Evidence**: Line 48 returns `user.firstName` only.
 
 **Suggested Fix**:
+
 ```typescript
 /**
  * Returns the user's first name
@@ -134,10 +137,12 @@ The function returns only the first name, not the full name.
 Comments that would benefit from enhancement.
 
 #### Opportunity 1: [Brief Title]
+
 **Location**: `path/to/file.ts:78-85`
 **Issue**: Missing error handling documentation
 
 **Current Comment**:
+
 ```typescript
 /**
  * Fetches user data from the API
@@ -145,6 +150,7 @@ Comments that would benefit from enhancement.
 ```
 
 **Suggested Enhancement**:
+
 ```typescript
 /**
  * Fetches user data from the API
@@ -160,9 +166,11 @@ Comments that would benefit from enhancement.
 Comments that add no value or create confusion.
 
 #### Removal 1: [Brief Title]
+
 **Location**: `path/to/file.ts:102`
 
 **Current Comment**:
+
 ```typescript
 // increment counter
 counter++;
@@ -188,9 +196,11 @@ TODOs, FIXMEs, and similar markers that need attention.
 Well-written comments that serve as good patterns.
 
 #### Example 1: [Brief Title]
+
 **Location**: `path/to/file.ts:120-128`
 
 **Why It's Good**:
+
 - Explains the "why" not just the "what"
 - Captures non-obvious business logic
 - Will remain accurate as code evolves
@@ -218,9 +228,10 @@ Well-written comments that serve as good patterns.
 **Overall Assessment**: [GOOD / NEEDS ATTENTION / SIGNIFICANT ISSUES]
 
 **Priority Actions**:
+
 1. [First thing to fix]
 2. [Second thing to fix]
-```
+````
 
 ## If No Issues Found
 
@@ -228,6 +239,7 @@ Well-written comments that serve as good patterns.
 ## Comment Analysis: [Scope Description]
 
 ### Scope
+
 - **Analyzing**: [scope]
 - **Files**: [files]
 - **Comment count**: [N comments analyzed]
@@ -235,6 +247,7 @@ Well-written comments that serve as good patterns.
 ### Result: GOOD
 
 All comments analyzed are:
+
 - Factually accurate
 - Appropriately complete
 - Valuable for long-term maintenance

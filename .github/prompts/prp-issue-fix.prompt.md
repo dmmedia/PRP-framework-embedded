@@ -33,13 +33,17 @@ Determine the base branch for branching, syncing, and PR creation:
 
 1. **Check arguments**: If `$ARGUMENTS` contains `--base <branch>`, extract that value and remove the flag from the remaining arguments
 2. **Auto-detect from remote**:
+
    ```bash
    git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'
    ```
+
 3. **Fallback if detection fails**:
+
    ```bash
    git remote show origin 2>/dev/null | grep 'HEAD branch' | awk '{print $NF}'
    ```
+
 4. **Last resort**: `main`
 
 **Store as `{base-branch}`** — use this value for ALL branch comparisons, rebasing, syncing, and PR creation. Never hardcode `main` or `master`.
@@ -80,7 +84,7 @@ cat {artifact-path}
 
 **If artifact not found:**
 
-```
+```text
 ❌ Artifact not found at .claude/PRPs/issues/issue-{number}.md
 
 Run `/prp-issue-investigate {number}` first to create the implementation plan.
@@ -106,7 +110,7 @@ For each file mentioned in the artifact:
 
 **If significant drift detected:**
 
-```
+```text
 ⚠️ Code has changed since investigation:
 
 File: src/x.ts:45
@@ -162,7 +166,7 @@ git status
 
 ### 3.2 Decision Tree
 
-```
+```text
 ┌─ IN WORKTREE?
 │  └─ YES → Use it (assume it's for this work)
 │           Log: "Using worktree at {path}"
@@ -271,6 +275,7 @@ If you must deviate from the artifact:
 Execute each command from the artifact's Validation section.
 
 Common patterns (adapt to project's toolchain):
+
 ```bash
 # Type check
 {runner} run type-check  # or: mypy ., cargo check, go build ./...
@@ -320,7 +325,7 @@ git status  # Review what's being committed
 
 **Format:**
 
-```
+```text
 Fix: {brief description} (#{issue-number})
 
 {Problem statement from artifact - 1-2 sentences}
@@ -402,7 +407,7 @@ gh pr create --base "{base-branch}" --title "Fix: {title} (#{number})" --body "$
 ```bash
 # Run project's validation commands (adapt to toolchain)
 {type-check-cmd} && {test-cmd} {pattern} && {lint-cmd}
-````
+```
 
 ## Issue
 
@@ -436,7 +441,7 @@ EOF
 ```bash
 PR_URL=$(gh pr view --json url -q '.url')
 PR_NUMBER=$(gh pr view --json number -q '.number')
-````
+```
 
 **PHASE_7_CHECKPOINT:**
 
@@ -452,7 +457,7 @@ PR_NUMBER=$(gh pr view --json number -q '.number')
 
 Use Task tool with subagent_type="code-reviewer":
 
-```
+```text
 Review the changes in this PR for issue #{number}.
 
 Focus on:

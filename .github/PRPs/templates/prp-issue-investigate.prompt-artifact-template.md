@@ -4,13 +4,13 @@
 **Type**: {BUG|ENHANCEMENT|REFACTOR|CHORE|DOCUMENTATION}
 **Investigated**: {ISO timestamp}
 
-### Assessment
+## Assessment
 
-| Metric     | Value                         | Reasoning                                                                |
+| Metric | Value | Reasoning |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------ |
-| Severity   | {CRITICAL\|HIGH\|MEDIUM\|LOW} | {Why this severity? Based on user impact, workarounds, scope of failure} |
-| Complexity | {LOW\|MEDIUM\|HIGH}           | {Why this complexity? Based on files affected, integration points, risk} |
-| Confidence | {HIGH\|MEDIUM\|LOW}           | {Why this confidence? Based on evidence quality, unknowns, assumptions}  |
+| Severity | {CRITICAL\|HIGH\|MEDIUM\|LOW} | {Why this severity? Based on user impact, workarounds, scope of failure} |
+| Complexity | {LOW\|MEDIUM\|HIGH} | {Why this complexity? Based on files affected, integration points, risk} |
+| Confidence | {HIGH\|MEDIUM\|LOW} | {Why this confidence? Based on evidence quality, unknowns, assumptions} |
 
 <!-- For non-BUG types, replace Severity row with Priority:
 | Priority | {HIGH\|MEDIUM\|LOW} | {Why this priority? Based on user value, blocking status, frequency} |
@@ -45,10 +45,10 @@ Evidence: `file.ts:789` - `{problematic code}`
 
 ### Affected Files
 
-| File            | Lines | Action | Description    |
+| File | Lines | Action | Description |
 | --------------- | ----- | ------ | -------------- |
-| `src/x.ts`      | 45-60 | UPDATE | {what changes} |
-| `src/x.test.ts` | NEW   | CREATE | {test to add}  |
+| `src/x.ts` | 45-60 | UPDATE | {what changes} |
+| `src/x.test.ts` | NEW | CREATE | {test to add} |
 
 ### Integration Points
 
@@ -131,10 +131,10 @@ describe("{feature}", () => {
 
 ## Edge Cases & Risks
 
-| Risk/Edge Case | Mitigation      |
+| Risk/Edge Case | Mitigation |
 | -------------- | --------------- |
-| {risk 1}       | {how to handle} |
-| {edge case}    | {how to handle} |
+| {risk 1} | {how to handle} |
+| {edge case} | {how to handle} |
 
 ---
 

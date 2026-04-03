@@ -26,6 +26,7 @@ Silent failures are critical defects. Period.
 **Default**: Error handling code in PR diff or unstaged changes
 
 **What to Hunt**:
+
 - Try-catch blocks (or language equivalents)
 - Error callbacks and event handlers
 - Conditional branches handling error states
@@ -118,10 +119,11 @@ Look for these anti-patterns:
 
 ## Output Format
 
-```markdown
+````markdown
 ## Silent Failure Hunt: [PR/Scope Description]
 
 ### Scope
+
 - **Reviewing**: [PR diff / specific files]
 - **Error handlers found**: [N locations]
 - **Files with error handling**: [list]
@@ -133,11 +135,13 @@ Look for these anti-patterns:
 Silent failures and catch-all blocks that must be fixed.
 
 #### Issue 1: [Brief Title]
+
 **Severity**: CRITICAL
 **Location**: `path/to/file.ts:45-52`
 **Pattern**: Empty catch block / Broad exception catch / Silent fallback
 
 **Current Code**:
+
 ```typescript
 try {
   await saveData(data);
@@ -147,6 +151,7 @@ try {
 ```
 
 **Hidden Errors**: This could silently swallow:
+
 - Network failures
 - Permission errors
 - Disk full errors
@@ -156,6 +161,7 @@ try {
 **User Impact**: User thinks save succeeded. Data is lost. No way to debug.
 
 **Required Fix**:
+
 ```typescript
 try {
   await saveData(data);
@@ -169,11 +175,13 @@ try {
 ---
 
 #### Issue 2: [Brief Title]
+
 **Severity**: CRITICAL
 **Location**: `path/to/file.ts:78-85`
 **Pattern**: [Pattern type]
 
 **Current Code**:
+
 ```typescript
 // problematic code
 ```
@@ -183,6 +191,7 @@ try {
 **User Impact**: [How this affects users]
 
 **Required Fix**:
+
 ```typescript
 // corrected code
 ```
@@ -194,6 +203,7 @@ try {
 Inadequate error messages and unjustified fallbacks.
 
 #### Issue 3: [Brief Title]
+
 **Severity**: HIGH
 **Location**: `path/to/file.ts:102`
 **Pattern**: Poor error message / Unjustified fallback
@@ -211,6 +221,7 @@ Inadequate error messages and unjustified fallbacks.
 Missing context and specificity improvements.
 
 #### Issue 4: [Brief Title]
+
 **Severity**: MEDIUM
 **Location**: `path/to/file.ts:120`
 **Pattern**: Missing context / Could be more specific
@@ -241,7 +252,7 @@ Error handling done well (acknowledge good patterns).
 ### Verdict: [PASS / NEEDS FIXES / CRITICAL ISSUES]
 
 [If CRITICAL ISSUES: This PR has silent failures that will cause debugging nightmares. Do not merge until fixed.]
-```
+````
 
 ## If No Issues Found
 

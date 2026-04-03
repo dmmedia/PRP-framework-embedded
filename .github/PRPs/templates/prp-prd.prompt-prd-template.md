@@ -41,6 +41,7 @@ We'll know we're right when {measurable outcome}.
 ## Users & Context
 
 **Primary User**
+
 - **Who**: {Specific description}
 - **Current behavior**: {What they do today}
 - **Trigger**: {What moment triggers the need}
@@ -81,6 +82,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 **Feasibility**: {HIGH/MEDIUM/LOW}
 
 **Architecture Notes**
+
 - {Key technical decision and why}
 - {Dependency or integration point}
 
@@ -112,11 +114,13 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ### Phase Details
 
 **Phase 1: {Name}**
+
 - **Goal**: {What we're trying to achieve}
 - **Scope**: {Bounded deliverables}
 - **Success signal**: {How we know it's done}
 
 **Phase 2: {Name}**
+
 - **Goal**: {What we're trying to achieve}
 - **Scope**: {Bounded deliverables}
 - **Success signal**: {How we know it's done}

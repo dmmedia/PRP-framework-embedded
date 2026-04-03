@@ -1,4 +1,4 @@
-﻿---
+---
 description: Investigate a GitHub issue or problem - analyze codebase, create plan, post to GitHub
 argument-hint: <issue-number|url|"description">
 ---
@@ -53,13 +53,13 @@ gh issue view {number} --json title,body,labels,comments,state,url,author
 
 ### 1.3 Classify Issue Type
 
-| Type          | Indicators                                              |
+| Type | Indicators |
 | ------------- | ------------------------------------------------------- |
-| BUG           | "broken", "error", "crash", "doesn't work", stack trace |
-| ENHANCEMENT   | "add", "support", "feature", "would be nice"            |
-| REFACTOR      | "clean up", "improve", "simplify", "reorganize"         |
-| CHORE         | "update", "upgrade", "maintenance", "dependency"        |
-| DOCUMENTATION | "docs", "readme", "clarify", "example"                  |
+| BUG | "broken", "error", "crash", "doesn't work", stack trace |
+| ENHANCEMENT | "add", "support", "feature", "would be nice" |
+| REFACTOR | "clean up", "improve", "simplify", "reorganize" |
+| CHORE | "update", "upgrade", "maintenance", "dependency" |
+| DOCUMENTATION | "docs", "readme", "clarify", "example" |
 
 ### 1.4 Assess Severity/Priority, Complexity, and Confidence
 
@@ -67,36 +67,36 @@ Each assessment requires a **one-sentence reasoning** explaining WHY you chose t
 
 **For BUG issues - Severity:**
 
-| Severity | Criteria                                                            |
+| Severity | Criteria |
 | -------- | ------------------------------------------------------------------- |
-| CRITICAL | System down, data loss, security vulnerability, no workaround       |
-| HIGH     | Major feature broken, significant user impact, difficult workaround |
-| MEDIUM   | Feature partially broken, moderate impact, workaround exists        |
-| LOW      | Minor issue, cosmetic, edge case, easy workaround                   |
+| CRITICAL | System down, data loss, security vulnerability, no workaround |
+| HIGH | Major feature broken, significant user impact, difficult workaround |
+| MEDIUM | Feature partially broken, moderate impact, workaround exists |
+| LOW | Minor issue, cosmetic, edge case, easy workaround |
 
 **For ENHANCEMENT/REFACTOR/CHORE/DOCUMENTATION - Priority:**
 
-| Priority | Criteria                                                   |
+| Priority | Criteria |
 | -------- | ---------------------------------------------------------- |
-| HIGH     | Blocking other work, frequently requested, high user value |
-| MEDIUM   | Important but not urgent, moderate user value              |
-| LOW      | Nice to have, low urgency, minimal user impact             |
+| HIGH | Blocking other work, frequently requested, high user value |
+| MEDIUM | Important but not urgent, moderate user value |
+| LOW | Nice to have, low urgency, minimal user impact |
 
 **Complexity** (based on codebase findings):
 
-| Complexity | Criteria                                                                |
+| Complexity | Criteria |
 | ---------- | ----------------------------------------------------------------------- |
-| HIGH       | 5+ files, multiple integration points, architectural changes, high risk |
-| MEDIUM     | 2-4 files, some integration points, moderate risk                       |
-| LOW        | 1-2 files, isolated change, low risk                                    |
+| HIGH | 5+ files, multiple integration points, architectural changes, high risk |
+| MEDIUM | 2-4 files, some integration points, moderate risk |
+| LOW | 1-2 files, isolated change, low risk |
 
 **Confidence** (based on evidence quality):
 
-| Confidence | Criteria                                                     |
+| Confidence | Criteria |
 | ---------- | ------------------------------------------------------------ |
-| HIGH       | Clear root cause, strong evidence, well-understood code path |
-| MEDIUM     | Likely root cause, some assumptions, partially understood    |
-| LOW        | Uncertain root cause, limited evidence, many unknowns        |
+| HIGH | Clear root cause, strong evidence, well-understood code path |
+| MEDIUM | Likely root cause, some assumptions, partially understood |
+| LOW | Uncertain root cause, limited evidence, many unknowns |
 
 **PHASE_1_CHECKPOINT:**
 
@@ -120,7 +120,7 @@ Finds WHERE relevant code lives and extracts patterns to mirror.
 
 Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
 
-```
+```text
 Find all code relevant to this issue:
 
 ISSUE: {title/description}
@@ -142,7 +142,7 @@ Analyzes HOW the affected code works and traces data flow for root cause analysi
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
-```
+```text
 Analyze the implementation details related to this issue:
 
 ISSUE: {title/description}
@@ -159,14 +159,14 @@ Document what exists with precise file:line references. No suggestions.
 
 ### 2.3 Merge and Document Findings
 
-| Area       | File:Lines            | Notes                  |
+| Area | File:Lines | Notes |
 | ---------- | --------------------- | ---------------------- |
-| Core logic | `src/x.ts:10-50`      | Main function affected |
-| Callers    | `src/y.ts:20-30`      | Uses the core function |
-| Types      | `src/types/x.ts:5-15` | Relevant interfaces    |
-| Tests      | `src/x.test.ts:1-100` | Existing test patterns |
-| Similar    | `src/z.ts:40-60`      | Pattern to mirror      |
-| Flow       | `src/x.ts:10→y.ts:20` | Data transformation    |
+| Core logic | `src/x.ts:10-50` | Main function affected |
+| Callers | `src/y.ts:20-30` | Uses the core function |
+| Types | `src/types/x.ts:5-15` | Relevant interfaces |
+| Tests | `src/x.test.ts:1-100` | Existing test patterns |
+| Similar | `src/z.ts:40-60` | Pattern to mirror |
+| Flow | `src/x.ts:10→y.ts:20` | Data transformation |
 
 **PHASE_2_CHECKPOINT:**
 
@@ -184,7 +184,7 @@ Document what exists with precise file:line references. No suggestions.
 
 Apply the 5 Whys:
 
-```
+```text
 WHY 1: Why does [symptom] occur?
 → Because [cause A]
 → Evidence: `file.ts:123` - {code snippet}
@@ -263,6 +263,7 @@ Write this structure to the artifact file.
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_4_CHECKPOINT:**
+
 - [ ] Artifact file created
 - [ ] All sections filled with specific content
 - [ ] Code snippets are actual (not invented)
@@ -275,7 +276,7 @@ Write this structure to the artifact file.
 ```bash
 git add .claude/PRPs/issues/
 git status
-````
+```
 
 **If changes to commit:**
 
@@ -361,6 +362,7 @@ EOF
 ````
 
 **PHASE_6_CHECKPOINT:**
+
 - [ ] Comment posted to GitHub (if GH issue)
 - [ ] Formatting renders correctly
 

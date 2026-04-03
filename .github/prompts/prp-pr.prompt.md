@@ -25,13 +25,17 @@ Determine the base branch for PR target and diff comparison:
 
 1. **Check arguments**: If `$ARGUMENTS` contains a branch name or `--base <branch>`, use that value
 2. **Auto-detect from remote**:
+
    ```bash
    git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@'
    ```
+
 3. **Fallback if detection fails**:
+
    ```bash
    git remote show origin 2>/dev/null | grep 'HEAD branch' | awk '{print $NF}'
    ```
+
 4. **Last resort**: `main`
 
 **Store as `{base-branch}`** — use this value for ALL comparisons, diff commands, and PR creation. Never hardcode `main` or `master`.
@@ -69,12 +73,14 @@ gh pr list --head $(git branch --show-current) --json number,url
 ```
 
 **If PR exists:**
-```
+
+```text
 PR already exists for this branch: {url}
 Use `gh pr view` to see details or `gh pr edit` to modify.
 ```
 
 **PHASE_1_CHECKPOINT:**
+
 - [ ] Not on {base-branch}
 - [ ] Working directory is clean (or user acknowledged)
 - [ ] Has commits ahead of base branch
@@ -95,11 +101,13 @@ ls -la docs/pull_request_template.md 2>/dev/null
 ```
 
 **If template found:**
+
 - Read the template
 - Use it as the PR body structure
 - Fill in sections based on commits and changes
 
 **If no template:**
+
 - Use default format (see Phase 4)
 
 ### 2.2 Analyze Commits
@@ -125,6 +133,7 @@ git diff --name-only origin/{base-branch}..HEAD
 ### 2.4 Determine PR Title
 
 **From commits, derive title:**
+
 - If single commit: Use commit message as title
 - If multiple commits: Summarize the change in imperative mood
 - Format: `{type}: {description}` (e.g., "feat: Add user authentication")
@@ -140,6 +149,7 @@ git diff --name-only origin/{base-branch}..HEAD
 | `chore:` | Maintenance |
 
 **PHASE_2_CHECKPOINT:**
+
 - [ ] PR template located (or confirmed none exists)
 - [ ] Commit messages extracted
 - [ ] Changed files listed
@@ -157,10 +167,12 @@ git push -u origin HEAD
 ```
 
 **If push fails:**
+
 - Check for remote branch conflicts
 - May need `--force-with-lease` if rebased (warn user first)
 
 **PHASE_3_CHECKPOINT:**
+
 - [ ] Branch pushed to origin
 - [ ] Upstream tracking set
 
@@ -171,6 +183,7 @@ git push -u origin HEAD
 ### 4.1 If Template Exists
 
 Read the template and fill in each section based on:
+
 - Commit messages
 - Changed files
 - Any linked issues (look for `#123` or `Fixes #123` in commits)
@@ -183,6 +196,7 @@ Read the template and fill in each section based on:
 ### 4.3 Extract Issue References
 
 From commit messages, find patterns like:
+
 - `Fixes #123`
 - `Closes #123`
 - `Relates to #123`
@@ -193,12 +207,15 @@ Include these in the PR body under "Related Issues".
 ### 4.4 Escape shell-specific special characters in the PR body to prevent CLI issues
 
 For all shells escape:
+
 - double quotes `"` as `\"`
 
 For `bash` escape:
-- backticks `` ` `` as ``\` ``
+
+- backticks `` ` `` as `` \`  ``
 
 **PHASE_4_CHECKPOINT:**
+
 - [ ] PR body generated (from template or default)
 - [ ] Title is clear and follows convention
 - [ ] Related issues linked
@@ -223,6 +240,7 @@ gh pr checks
 ```
 
 **PHASE_5_CHECKPOINT:**
+
 - [ ] PR created successfully
 - [ ] PR URL retrieved
 

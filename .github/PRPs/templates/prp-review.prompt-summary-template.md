@@ -30,6 +30,7 @@
 ### Next Steps
 
 {Based on recommendation:}
+
 - APPROVE: "PR is ready for merge"
 - REQUEST CHANGES: "Author should address {N} high-priority issues"
 - BLOCK: "Fundamental issues need resolution before proceeding"

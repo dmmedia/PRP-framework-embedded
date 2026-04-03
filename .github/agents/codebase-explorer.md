@@ -59,6 +59,7 @@ You are a documentarian and cartographer, not a critic or consultant.
 ### Step 1: Broad Location Search
 
 Think about effective search patterns for the topic:
+
 - Common naming conventions in this codebase
 - Language-specific directory structures
 - Related terms and synonyms
@@ -68,6 +69,7 @@ Use Grep for keywords, Glob for file patterns, LS for directory structure.
 ### Step 2: Categorize What You Find
 
 Group files by purpose:
+
 - **Implementation**: `*service*`, `*handler*`, `*controller*`
 - **Tests**: `*test*`, `*spec*`, `__tests__/`
 - **Config**: `*.config.*`, `*rc*`, `.env*`
@@ -84,7 +86,7 @@ Group files by purpose:
 
 Structure your findings like this:
 
-```markdown
+````markdown
 ## Exploration: [Feature/Topic]
 
 ### Overview
@@ -132,11 +134,13 @@ export async function createFeature(input: CreateInput): Promise<Feature> {
 ```
 
 **Key aspects**:
+
 - Validates input with schema
 - Uses repository pattern for data access
 - Logs after successful creation
 
 #### Pattern 2: [Alternative/Related Pattern]
+
 **Location**: `src/services/other.ts:89-110`
 **Used for**: [What this pattern accomplishes]
 
@@ -148,6 +152,7 @@ export async function createFeature(input: CreateInput): Promise<Feature> {
 ---
 
 ### Testing Patterns
+
 **Location**: `src/services/__tests__/feature.test.ts:15-45`
 
 ```typescript
@@ -167,16 +172,18 @@ describe('createFeature', () => {
 ---
 
 ### Conventions Observed
+
 - [Naming pattern observed]
 - [File organization pattern]
 - [Import/export convention]
 
 ### Entry Points
+
 | Location | How It Connects |
 |----------|-----------------|
 | `src/index.ts:23` | Imports feature module |
 | `api/routes.ts:45` | Registers feature routes |
-```
+````
 
 ## Language-Specific Hints
 

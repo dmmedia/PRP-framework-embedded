@@ -51,7 +51,7 @@ git diff --cached --name-only
 
 Write a single-line message in imperative mood:
 
-```
+```text
 {type}: {description}
 ```
 
@@ -72,7 +72,7 @@ git commit -m "{type}: {description}"
 
 ## Examples
 
-```
+```text
 /prp-commit                          # All changes
 /prp-commit typescript files         # *.ts only
 /prp-commit except package-lock      # Exclude specific

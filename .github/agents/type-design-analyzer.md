@@ -23,6 +23,7 @@ Make illegal states unrepresentable, but don't make simple things complex.
 ## Analysis Scope
 
 **What to Analyze**:
+
 - New types being introduced
 - Modified type definitions
 - Type relationships and constraints
@@ -30,6 +31,7 @@ Make illegal states unrepresentable, but don't make simple things complex.
 - Mutation boundaries
 
 **Where to Look**:
+
 - Type/interface definitions
 - Class constructors and factories
 - Setter methods and mutation points
@@ -63,6 +65,7 @@ Find all implicit and explicit invariants:
 | 1-2 | No encapsulation, fully exposed |
 
 **Check**:
+
 - Are implementation details hidden?
 - Can invariants be violated from outside?
 - Is the interface minimal and complete?
@@ -79,6 +82,7 @@ Find all implicit and explicit invariants:
 | 1-2 | Invariants not expressed in type |
 
 **Check**:
+
 - Are invariants obvious from the type definition?
 - Is compile-time enforcement used where possible?
 - Is the type self-documenting?
@@ -95,6 +99,7 @@ Find all implicit and explicit invariants:
 | 1-2 | Invariants don't prevent real issues |
 
 **Check**:
+
 - Do invariants prevent real bugs?
 - Are they aligned with business requirements?
 - Do they make code easier to reason about?
@@ -111,6 +116,7 @@ Find all implicit and explicit invariants:
 | 1-2 | No enforcement, relies on callers |
 
 **Check**:
+
 - Are invariants checked at construction?
 - Are all mutation points guarded?
 - Can invalid instances be created?
@@ -144,10 +150,11 @@ For each suggestion, consider:
 
 ## Output Format
 
-```markdown
+````markdown
 ## Type Analysis: [TypeName]
 
 ### Overview
+
 **File**: `path/to/file.ts:10-45`
 **Purpose**: [Brief description of what the type represents]
 
@@ -165,15 +172,19 @@ For each suggestion, consider:
 ### Ratings
 
 #### Encapsulation: X/10
+
 [1-2 sentence justification]
 
 #### Invariant Expression: X/10
+
 [1-2 sentence justification]
 
 #### Invariant Usefulness: X/10
+
 [1-2 sentence justification]
 
 #### Invariant Enforcement: X/10
+
 [1-2 sentence justification]
 
 **Overall Score**: X/10 (average)
@@ -191,6 +202,7 @@ For each suggestion, consider:
 ### Concerns
 
 #### Concern 1: [Title]
+
 **Severity**: HIGH / MEDIUM / LOW
 **Location**: `file.ts:23`
 
@@ -198,6 +210,7 @@ For each suggestion, consider:
 [Description of the issue]
 
 **Current Code**:
+
 ```typescript
 // problematic code
 ```
@@ -210,15 +223,18 @@ For each suggestion, consider:
 ### Recommended Improvements
 
 #### Improvement 1: [Title]
+
 **Priority**: HIGH / MEDIUM / LOW
 **Complexity**: LOW / MEDIUM / HIGH
 
 **Current**:
+
 ```typescript
 // current approach
 ```
 
 **Suggested**:
+
 ```typescript
 // improved approach
 ```
@@ -241,9 +257,10 @@ For each suggestion, consider:
 **Verdict**: [WELL-DESIGNED / ADEQUATE / NEEDS IMPROVEMENT / SIGNIFICANT ISSUES]
 
 **Priority Actions**:
+
 1. [Most important fix]
 2. [Second priority]
-```
+````
 
 ## For Multiple Types
 

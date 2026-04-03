@@ -1,4 +1,4 @@
-﻿---
+---
 description: Comprehensive PR code review - checks diff, patterns, runs validation, comments on PR
 argument-hint: <pr-number|pr-url> [--approve|--request-changes]
 ---
@@ -54,6 +54,7 @@ gh pr diff {NUMBER} --name-only
 ```
 
 **Extract:**
+
 - PR number, title, description
 - Author
 - Base and head branches
@@ -77,6 +78,7 @@ gh pr checkout {NUMBER}
 | `OPEN` | PROCEED with full review |
 
 **PHASE_1_CHECKPOINT:**
+
 - [ ] PR number identified
 - [ ] PR metadata fetched
 - [ ] PR branch checked out
@@ -100,6 +102,7 @@ ls -la docs/ 2>/dev/null
 ```
 
 **Extract key constraints:**
+
 - Type safety requirements
 - Code style rules
 - Testing requirements
@@ -121,11 +124,13 @@ ls .claude/PRPs/issues/completed/ 2>/dev/null
 ```
 
 **If implementation report exists:**
+
 1. Read the implementation report
 2. Read the referenced plan
 3. Note documented deviations - these are INTENTIONAL, not issues
 
 **If no implementation report:**
+
 - PR may not have been created via `/prp-implement`
 - Review normally without plan context
 - Note in review that no implementation report was found
@@ -133,6 +138,7 @@ ls .claude/PRPs/issues/completed/ 2>/dev/null
 ### 2.3 Understand PR Intent
 
 From PR title, description, AND implementation report (if available):
+
 - What problem does this solve?
 - What approach was taken?
 - Are there notes from the author?
@@ -141,11 +147,13 @@ From PR title, description, AND implementation report (if available):
 ### 2.4 Analyze Changed Files
 
 For each changed file, determine:
+
 - What type of file? (service, handler, util, test, config)
 - What existing patterns should it follow?
 - Scope of change? (new file, modification, deletion)
 
 **PHASE_2_CHECKPOINT:**
+
 - [ ] Project rules read and understood
 - [ ] Implementation artifacts located (if any)
 - [ ] PR intent understood
@@ -168,42 +176,49 @@ For each file in the diff:
 **For EVERY changed file, check:**
 
 #### Correctness
+
 - [ ] Does the code do what the PR claims?
 - [ ] Are there logic errors?
 - [ ] Are edge cases handled?
 - [ ] Is error handling appropriate?
 
 #### Type Safety
+
 - [ ] Are all types explicit (no implicit `any`)?
 - [ ] Are return types declared?
 - [ ] Are interfaces used appropriately?
 - [ ] Are type guards used where needed?
 
 #### Pattern Compliance
+
 - [ ] Does it follow existing patterns in the codebase?
 - [ ] Is naming consistent with project conventions?
 - [ ] Is file organization correct?
 - [ ] Are imports from the right places?
 
 #### Security
+
 - [ ] Any user input without validation?
 - [ ] Any secrets that could be exposed?
 - [ ] Any injection vulnerabilities (SQL, command, etc.)?
 - [ ] Any unsafe operations?
 
 #### Performance
+
 - [ ] Any obvious N+1 queries or loops?
 - [ ] Any unnecessary async/await?
 - [ ] Any memory leaks (unclosed resources, growing arrays)?
 - [ ] Any blocking operations in hot paths?
 
 #### Completeness
+
 - [ ] Are there tests for new code?
 - [ ] Is documentation updated if needed?
 - [ ] Are all TODOs addressed?
 - [ ] Is error handling complete?
 
 #### Maintainability
+
 - [ ] Is the code readable?
 - [ ] Is it over-engineered?
 - [ ] Is it under-engineered (missing necessary abstractions)?
@@ -225,6 +240,7 @@ If a deviation from expected patterns is documented in the implementation report
 | Low | `BLUE` | Suggestions | Style preferences, minor optimizations, documentation |
 
 **PHASE_3_CHECKPOINT:**
+
 - [ ] All changed files reviewed
 - [ ] Issues categorized by severity
 - [ ] Implementation report deviations accounted for
@@ -251,6 +267,7 @@ npm run build || bun run build
 ```
 
 **Capture for each:**
+
 - Pass/fail status
 - Error count
 - Warning count
@@ -278,6 +295,7 @@ npm test -- {relevant-test-pattern}
 ```
 
 **PHASE_4_CHECKPOINT:**
+
 - [ ] Type check executed
 - [ ] Lint executed
 - [ ] Tests executed
@@ -291,18 +309,21 @@ npm test -- {relevant-test-pattern}
 ### 5.1 Decision Logic
 
 **APPROVE** if:
+
 - No critical or high issues
 - All validation passes
 - Code follows patterns
 - Changes match PR intent
 
 **REQUEST CHANGES** if:
+
 - High priority issues exist
 - Validation fails but is fixable
 - Pattern violations that need addressing
 - Missing tests for new functionality
 
 **BLOCK** if:
+
 - Critical security or data issues
 - Fundamental approach is wrong
 - Major architectural concerns
@@ -318,6 +339,7 @@ npm test -- {relevant-test-pattern}
 | Missing tests | Strong recommendation, may not block |
 
 **PHASE_5_CHECKPOINT:**
+
 - [ ] Recommendation determined
 - [ ] Rationale clear
 
@@ -339,6 +361,7 @@ mkdir -p .claude/PRPs/reviews
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_6_CHECKPOINT:**
+
 - [ ] Report file created
 - [ ] All sections populated
 
@@ -369,6 +392,7 @@ gh pr view {NUMBER} --json reviews,comments --jq '.reviews[-1].url // .comments[
 ```
 
 **PHASE_7_CHECKPOINT:**
+
 - [ ] Review/comment posted to PR
 - [ ] Comment URL captured
 

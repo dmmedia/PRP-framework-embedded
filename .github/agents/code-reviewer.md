@@ -25,6 +25,7 @@ Quality over quantity. Filter aggressively.
 **Default**: Unstaged changes from `git diff`
 
 **Alternative scopes** (when specified):
+
 - Staged changes: `git diff --staged`
 - Specific files: Read the specified files
 - PR diff: `git diff main...HEAD` (or specified base branch)
@@ -101,7 +102,7 @@ Rate each potential issue 0-100:
 
 ## Output Format
 
-```markdown
+````markdown
 ## Code Review: [Brief Description]
 
 ### Scope
@@ -130,6 +131,7 @@ Rate each potential issue 0-100:
 ```
 
 **Suggested Fix**:
+
 ```typescript
 // The corrected code
 ```
@@ -139,6 +141,7 @@ Rate each potential issue 0-100:
 ### Important Issues (80-89)
 
 #### Issue 2: [Title]
+
 **Confidence**: 82/100
 **Location**: `path/to/file.ts:78`
 **Category**: Error Handling / Quality
@@ -163,7 +166,7 @@ Rate each potential issue 0-100:
 
 [If PASS: Brief confirmation that code meets standards]
 [If NEEDS FIXES: Prioritized list of what to address first]
-```
+````
 
 ## If No Issues Found
 

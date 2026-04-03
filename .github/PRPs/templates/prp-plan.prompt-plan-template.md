@@ -20,33 +20,36 @@ So that {benefit}
 
 ## Metadata
 
-| Field            | Value                                             |
+| Field | Value |
 | ---------------- | ------------------------------------------------- |
-| Type             | NEW_CAPABILITY / ENHANCEMENT / REFACTOR / BUG_FIX |
-| Complexity       | LOW / MEDIUM / HIGH                               |
-| Systems Affected | {comma-separated list}                            |
-| Dependencies     | {external libs/services with versions}            |
-| Estimated Tasks  | {count}                                           |
+| Type | NEW_CAPABILITY / ENHANCEMENT / REFACTOR / BUG_FIX |
+| Complexity | LOW / MEDIUM / HIGH |
+| Systems Affected | {comma-separated list} |
+| Dependencies | {external libs/services with versions} |
+| Estimated Tasks | {count} |
 
 ---
 
 ## UX Design
 
 ### Before State
-```
+
+```text
 
 {ASCII diagram - current user experience with data flows}
 
 ```
 
 ### After State
-```
+
+```text
 
 {ASCII diagram - new user experience with data flows}
 
-````
+```
 
 ### Interaction Changes
+
 | Location | Before | After | User Impact |
 |----------|--------|-------|-------------|
 | {path/component} | {old behavior} | {new behavior} | {what changes for user} |
@@ -73,11 +76,12 @@ So that {benefit}
 ## Patterns to Mirror
 
 **NAMING_CONVENTION:**
+
 ```typescript
 // SOURCE: src/features/example/service.ts:10-15
 // COPY THIS PATTERN:
 {actual code snippet from codebase}
-````
+```
 
 **ERROR_HANDLING:**
 
@@ -123,15 +127,15 @@ So that {benefit}
 
 ## Files to Change
 
-| File                             | Action | Justification                            |
+| File | Action | Justification |
 | -------------------------------- | ------ | ---------------------------------------- |
-| `src/features/new/models.ts`     | CREATE | Type definitions - re-export from schema |
-| `src/features/new/schemas.ts`    | CREATE | Zod validation schemas                   |
-| `src/features/new/errors.ts`     | CREATE | Feature-specific errors                  |
-| `src/features/new/repository.ts` | CREATE | Database operations                      |
-| `src/features/new/service.ts`    | CREATE | Business logic                           |
-| `src/features/new/index.ts`      | CREATE | Public API exports                       |
-| `src/core/database/schema.ts`    | UPDATE | Add table definition                     |
+| `src/features/new/models.ts` | CREATE | Type definitions - re-export from schema |
+| `src/features/new/schemas.ts` | CREATE | Zod validation schemas |
+| `src/features/new/errors.ts` | CREATE | Feature-specific errors |
+| `src/features/new/repository.ts` | CREATE | Database operations |
+| `src/features/new/service.ts` | CREATE | Business logic |
+| `src/features/new/index.ts` | CREATE | Public API exports |
+| `src/core/database/schema.ts` | UPDATE | Add table definition |
 
 ---
 
@@ -224,11 +228,11 @@ Execute in order. Each task is atomic and independently verifiable.
 
 ### Unit Tests to Write
 
-| Test File                                | Test Cases                 | Validates      |
+| Test File | Test Cases | Validates |
 | ---------------------------------------- | -------------------------- | -------------- |
-| `src/features/new/tests/schemas.test.ts` | valid input, invalid input | Zod schemas    |
-| `src/features/new/tests/errors.test.ts`  | error properties           | Error classes  |
-| `src/features/new/tests/service.test.ts` | CRUD ops, access control   | Business logic |
+| `src/features/new/tests/schemas.test.ts` | valid input, invalid input | Zod schemas |
+| `src/features/new/tests/errors.test.ts` | error properties | Error classes |
+| `src/features/new/tests/service.test.ts` | CRUD ops, access control | Business logic |
 
 ### Edge Cases Checklist
 
@@ -320,7 +324,7 @@ Use Browser MCP to verify:
 
 ## Risks and Mitigations
 
-| Risk               | Likelihood   | Impact       | Mitigation                              |
+| Risk | Likelihood | Impact | Mitigation |
 | ------------------ | ------------ | ------------ | --------------------------------------- |
 | {Risk description} | LOW/MED/HIGH | LOW/MED/HIGH | {Specific prevention/handling strategy} |
 

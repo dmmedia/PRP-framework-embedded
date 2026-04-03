@@ -6,18 +6,18 @@
 
 ### Changes Made
 
-| File            | Change        |
+| File | Change |
 | --------------- | ------------- |
-| `src/x.ts`      | {description} |
-| `src/x.test.ts` | Added test    |
+| `src/x.ts` | {description} |
+| `src/x.test.ts` | Added test |
 
 ### Validation
 
-| Check      | Result  |
+| Check | Result |
 | ---------- | ------- |
 | Type check | ✅ Pass |
-| Tests      | ✅ Pass |
-| Lint       | ✅ Pass |
+| Tests | ✅ Pass |
+| Lint | ✅ Pass |
 
 ### Self-Review
 

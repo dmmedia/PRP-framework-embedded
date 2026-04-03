@@ -43,6 +43,7 @@ recommendation: {approve|request-changes|block}
 ## Issues Found
 
 ### Critical
+
 {If none: "No critical issues found."}
 
 - **`{file.ts}:{line}`** - {Issue description}
@@ -50,12 +51,15 @@ recommendation: {approve|request-changes|block}
   - **Fix**: {Specific recommendation}
 
 ### High Priority
+
 {Issues that should be fixed before merge}
 
 ### Medium Priority
+
 {Issues worth addressing but not blocking}
 
 ### Suggestions
+
 {Nice-to-haves and future improvements}
 
 ---
