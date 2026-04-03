@@ -26,6 +26,9 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
       - `.github\prompts\prp-issue-investigate.prompt.md` - extract phase 6 post github comment comment template between eof
       - `.github\prompts\prp-plan.prompt.md` - extract phase 6 report to user summary template
       - `.github\prompts\prp-ralph.prompt.md` - extract 4.2 1. implementation report template
+   - fix heredoc template usage in:
+      - `.github\prompts\prp-issue-fix.prompt.md`
+      - `.github\prompts\prp-issue-investigate.prompt.md`
    - exclude project specific information already covered in `AGENTS.md`
    - remove all duplications
       - `.github\prompts\prp-issue-fix.prompt.md` - replace 6.2 write commit message duplicated template with a single template
