@@ -212,7 +212,7 @@ Add a reference comment above the bash command:
 |---|-------|-------------|--------|----------|---------|----------|
 | 1 | Extract Prompt Templates | Create 6 template files from 5 prompt files using `text-file-content-extractor-replacer` skill | complete | - | - | `.claude/PRPs/plans/completed/extract-remaining-templates-phase-1.plan.md` |
 | 2 | Update Prompt Files | Replace inline template blocks in 5 prompt files with reference instructions | complete | - | 1 | `.claude/PRPs/plans/completed/extract-remaining-templates-phase-2.plan.md` |
-| 3 | Extract Agent Templates | Create 12 template files from 10 agent files using `text-file-content-extractor-replacer` skill | pending | with 1 | - | - |
+| 3 | Extract Agent Templates | Create 12 template files from 10 agent files using `text-file-content-extractor-replacer` skill | in-progress | with 1 | - | `.claude/PRPs/plans/extract-remaining-templates-phase-3.plan.md` |
 | 4 | Update Agent Files | Replace inline `## Output Format` template blocks in 10 agent files with reference instructions | pending | - | 3 | - |
 
 ### Phase Details
