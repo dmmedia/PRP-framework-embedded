@@ -378,62 +378,11 @@ git push -u origin HEAD --force-with-lease
 
 ### 7.2 Create PR
 
+> **PR Body Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-pr-template.md`
+> Load this file for the PR body content structure.
+
 ````bash
-gh pr create --base "{base-branch}" --title "Fix: {title} (#{number})" --body "$(cat <<'EOF'
-## Summary
-
-{Problem statement from artifact}
-
-## Root Cause
-
-{Root cause summary from artifact}
-
-## Changes
-
-| File | Change |
-|------|--------|
-| `src/x.ts` | {description} |
-| `src/x.test.ts` | Added test for {case} |
-
-## Testing
-
-- [x] Type check passes
-- [x] Unit tests pass
-- [x] Lint passes
-- [x] {Manual verification from artifact}
-
-## Validation
-
-```bash
-# Run project's validation commands (adapt to toolchain)
-{type-check-cmd} && {test-cmd} {pattern} && {lint-cmd}
-```
-
-## Issue
-
-Fixes #{number}
-
----
-
-<details>
-<summary>📋 Implementation Details</summary>
-
-### Implementation followed artifact:
-
-`.claude/PRPs/issues/issue-{number}.md`
-
-### Deviations from plan:
-
-{None | List any deviations}
-
-</details>
-
----
-
-_Automated implementation from investigation artifact_
-EOF
-)"
-
+gh pr create --base "{base-branch}" --title "Fix: {title} (#{number})" --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-pr-template.md)"
 ````
 
 ### 7.3 Get PR Number
@@ -473,38 +422,11 @@ Review only the diff, not the entire codebase.
 
 ### 8.2 Post Review to PR
 
+> **Review Comment Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-review-template.md`
+> Load this file for the review comment content structure.
+
 ```bash
-gh pr comment --body "$(cat <<'EOF'
-## 🔍 Automated Code Review
-
-### Summary
-
-{1-2 sentence assessment}
-
-### Findings
-
-#### ✅ Strengths
-- {Good thing 1}
-- {Good thing 2}
-
-#### ⚠️ Suggestions (non-blocking)
-- `{file}:{line}` - {suggestion}
-- {other suggestions}
-
-#### 🔒 Security
-- {Any concerns or "No security concerns identified"}
-
-### Checklist
-
-- [x] Fix addresses root cause from investigation
-- [x] Code follows codebase patterns
-- [x] Tests cover the change
-- [x] No obvious bugs introduced
-
----
-*Self-reviewed by Claude • Ready for human review*
-EOF
-)"
+gh pr comment --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-review-template.md)"
 ```
 
 **PHASE_8_CHECKPOINT:**
