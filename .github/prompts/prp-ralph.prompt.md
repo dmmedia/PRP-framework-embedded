@@ -251,36 +251,8 @@ ALL of these must be true:
 
    Create `.claude/PRPs/reports/{plan-name}-report.md`:
 
-   ```markdown
-   # Implementation Report
-
-   **Plan**: {plan_path}
-   **Completed**: {timestamp}
-   **Iterations**: {N}
-
-   ## Summary
-   {What was implemented}
-
-   ## Tasks Completed
-   {List from plan}
-
-   ## Validation Results
-   | Check | Result |
-   |-------|--------|
-   | Type check | PASS |
-   | Lint | PASS |
-   | Tests | PASS |
-   | Build | PASS |
-
-   ## Codebase Patterns Discovered
-   {From state file Codebase Patterns section}
-
-   ## Learnings
-   {Consolidated from state file progress log}
-
-   ## Deviations from Plan
-   {Any changes made}
-   ```
+   > **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-report-template.md`
+   > Load this file and use its structure exactly when generating output.
 
 2. **Archive the Ralph Run**:
 

@@ -19,41 +19,44 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 **TODO:**
 
 - Review prompts:
-   - extract more templates, as it seems that the 1st extraction did not do all of them (e.g. `.github\prompts\prp-plan.prompt.md`), to separate files and reference them
-      - .github\prompts\prp-implement.prompt.md - extract phase 6 output report to user summary template
-      - .github\prompts\prp-issue-fix.prompt.md - extract 7.2 create pr pr template between eof
-      - .github\prompts\prp-issue-fix.prompt.md - extract 8.2 post review to pr review template between eof
-      - .github\prompts\prp-issue-investigate.prompt.md - extract phase 6 post github comment comment template between eof
-      - .github\prompts\prp-plan.prompt.md - extract phase 6 report to user summary template
-      - .github\prompts\prp-ralph.prompt.md - extract 4.2 1. implementation report template
+   - extract more templates, as it seems that the 1st extraction did not do all of them to separate files and instruct prompts to read and use them when needed in a same way, like in the 1st extraction covered by `.claude\PRPs\prds\completed\extract-prompt-output-templates.prd.md`
+      - `.github\prompts\prp-implement.prompt.md` - extract phase 6 output report to user summary template
+      - `.github\prompts\prp-issue-fix.prompt.md` - extract 7.2 create pr pr template between eof
+      - `.github\prompts\prp-issue-fix.prompt.md` - extract 8.2 post review to pr review template between eof
+      - `.github\prompts\prp-issue-investigate.prompt.md` - extract phase 6 post github comment comment template between eof
+      - `.github\prompts\prp-plan.prompt.md` - extract phase 6 report to user summary template
+      - `.github\prompts\prp-ralph.prompt.md` - extract 4.2 1. implementation report template
+   - fix heredoc template usage in:
+      - `.github\prompts\prp-issue-fix.prompt.md`
+      - `.github\prompts\prp-issue-investigate.prompt.md`
    - exclude project specific information already covered in `AGENTS.md`
    - remove all duplications
-      - .github\prompts\prp-issue-fix.prompt.md - replace 6.2 write commit message duplicated template with a single template
-      - .github\prompts\prp-plan.prompt.md - deduplicate phase 6 generate implementation plan file output location
+      - `.github\prompts\prp-issue-fix.prompt.md` - replace 6.2 write commit message duplicated template with a single template
+      - `.github\prompts\prp-plan.prompt.md` - deduplicate phase 6 generate implementation plan file output location
    - minimize prompts
-      - .github\prompts\prp-issue-fix.prompt.md - replace 3.2 decision tree ascii with mermaid or list
-      - .github\prompts\prp-plan.prompt.md - ask gemini if it is beneficial using <context>, <objective>, <process> tags along markdown in vs code github copilot prompts
-      - .github\prompts\prp-pr.prompt.md - remove 2.1 template search
-      - .github\prompts\prp-pr.prompt.md - remove phasee 6 output report to user multiple pr templates section
-      - .github\prompts\prp-prd.prompt.md - replace process overview ascii with mermaid or list
-      - .github\prompts\prp-prd.prompt.md - replace question flow summary ascii with mermaid or list
+      - `.github\prompts\prp-issue-fix.prompt.md` - replace 3.2 decision tree ascii with mermaid or list
+      - `.github\prompts\prp-plan.prompt.md` - ask gemini if it is beneficial using <context>, <objective>, <process> tags along markdown in vs code github copilot prompts
+      - `.github\prompts\prp-pr.prompt.md` - remove 2.1 template search
+      - `.github\prompts\prp-pr.prompt.md` - remove phasee 6 output report to user multiple pr templates section
+      - `.github\prompts\prp-prd.prompt.md` - replace process overview ascii with mermaid or list
+      - `.github\prompts\prp-prd.prompt.md` - replace question flow summary ascii with mermaid or list
 - Review agents:
    - extract templates to separate files and reference them
-      - .github\agents\code-reviewer.md - extract output format code review template
-      - .github\agents\code-simplifier.md - extract output format code simplification report template
-      - .github\agents\codebase-analyst.md - extract output format codebase analysis report template
-      - .github\agents\codebase-analyst.md - extract output format exploration report template
-      - .github\agents\comment-analyzer.md - extract output format comment analysis report template
-      - .github\agents\gpui-researcher.md - extract output format research report template
-      - .github\agents\pr-test-analyzer.md - extract output format pr test analysis report template
-      - .github\agents\pr-test-analyzer.md - extract output format pr test adequate coverage report template
-      - .github\agents\silent-failure-hunter.md - extract output format silent failure analysis report template
-      - .github\agents\silent-failure-hunter.md - extract output format silent failure no issues report template
-      - .github\agents\type-design-analyzer.md - extract output format type design analysis report template
-      - .github\agents\web-researcher.md - extract output format web research report template
+      - `.github\agents\code-reviewer.md` - extract output format code review template
+      - `.github\agents\code-simplifier.md` - extract output format code simplification report template
+      - `.github\agents\codebase-analyst.md` - extract output format codebase analysis report template
+      - `.github\agents\codebase-explorer.md` - extract output format exploration report template
+      - `.github\agents\comment-analyzer.md` - extract output format comment analysis report template
+      - `.github\agents\gpui-researcher.md` - extract output format research report template
+      - `.github\agents\pr-test-analyzer.md` - extract output format pr test analysis report template
+      - `.github\agents\pr-test-analyzer.md` - extract output format pr test adequate coverage report template
+      - `.github\agents\silent-failure-hunter.md` - extract output format silent failure analysis report template
+      - `.github\agents\silent-failure-hunter.md` - extract output format silent failure no issues report template
+      - `.github\agents\type-design-analyzer.md` - extract output format type design analysis report template
+      - `.github\agents\web-researcher.md` - extract output format web research report template
    - remove all duplications
    - minimize prompts
-- Review new AGENT.md templates and extend content from migrated `claude_md_files/` where possible. Remove other files. Remove old `claude_md_files/`.
+- Review new `AGENT.md` templates and extend content from migrated `claude_md_files/` where possible. Remove other files. Remove old `claude_md_files/`.
 - Update all prompts and agent guides to use `.github` instead of `.claude` and move everything from `.claude` to `.github`.
 - Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
 - Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.

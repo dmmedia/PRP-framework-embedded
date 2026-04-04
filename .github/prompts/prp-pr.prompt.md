@@ -90,27 +90,7 @@ Use `gh pr view` to see details or `gh pr edit` to modify.
 
 ## Phase 2: DISCOVER - Gather Context
 
-### 2.1 Check for PR Template
-
-```bash
-# Check common template locations
-ls -la .github/PULL_REQUEST_TEMPLATE.md 2>/dev/null
-ls -la .github/pull_request_template.md 2>/dev/null
-ls -la .github/PULL_REQUEST_TEMPLATE/ 2>/dev/null
-ls -la docs/pull_request_template.md 2>/dev/null
-```
-
-**If template found:**
-
-- Read the template
-- Use it as the PR body structure
-- Fill in sections based on commits and changes
-
-**If no template:**
-
-- Use default format (see Phase 4)
-
-### 2.2 Analyze Commits
+### 2.1 Analyze Commits
 
 ```bash
 # Get commit messages for PR body
@@ -120,7 +100,7 @@ git log origin/{base-branch}..HEAD --pretty=format:"- %s"
 git log origin/{base-branch}..HEAD --pretty=format:"%h %s%n%b" --no-merges
 ```
 
-### 2.3 Analyze Changed Files
+### 2.2 Analyze Changed Files
 
 ```bash
 # Files changed
@@ -130,7 +110,7 @@ git diff --stat origin/{base-branch}..HEAD
 git diff --name-only origin/{base-branch}..HEAD
 ```
 
-### 2.4 Determine PR Title
+### 2.3 Determine PR Title
 
 **From commits, derive title:**
 
@@ -150,7 +130,6 @@ git diff --name-only origin/{base-branch}..HEAD
 
 **PHASE_2_CHECKPOINT:**
 
-- [ ] PR template located (or confirmed none exists)
 - [ ] Commit messages extracted
 - [ ] Changed files listed
 - [ ] PR title determined
@@ -180,20 +159,12 @@ git push -u origin HEAD
 
 ## Phase 4: CREATE - Build and Submit PR
 
-### 4.1 If Template Exists
-
-Read the template and fill in each section based on:
-
-- Commit messages
-- Changed files
-- Any linked issues (look for `#123` or `Fixes #123` in commits)
-
-### 4.2 If No Template - Use Default Format
+### 4.1 Output Format
 
 > **Output Template**: See `.github/PRPs/templates/prp-pr.prompt-pr-template.md`
 > Load this file and use its content as the `--body` value for `gh pr create`.
 
-### 4.3 Extract Issue References
+### 4.2 Extract Issue References
 
 From commit messages, find patterns like:
 
@@ -204,7 +175,7 @@ From commit messages, find patterns like:
 
 Include these in the PR body under "Related Issues".
 
-### 4.4 Escape shell-specific special characters in the PR body to prevent CLI issues
+### 4.3 Escape shell-specific special characters in the PR body to prevent CLI issues
 
 For all shells escape:
 
@@ -216,7 +187,7 @@ For `bash` escape:
 
 **PHASE_4_CHECKPOINT:**
 
-- [ ] PR body generated (from template or default)
+- [ ] PR body generated (from template)
 - [ ] Title is clear and follows convention
 - [ ] Related issues linked
 - [ ] Special characters escaped in the PR body
@@ -270,15 +241,6 @@ git push --force-with-lease
 - Parse template for required sections (often marked with `<!-- required -->`)
 - Ensure all required sections are filled
 - Warn if any appear incomplete
-
-### Multiple PR templates exist
-
-```bash
-# If .github/PULL_REQUEST_TEMPLATE/ directory exists
-ls .github/PULL_REQUEST_TEMPLATE/
-```
-
-- If multiple templates, use the default or ask user which to use
 
 ### Draft PR requested
 
