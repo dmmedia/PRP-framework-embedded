@@ -30,7 +30,7 @@ If nothing to commit, stop.
 **Target interpretation:**
 
 | Input | Action |
-|-------|--------|
+|---|---|
 | (blank) | `git add -A` (all changes) |
 | `staged` | Use current staging |
 | `*.ts` / `typescript files` | `git add "*.ts"` |

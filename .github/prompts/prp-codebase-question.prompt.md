@@ -39,7 +39,7 @@ If the user mentions specific files, read them FULLY first (no limit/offset) bef
 ### 1.2 Classify the Query
 
 | Type | Indicators | Agent Focus |
-|------|-----------|-------------|
+|---|---|---|
 | **Where** | "where is", "find", "locate" | `prp-core:codebase-explorer` primary |
 | **How** | "how does", "trace", "flow" | `prp-core:codebase-analyst` primary |
 | **What** | "what is", "explain", "describe" | Both agents in parallel |
@@ -79,7 +79,7 @@ AREAS:
 ### 2.2 Agent Selection
 
 | Agent | Use When |
-|-------|----------|
+|---|---|
 | `prp-core:codebase-explorer` | Finding WHERE code lives, locating files, extracting patterns, discovering conventions |
 | `prp-core:codebase-analyst` | Understanding HOW code works, tracing data flow, mapping integration points |
 | `prp-core:web-researcher` | Only when `--web` flag is set or user explicitly asks for external docs |
@@ -173,7 +173,7 @@ Return findings with direct links and citations.
 Map findings back to the user's original question:
 
 | Question Aspect | Finding | Evidence |
-|----------------|---------|----------|
+|---|---|---|
 | {aspect 1} | {what was found} | `file.ts:123` |
 | {aspect 2} | {what was found} | `file.ts:456` |
 

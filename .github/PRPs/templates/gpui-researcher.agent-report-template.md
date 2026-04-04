@@ -59,7 +59,7 @@
 ### Validation Results
 
 | Aspect | Status | Evidence |
-|--------|--------|----------|
+|---|---|---|
 | API exists in latest crate | YES/NO | {source reference} |
 | Pattern matches Zed conventions | YES/NO | {example reference} |
 | No deprecated APIs used | YES/NO | {what to use instead} |

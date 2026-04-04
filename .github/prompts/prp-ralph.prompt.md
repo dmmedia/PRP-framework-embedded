@@ -31,7 +31,7 @@ Extract from input:
 ### 1.2 Validate Input Type
 
 | Input | Action |
-|-------|--------|
+|---|---|
 | Ends with `.plan.md` | Valid - use as plan file |
 | Ends with `.prd.md` | Valid - will select next phase |
 | Free-form text | STOP with message below |
@@ -179,7 +179,7 @@ bun run build || npm run build
 ### 3.5 Track Results
 
 | Check | Result | Notes |
-|-------|--------|-------|
+|---|---|---|
 | Type check | PASS/FAIL | {details} |
 | Lint | PASS/FAIL | {details} |
 | Tests | PASS/FAIL | {details} |

@@ -7,19 +7,19 @@
 
 #### Implementation Files
 | File | Purpose |
-|------|---------|
+|---|---|
 | `src/services/feature.ts` | Main service logic |
 | `src/handlers/feature-handler.ts` | Request handling |
 
 #### Test Files
 | File | Purpose |
-|------|---------|
+|---|---|
 | `src/services/__tests__/feature.test.ts` | Service unit tests |
 | `e2e/feature.spec.ts` | End-to-end tests |
 
 #### Configuration
 | File | Purpose |
-|------|---------|
+|---|---|
 | `config/feature.json` | Feature settings |
 
 #### Related Directories
@@ -91,6 +91,6 @@ describe('createFeature', () => {
 ### Entry Points
 
 | Location | How It Connects |
-|----------|-----------------|
+|---|---|
 | `src/index.ts:23` | Imports feature module |
 | `api/routes.ts:45` | Registers feature routes |

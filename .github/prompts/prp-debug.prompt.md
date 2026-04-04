@@ -22,7 +22,7 @@ Find the **actual root cause** - the specific code, config, or logic that, if ch
 ### 1.1 Determine Input Type
 
 | Type | Description | Action |
-|------|-------------|--------|
+|---|---|---|
 | Raw symptom | Vague description, error message, stack trace | INVESTIGATE - form hypotheses, test them |
 | Pre-diagnosed | Already identifies location/problem | VALIDATE - confirm diagnosis, check for related issues |
 
@@ -54,7 +54,7 @@ Find the **actual root cause** - the specific code, config, or logic that, if ch
 Based on the symptom, generate 2-4 hypotheses. For each:
 
 | Hypothesis | What must be true | Evidence needed | Likelihood |
-|------------|-------------------|-----------------|------------|
+|---|---|---|---|
 | {H1} | {conditions} | {proof needed} | HIGH/MED/LOW |
 | {H2} | {conditions} | {proof needed} | HIGH/MED/LOW |
 
@@ -99,7 +99,7 @@ WHY 5: Why does [intermediate cause D] happen?
 ### Evidence Standards (STRICT)
 
 | Valid Evidence | Invalid Evidence |
-|----------------|------------------|
+|---|---|
 | `file.ts:123` with actual code snippet | "likely includes...", "probably because..." |
 | Command output you actually ran | Logical deduction without code proof |
 | Test you executed that proves behavior | Explaining how technology works in general |
@@ -162,7 +162,7 @@ git diff HEAD~10 [suspicious files]
 ### 4.1 Three Tests
 
 | Test | Question | Pass? |
-|------|----------|-------|
+|---|---|---|
 | Causation | Does root cause logically lead to symptom through evidence chain? | Y/N |
 | Necessity | If root cause didn't exist, would symptom still occur? | N required |
 | Sufficiency | Is root cause alone enough, or are there co-factors? | Document if co-factors |
@@ -187,7 +187,7 @@ git blame [affected file] | grep -A2 -B2 [line number]
 For deep mode, document why other hypotheses were rejected:
 
 | Hypothesis | Why Ruled Out |
-|------------|---------------|
+|---|---|
 | {H2} | {evidence that disproved it} |
 | {H3} | {evidence that disproved it} |
 

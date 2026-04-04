@@ -7,7 +7,7 @@
 ### Issues Found
 
 | Severity | Count |
-|----------|-------|
+|---|---|
 | Critical | {N} |
 | High | {N} |
 | Medium | {N} |
@@ -16,7 +16,7 @@
 ### Validation
 
 | Check | Result |
-|-------|--------|
+|---|---|
 | Type Check | {PASS/FAIL} |
 | Lint | {PASS/FAIL} |
 | Tests | {PASS/FAIL} |

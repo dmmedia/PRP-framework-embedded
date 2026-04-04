@@ -104,7 +104,7 @@ What's well-tested and follows best practices.
 ### Summary Table
 
 | Category | Count | Action |
-|----------|-------|--------|
+|---|---|---|
 | Critical Gaps (8-10) | X | Must fix |
 | Important (5-7) | Y | Should consider |
 | Quality Issues | Z | Refactor when possible |

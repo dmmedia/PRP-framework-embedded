@@ -10,7 +10,7 @@
 ### Invariants Identified
 
 | Invariant | Expression | Enforcement |
-|-----------|------------|-------------|
+|---|---|---|
 | [Invariant 1] | Implicit / Explicit | Constructor / Runtime / None |
 | [Invariant 2] | Implicit / Explicit | Constructor / Runtime / None |
 
@@ -94,7 +94,7 @@
 ### Summary
 
 | Dimension | Score | Status |
-|-----------|-------|--------|
+|---|---|---|
 | Encapsulation | X/10 | Good / Needs Work / Poor |
 | Expression | X/10 | Good / Needs Work / Poor |
 | Usefulness | X/10 | Good / Needs Work / Poor |

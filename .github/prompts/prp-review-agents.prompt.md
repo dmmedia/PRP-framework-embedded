@@ -34,7 +34,7 @@ Before running reviews:
 ## Review Aspects
 
 | Aspect | Agent | When to Run |
-|--------|-------|-------------|
+|---|---|---|
 | `code` | code-reviewer | Always - general quality and guidelines |
 | `docs` | docs-impact-agent | Almost always - identifies stale docs |
 | `tests` | pr-test-analyzer | When test files or tested code changed |
@@ -126,7 +126,7 @@ After all agents complete, aggregate findings:
 ### Categories
 
 | Category | Description | Action |
-|----------|-------------|--------|
+|---|---|---|
 | **Critical** | Must fix before merge | Block merge |
 | **Important** | Should fix | Address before merge |
 | **Suggestions** | Nice to have | Consider |

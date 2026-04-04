@@ -46,7 +46,7 @@ Discover the actual structure before proceeding.
 **Determine input type:**
 
 | Input Pattern | Type | Action |
-|---------------|------|--------|
+|---|---|---|
 | Ends with `.prd.md` | PRD file | Parse PRD, select next phase |
 | Ends with `.md` and contains "Implementation Phases" | PRD file | Parse PRD, select next phase |
 | File path that exists | Document | Read and extract feature description |

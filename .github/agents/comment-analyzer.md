@@ -49,7 +49,7 @@ Find every comment in scope:
 Cross-reference each comment against actual code:
 
 | Check | What to Verify |
-|-------|----------------|
+|---|---|
 | **Parameters** | Names, types, and descriptions match signature |
 | **Return values** | Type and description match actual returns |
 | **Behavior** | Described logic matches implementation |
@@ -62,7 +62,7 @@ Cross-reference each comment against actual code:
 Evaluate if comments provide sufficient context:
 
 | Aspect | Question to Ask |
-|--------|-----------------|
+|---|---|
 | **Preconditions** | Are required assumptions documented? |
 | **Side effects** | Are non-obvious side effects mentioned? |
 | **Error handling** | Are error conditions described? |
@@ -74,7 +74,7 @@ Evaluate if comments provide sufficient context:
 Consider the comment's utility over time:
 
 | Value Level | Characteristics | Action |
-|-------------|-----------------|--------|
+|---|---|---|
 | **High** | Explains "why", captures non-obvious intent | Keep |
 | **Medium** | Useful context, may need updates | Keep with note |
 | **Low** | Restates obvious code | Recommend removal |

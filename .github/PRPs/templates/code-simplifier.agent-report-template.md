@@ -54,7 +54,7 @@
 ### Summary
 
 | Metric | Value |
-|--------|-------|
+|---|---|
 | Files simplified | X |
 | Changes made | Y |
 | Lines before | Z |
@@ -64,7 +64,7 @@
 ### Changes by Type
 
 | Type | Count |
-|------|-------|
+|---|---|
 | Reduced nesting | X |
 | Improved naming | Y |
 | Removed redundancy | Z |

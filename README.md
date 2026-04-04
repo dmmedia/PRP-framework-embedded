@@ -33,7 +33,6 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
       - `.github\prompts\prp-plan.prompt.md` - deduplicate phase 6 generate implementation plan file output location
    - minimize prompts
       - `.github\prompts\prp-issue-fix.prompt.md` - replace 3.2 decision tree ascii with mermaid or list
-      - `.github\prompts\prp-plan.prompt.md` - ask gemini if it is beneficial using <context>, <objective>, <process> tags along markdown in vs code github copilot prompts
       - `.github\prompts\prp-prd.prompt.md` - replace process overview ascii with mermaid or list
       - `.github\prompts\prp-prd.prompt.md` - replace question flow summary ascii with mermaid or list
 - Review agents:
@@ -54,7 +53,6 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 - Add agent guide/skill for nRF microcontroller embedded development similar to existing guides.
 - Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 - Include use of Cppcheck into C and C++ `AGENTS.md` templates.
-- Minimize all markdown tables to "|---|---|" to minimize context pollution.
 
 ## VS Code + Copilot PRP Workflow
 

@@ -5,7 +5,7 @@
 ### Assessment
 
 | Metric | Value | Reasoning |
-|--------|-------|-----------|
+|---|---|---|
 | {Severity or Priority} | `{VALUE}` | {one-sentence why} |
 | Complexity | `{COMPLEXITY}` | {one-sentence why} |
 | Confidence | `{CONFIDENCE}` | {one-sentence why} |
@@ -27,7 +27,7 @@
 ### Implementation Plan
 
 | Step | File | Change |
-|------|------|--------|
+|---|---|---|
 | 1 | `src/x.ts:45` | {description} |
 | 2 | `src/x.test.ts` | Add test for {case} |
 

@@ -27,7 +27,7 @@ We'll know we're right when {measurable outcome}.
 ## Success Metrics
 
 | Metric | Target | How Measured |
-|--------|--------|--------------|
+|---|---|---|
 | {Primary metric} | {Specific number} | {Method} |
 | {Secondary metric} | {Specific number} | {Method} |
 
@@ -60,7 +60,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ### Core Capabilities (MoSCoW)
 
 | Priority | Capability | Rationale |
-|----------|------------|-----------|
+|---|---|---|
 | Must | {Feature} | {Why essential} |
 | Must | {Feature} | {Why essential} |
 | Should | {Feature} | {Why important but not blocking} |
@@ -89,7 +89,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 **Technical Risks**
 
 | Risk | Likelihood | Mitigation |
-|------|------------|------------|
+|---|---|---|
 | {Risk} | {H/M/L} | {How to handle} |
 
 ---
@@ -104,7 +104,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 -->
 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
-|---|-------|-------------|--------|----------|---------|----------|
+|---|---|---|---|---|---|---|
 | 1 | {Phase name} | {What this phase delivers} | pending | - | - | - |
 | 2 | {Phase name} | {What this phase delivers} | pending | - | 1 | - |
 | 3 | {Phase name} | {What this phase delivers} | pending | with 4 | 2 | - |
@@ -136,7 +136,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ## Decisions Log
 
 | Decision | Choice | Alternatives | Rationale |
-|----------|--------|--------------|-----------|
+|---|---|---|---|
 | {Decision} | {Choice} | {Options considered} | {Why this one} |
 
 ---

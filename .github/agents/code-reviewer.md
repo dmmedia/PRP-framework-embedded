@@ -45,7 +45,7 @@ Always clarify what you're reviewing at the start.
 Check for explicit violations of project rules:
 
 | Category | What to Check |
-|----------|---------------|
+|---|---|
 | **Imports** | Import patterns, ordering, prohibited imports, circular dependencies |
 | **Types** | Typed literals vs enums, proper type exports, no barrel exports |
 | **Style** | Naming conventions, function declarations |
@@ -60,7 +60,7 @@ Check for explicit violations of project rules:
 These patterns are always flagged:
 
 | Pattern | Confidence | Flag When |
-|---------|------------|-----------|
+|---|---|---|
 | **Enums over typed literals** | 90+ | Using language enums instead of string literal unions or const objects. Enums have runtime overhead, poor tree-shaking, and numeric enums are type-unsafe. Prefer typed literal unions. |
 | **Barrel exports** | 85+ | Using wildcard re-exports (`export * from`) in index files. Creates circular import risks and bundle bloat. Prefer explicit named exports. |
 | **Type-only export missing marker** | 80+ | Exporting types/interfaces without the `type` keyword (in languages that support it). Causes unnecessary runtime imports. Use explicit type exports. |
@@ -91,7 +91,7 @@ Identify significant quality issues:
 Rate each potential issue 0-100:
 
 | Score | Meaning | Action |
-|-------|---------|--------|
+|---|---|---|
 | 0-25 | Likely false positive or pre-existing | **Discard** |
 | 26-50 | Minor nitpick, not in guidelines | **Discard** |
 | 51-79 | Valid but low-impact | **Discard** |

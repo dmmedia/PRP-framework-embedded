@@ -3,19 +3,19 @@
 ### Critical Issues (X found)
 
 | Agent | Issue | Location |
-|-------|-------|----------|
+|---|---|---|
 | code-reviewer | Description | `file.ts:line` |
 
 ### Important Issues (X found)
 
 | Agent | Issue | Location |
-|-------|-------|----------|
+|---|---|---|
 | silent-failure-hunter | Description | `file.ts:line` |
 
 ### Suggestions (X found)
 
 | Agent | Suggestion | Location |
-|-------|------------|----------|
+|---|---|---|
 | type-design-analyzer | Description | `file.ts:line` |
 
 ### Strengths

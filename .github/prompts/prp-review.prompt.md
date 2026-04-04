@@ -30,7 +30,7 @@ Perform a thorough, senior-engineer-level code review:
 **Determine input type:**
 
 | Input Format | Action |
-|--------------|--------|
+|---|---|
 | Number (`123`, `#123`) | Use as PR number |
 | URL (`https://github.com/.../pull/123`) | Extract PR number |
 | Branch name (`feature-x`) | Find associated PR |
@@ -71,7 +71,7 @@ gh pr checkout {NUMBER}
 ### 1.4 Validate PR State
 
 | State | Action |
-|-------|--------|
+|---|---|
 | `MERGED` | STOP: "PR already merged. Nothing to review." |
 | `CLOSED` | WARN: "PR is closed. Review anyway? (historical analysis)" |
 | `DRAFT` | NOTE: "Draft PR - focusing on direction, not polish" |
@@ -233,7 +233,7 @@ If a deviation from expected patterns is documented in the implementation report
 **Issue Severity Levels:**
 
 | Level | Icon | Criteria | Examples |
-|-------|------|----------|----------|
+|---|---|---|---|
 | Critical | `RED` | Blocking - must fix | Security vulnerabilities, data loss potential, crashes |
 | High | `ORANGE` | Should fix before merge | Type safety violations, missing error handling, logic errors |
 | Medium | `YELLOW` | Should consider | Pattern inconsistencies, missing edge cases, undocumented deviations |
@@ -278,7 +278,7 @@ npm run build || bun run build
 Based on what changed:
 
 | Change Type | Additional Validation |
-|-------------|----------------------|
+|---|---|
 | New API endpoint | Test with curl/httpie |
 | Database changes | Check migration exists |
 | Config changes | Verify .env.example updated |
@@ -332,7 +332,7 @@ npm test -- {relevant-test-pattern}
 ### 5.2 Special Cases
 
 | Situation | Handling |
-|-----------|----------|
+|---|---|
 | Draft PR | Comment only, no approve/block |
 | Large PR (>500 lines) | Note thoroughness limits, suggest splitting |
 | Security-sensitive | Extra scrutiny, err on caution |

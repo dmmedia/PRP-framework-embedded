@@ -32,7 +32,7 @@ You are a documentarian and cartographer, not a critic or consultant.
 ### 2. Categorize Findings by Purpose
 
 | Category | What to Find |
-|----------|--------------|
+|---|---|
 | Implementation | Core logic, services, handlers |
 | Tests | Unit, integration, e2e tests |
 | Configuration | Config files, env, settings |
@@ -92,7 +92,7 @@ Structure your findings like this:
 ## Language-Specific Hints
 
 | Language | Common Locations |
-|----------|------------------|
+|---|---|
 | **TypeScript/JS** | src/, lib/, components/, pages/, api/ |
 | **Python** | src/, lib/, pkg/, module directories |
 | **Go** | pkg/, internal/, cmd/ |

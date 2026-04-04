@@ -41,7 +41,7 @@ Silent failures are critical defects. Period.
 Find every error handling location:
 
 | Pattern | Languages | Example |
-|---------|-----------|---------|
+|---|---|---|
 | Try-catch | JS/TS, Java, C# | `try { } catch (e) { }` |
 | Try-except | Python | `try: except Exception:` |
 | Result types | Rust, Go | `if err != nil { }` |
@@ -56,7 +56,7 @@ For every error handling location, evaluate:
 #### Logging Quality
 
 | Question | Pass | Fail |
-|----------|------|------|
+|---|---|---|
 | Is error logged with appropriate severity? | `logError()` with context | `console.log()` or nothing |
 | Does log include sufficient context? | Operation, IDs, state | Just error message |
 | Is there an error ID for tracking? | Yes, from errorIds | No tracking ID |
@@ -65,7 +65,7 @@ For every error handling location, evaluate:
 #### User Feedback
 
 | Question | Pass | Fail |
-|----------|------|------|
+|---|---|---|
 | Does user receive feedback? | Clear error shown | Silent failure |
 | Is message actionable? | Tells user what to do | "Something went wrong" |
 | Is it appropriately technical? | Matches user context | Jargon or too vague |
@@ -73,7 +73,7 @@ For every error handling location, evaluate:
 #### Catch Block Specificity
 
 | Question | Pass | Fail |
-|----------|------|------|
+|---|---|---|
 | Catches only expected errors? | Specific error types | `catch (e)` catches all |
 | Could hide unrelated errors? | No | Yes - list what could hide |
 | Should be multiple catch blocks? | Already split | Monolithic catch-all |
@@ -81,7 +81,7 @@ For every error handling location, evaluate:
 #### Fallback Behavior
 
 | Question | Pass | Fail |
-|----------|------|------|
+|---|---|---|
 | Is fallback user-requested? | Documented/explicit | Silent substitution |
 | Does it mask the real problem? | No, logs original error | Hides underlying issue |
 | Falls back to mock in production? | No | Yes - architectural problem |
@@ -89,7 +89,7 @@ For every error handling location, evaluate:
 #### Error Propagation
 
 | Question | Pass | Fail |
-|----------|------|------|
+|---|---|---|
 | Should error bubble up? | Properly propagated | Swallowed prematurely |
 | Prevents proper cleanup? | No | Yes - resource leak risk |
 
@@ -98,7 +98,7 @@ For every error handling location, evaluate:
 Evaluate every user-facing error message:
 
 | Aspect | Good | Bad |
-|--------|------|-----|
+|---|---|---|
 | **Clarity** | "Could not save file: disk full" | "Error occurred" |
 | **Actionable** | "Please free up space and try again" | No guidance |
 | **Specific** | Identifies the exact failure | Generic message |
@@ -109,7 +109,7 @@ Evaluate every user-facing error message:
 Look for these anti-patterns:
 
 | Anti-Pattern | Why It's Bad | Severity |
-|--------------|--------------|----------|
+|---|---|---|
 | Empty catch block | Error vanishes completely | CRITICAL |
 | Log and continue | Error logged but user unaware | HIGH |
 | Return null/default silently | Caller doesn't know about failure | HIGH |

@@ -10,7 +10,7 @@ description: Extract a line-range content block from a text file into a new file
 Three operating modes — choose the one that fits the task:
 
 | Mode | What it does |
-|------|-------------|
+|---|---|
 | `extract` | Copy lines START–END verbatim to a new file; source file is unchanged |
 | `replace` | Substitute lines START–END in the source file with new content |
 | `extract-and-replace` | Extract first (preserves the original block), then replace |
@@ -170,7 +170,7 @@ Mode        : replace
 
 ```powershell
 $lines    = Get-Content "docs\api.md"
-$newBlock = @("| Param | Type | Description |", "|-------|------|-------------|", "| id    | int  | Resource ID |")
+$newBlock = @("| Param | Type | Description |", "|---|---|---|", "| id | int | Resource ID |")
 $before   = $lines[0..8]
 $after    = $lines[25..($lines.Count - 1)]
 ($before + $newBlock + $after) | Set-Content "docs\api.md" -Encoding utf8

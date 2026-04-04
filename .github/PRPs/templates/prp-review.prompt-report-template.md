@@ -23,7 +23,7 @@ recommendation: {approve|request-changes|block}
 ## Implementation Context
 
 | Artifact | Path |
-|----------|------|
+|---|---|
 | Implementation Report | `{path}` or "Not found" |
 | Original Plan | `{path}` or "Not found" |
 | Documented Deviations | {count} or "N/A" |
@@ -35,7 +35,7 @@ recommendation: {approve|request-changes|block}
 ## Changes Overview
 
 | File | Changes | Assessment |
-|------|---------|------------|
+|---|---|---|
 | `{path/to/file.ts}` | +{N}/-{M} | {PASS/WARN/FAIL} |
 
 ---
@@ -67,7 +67,7 @@ recommendation: {approve|request-changes|block}
 ## Validation Results
 
 | Check | Status | Details |
-|-------|--------|---------|
+|---|---|---|
 | Type Check | {PASS/FAIL} | {notes} |
 | Lint | {PASS/WARN} | {count} warnings |
 | Tests | {PASS/FAIL} | {count} passed |

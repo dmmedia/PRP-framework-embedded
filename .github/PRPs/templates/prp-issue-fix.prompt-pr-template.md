@@ -9,7 +9,7 @@
 ## Changes
 
 | File | Change |
-|------|--------|
+|---|---|
 | `src/x.ts` | {description} |
 | `src/x.test.ts` | Added test for {case} |
 

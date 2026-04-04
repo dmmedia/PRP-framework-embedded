@@ -12,7 +12,7 @@
 
    ## Validation Results
    | Check | Result |
-   |-------|--------|
+   |---|---|
    | Type check | PASS |
    | Lint | PASS |
    | Tests | PASS |

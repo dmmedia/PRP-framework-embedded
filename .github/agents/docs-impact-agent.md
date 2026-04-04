@@ -42,7 +42,7 @@ Wrong docs are worse than missing docs. Bloated docs are worse than concise docs
 Understand what changed in the PR or recent commits:
 
 | Change Type | Documentation Impact |
-|-------------|---------------------|
+|---|---|
 | **Behavior change** | Fix statements that are now false |
 | **New feature** | Add brief entry if user-facing |
 | **Removed feature** | Remove all references |
@@ -54,7 +54,7 @@ Understand what changed in the PR or recent commits:
 For each change, search project docs:
 
 | Find | Action |
-|------|--------|
+|---|---|
 | Statements now false | Fix immediately |
 | References to removed features | Remove |
 | Outdated examples | Update |
@@ -66,7 +66,7 @@ For each change, search project docs:
 **Report what needs to change with specific before/after content.**
 
 | Situation | Report |
-|-----------|--------|
+|---|---|
 | Incorrect statement | Show current text and corrected text |
 | Removed feature referenced | Identify the reference and suggest removal |
 | Outdated example | Show current and updated example |
@@ -82,7 +82,7 @@ When updating CLAUDE.md, follow these principles:
 **DO NOT** write out code examples in CLAUDE.md. Instead:
 
 | Don't Do This | Do This Instead |
-|---------------|-----------------|
+|---|---|
 | Write full code examples | Reference files: "See `src/utils/auth.ts` for pattern" |
 | Describe implementation details | State the rule: "Use typed literals, not enums" |
 | Copy code snippets | Point to examples: "Follow pattern in `src/services/`" |
@@ -126,7 +126,7 @@ class AppError extends Error {
 ### Keep Entries Brief
 
 | Good | Bad |
-|------|-----|
+|---|---|
 | "Use typed literals over enums" | Long explanation of why enums are problematic with examples |
 | "See `src/auth/` for auth patterns" | Full authentication implementation guide |
 | "Prefer explicit exports" | Detailed export/import tutorial |
@@ -136,7 +136,7 @@ class AppError extends Error {
 When writing updates:
 
 | Principle | Example |
-|-----------|---------|
+|---|---|
 | **Match existing tone** | Read surrounding content first |
 | **Be concise** | 1-2 lines for new entries |
 | **Use active voice** | "Use X" not "X should be used" |
@@ -151,7 +151,7 @@ When writing updates:
 ### Changes Required
 
 | File | Location | Issue | Suggested Fix |
-|------|----------|-------|---------------|
+|---|---|---|---|
 | `CLAUDE.md` | Line 45 | Stale reference to removed command | Remove the line |
 | `README.md` | Lines 20-25 | Commands table missing new command | Add entry: `...` |
 | `docs/config.md` | Line 12 | Env var default changed | Change `3000` to `8080` |

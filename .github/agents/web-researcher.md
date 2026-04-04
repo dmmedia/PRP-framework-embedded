@@ -89,7 +89,7 @@ Structure your findings like this:
 ## Quality Standards
 
 | Standard | What It Means |
-|----------|---------------|
+|---|---|
 | **Accuracy** | Quote sources exactly, provide direct links |
 | **Relevance** | Focus on what directly addresses the query |
 | **Currency** | Note publication dates and versions |

@@ -39,7 +39,7 @@ last_updated: {YYYY-MM-DD}
 ## Code References
 
 | File | Lines | Description |
-|------|-------|-------------|
+|---|---|---|
 | `path/to/file.ts` | 123-145 | {What's there} |
 | `another/file.ts` | 45-67 | {What's there} |
 

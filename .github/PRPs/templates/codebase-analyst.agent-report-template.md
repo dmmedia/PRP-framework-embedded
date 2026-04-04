@@ -5,7 +5,7 @@
 
 ### Entry Points
 | Location | Purpose |
-|----------|---------|
+|---|---|
 | `path/to/file.ts:45` | Main handler for X |
 | `path/to/other.ts:12` | Called by Y when Z |
 
@@ -29,18 +29,18 @@
 
 ### Patterns Found
 | Pattern | Location | Usage |
-|---------|----------|-------|
+|---|---|---|
 | Repository | `stores/data.ts:10-50` | Data access abstraction |
 | Factory | `factories/builder.ts:5` | Creates X instances |
 
 ### Configuration
 | Setting | Location | Purpose |
-|---------|----------|---------|
+|---|---|---|
 | `API_KEY` | `config/env.ts:12` | External service auth |
 | `RETRY_MAX` | `config/settings.ts:8` | Retry limit for failures |
 
 ### Error Handling
 | Error Type | Location | Behavior |
-|------------|----------|----------|
+|---|---|---|
 | ValidationError | `handlers/input.ts:28` | Returns 400, logs warning |
 | NetworkError | `services/api.ts:52` | Triggers retry queue |

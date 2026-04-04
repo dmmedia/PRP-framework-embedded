@@ -122,7 +122,7 @@ Error handling done well (acknowledge good patterns).
 ### Summary
 
 | Severity | Count | Action |
-|----------|-------|--------|
+|---|---|---|
 | CRITICAL | X | Must fix before merge |
 | HIGH | Y | Should fix before merge |
 | MEDIUM | Z | Improve when possible |

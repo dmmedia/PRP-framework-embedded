@@ -60,7 +60,7 @@ git log origin/{base-branch}..HEAD --oneline
 **Decision Tree:**
 
 | State | Action |
-|-------|--------|
+|---|---|
 | On {base-branch} | STOP: "Cannot create PR from {base-branch}. Create a feature branch first." |
 | Uncommitted changes | WARN: "You have uncommitted changes. Commit or stash before creating PR." |
 | No commits ahead | STOP: "No commits to create PR from. Branch is up to date with {base-branch}." |
@@ -120,7 +120,7 @@ git diff --name-only origin/{base-branch}..HEAD
 
 **Common prefixes:**
 | Prefix | Usage |
-|--------|-------|
+|---|---|
 | `feat:` | New feature |
 | `fix:` | Bug fix |
 | `refactor:` | Code restructuring |

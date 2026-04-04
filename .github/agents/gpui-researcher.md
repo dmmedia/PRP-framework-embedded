@@ -49,7 +49,7 @@ Zed is the canonical GPUI project. Always consult it for patterns:
 **Key areas to check in Zed:**
 
 | Area | Where to Look | What to Extract |
-|------|--------------|-----------------|
+|---|---|---|
 | Component structure | `crates/ui/src/components/` | How components are defined and composed |
 | State management | `crates/gpui/src/` | Model, View, Entity patterns |
 | Event handling | `crates/gpui/src/action.rs` | Action dispatch, key bindings |
@@ -80,7 +80,7 @@ When given a specific topic to research, validate:
 ### API Surface Validation
 
 | Check | How to Verify |
-|-------|---------------|
+|---|---|
 | Trait exists | Search Zed crate source for trait definition |
 | Method signature | Find actual signature in source, not docs alone |
 | Generic constraints | Check trait bounds and lifetime requirements |
@@ -90,7 +90,7 @@ When given a specific topic to research, validate:
 ### Pattern Validation
 
 | Check | How to Verify |
-|-------|---------------|
+|---|---|
 | Component pattern | Find 3+ examples of similar components in Zed |
 | State management | Verify Model/View/Entity usage matches Zed patterns |
 | Event handling | Confirm action dispatch pattern matches Zed conventions |

@@ -37,7 +37,7 @@
 **Phase Completed**: #{number} - {phase name}
 
 | # | Phase | Status |
-|---|-------|--------|
+|---|---|---|
 {Updated phases table showing progress}
 
 **Next Phase**: {next pending phase, or "All phases complete!"}

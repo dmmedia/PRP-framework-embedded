@@ -28,13 +28,13 @@ verbatim, and write each to a dedicated file in `.github/PRPs/templates/`. 19 fi
 
 ## Metadata
 
-| Field            | Value |
-|------------------|-------|
-| Type             | REFACTOR |
-| Complexity       | MEDIUM |
+| Field | Value |
+|---|---|
+| Type | REFACTOR |
+| Complexity | MEDIUM |
 | Systems Affected | `.github/PRPs/templates/` (target), `.github/prompts/` (source, read-only in this phase) |
-| Dependencies     | Phase 1 complete (`.github/PRPs/templates/` directory exists) ✅ |
-| Estimated Tasks  | 20 (19 creates + 1 validate) |
+| Dependencies | Phase 1 complete (`.github/PRPs/templates/` directory exists) ✅ |
+| Estimated Tasks | 20 (19 creates + 1 validate) |
 
 ---
 
@@ -95,7 +95,7 @@ verbatim, and write each to a dedicated file in `.github/PRPs/templates/`. 19 fi
 ### Interaction Changes
 
 | Location | Before | After | User Impact |
-|----------|--------|-------|-------------|
+|---|---|---|---|
 | `.github/prompts/prp-pr.prompt.md` | Template inline at L180–L215 | Template referenced | Edit template without touching agent logic |
 | `.github/PRPs/templates/` | Only README.md | 19 template files | Direct access to any output format |
 | Any prompt file | Mixed logic+template | Logic only (Phase 3) | Faster comprehension of agent instructions |

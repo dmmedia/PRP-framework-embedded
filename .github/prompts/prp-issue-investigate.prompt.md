@@ -321,7 +321,7 @@ gh issue comment {number} --body "$(cat .github/PRPs/templates/prp-issue-investi
 ### Assessment
 
 | Metric | Value | Reasoning |
-|--------|-------|-----------|
+|---|---|---|
 | {Severity or Priority} | {value} | {why - based on investigation} |
 | Complexity | {LOW\|MEDIUM\|HIGH} | {why - based on files/integration/risk} |
 | Confidence | {HIGH\|MEDIUM\|LOW} | {why - based on evidence/unknowns} |
@@ -335,7 +335,7 @@ gh issue comment {number} --body "$(cat .github/PRPs/templates/prp-issue-investi
 ### Files to Modify
 
 | File | Action |
-|------|--------|
+|---|---|
 | `src/x.ts` | UPDATE |
 | `src/x.test.ts` | CREATE |
 

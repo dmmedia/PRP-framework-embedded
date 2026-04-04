@@ -44,7 +44,7 @@ Make illegal states unrepresentable, but don't make simple things complex.
 Find all implicit and explicit invariants:
 
 | Invariant Type | What to Look For |
-|----------------|------------------|
+|---|---|
 | **Data consistency** | Fields that must stay in sync |
 | **Valid states** | Allowed combinations of values |
 | **Transitions** | Rules for state changes |
@@ -57,7 +57,7 @@ Find all implicit and explicit invariants:
 #### Encapsulation (1-10)
 
 | Score | Meaning |
-|-------|---------|
+|---|---|
 | 9-10 | Internals fully hidden, minimal complete interface |
 | 7-8 | Good encapsulation, minor exposure |
 | 5-6 | Some internals exposed, invariants at risk |
@@ -74,7 +74,7 @@ Find all implicit and explicit invariants:
 #### Invariant Expression (1-10)
 
 | Score | Meaning |
-|-------|---------|
+|---|---|
 | 9-10 | Self-documenting, compile-time enforcement |
 | 7-8 | Clear structure, mostly obvious |
 | 5-6 | Requires some documentation |
@@ -91,7 +91,7 @@ Find all implicit and explicit invariants:
 #### Invariant Usefulness (1-10)
 
 | Score | Meaning |
-|-------|---------|
+|---|---|
 | 9-10 | Prevents critical bugs, aligned with business |
 | 7-8 | Prevents real bugs, practical |
 | 5-6 | Somewhat useful, could be tighter |
@@ -108,7 +108,7 @@ Find all implicit and explicit invariants:
 #### Invariant Enforcement (1-10)
 
 | Score | Meaning |
-|-------|---------|
+|---|---|
 | 9-10 | Impossible to create invalid instances |
 | 7-8 | Strong enforcement, minor gaps |
 | 5-6 | Partial enforcement, some paths unguarded |
@@ -127,7 +127,7 @@ Find all implicit and explicit invariants:
 Flag these common issues:
 
 | Anti-Pattern | Problem | Severity |
-|--------------|---------|----------|
+|---|---|---|
 | **Anemic domain model** | No behavior, just data bag | MEDIUM |
 | **Exposed mutables** | Internal state can be modified externally | HIGH |
 | **Doc-only invariants** | Enforced only through comments | HIGH |
@@ -141,7 +141,7 @@ Flag these common issues:
 For each suggestion, consider:
 
 | Factor | Question |
-|--------|----------|
+|---|---|
 | **Complexity cost** | Does the improvement justify the added complexity? |
 | **Breaking changes** | Is the disruption worth the benefit? |
 | **Codebase conventions** | Does it fit existing patterns? |
@@ -163,7 +163,7 @@ When analyzing multiple types in a PR:
 ### Types Analyzed
 
 | Type | Overall | Encapsulation | Expression | Usefulness | Enforcement |
-|------|---------|---------------|------------|------------|-------------|
+|---|---|---|---|---|---|
 | `UserAccount` | 8/10 | 9/10 | 7/10 | 8/10 | 8/10 |
 | `Permission` | 6/10 | 5/10 | 6/10 | 7/10 | 6/10 |
 | `Session` | 4/10 | 3/10 | 4/10 | 5/10 | 4/10 |

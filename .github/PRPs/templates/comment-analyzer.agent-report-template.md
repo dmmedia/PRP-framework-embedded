@@ -90,7 +90,7 @@ counter++;
 TODOs, FIXMEs, and similar markers that need attention.
 
 | Location | Marker | Status | Recommendation |
-|----------|--------|--------|----------------|
+|---|---|---|---|
 | `file.ts:23` | `// TODO: add validation` | May be done | Verify and remove if complete |
 | `file.ts:89` | `// FIXME: race condition` | Unclear | Investigate current state |
 
@@ -123,7 +123,7 @@ Well-written comments that serve as good patterns.
 ### Summary
 
 | Category | Count |
-|----------|-------|
+|---|---|
 | Critical Issues | X |
 | Improvements | Y |
 | Removals | Z |

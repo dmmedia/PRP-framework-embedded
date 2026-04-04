@@ -48,7 +48,7 @@ Do not touch code outside scope unless it directly affects the simplification.
 Look for these simplification opportunities:
 
 | Opportunity | What to Look For |
-|-------------|------------------|
+|---|---|
 | **Unnecessary complexity** | Deep nesting, convoluted logic paths |
 | **Redundant code** | Duplicated logic, unused variables |
 | **Over-abstraction** | Abstractions that obscure rather than clarify |
@@ -63,7 +63,7 @@ Look for these simplification opportunities:
 Check and apply project-specific patterns from CLAUDE.md:
 
 | Category | What to Standardize |
-|----------|---------------------|
+|---|---|
 | **Imports** | Ordering, extensions, module style |
 | **Functions** | Declaration style, return types |
 | **Components** | Patterns, prop types, structure |
@@ -75,7 +75,7 @@ Check and apply project-specific patterns from CLAUDE.md:
 For each change, verify:
 
 | Check | Pass | Fail |
-|-------|------|------|
+|---|---|---|
 | Functionality preserved? | Behavior unchanged | Different output/behavior |
 | More readable? | Easier to understand | Harder to follow |
 | Maintainable? | Easier to modify/extend | More rigid or fragile |

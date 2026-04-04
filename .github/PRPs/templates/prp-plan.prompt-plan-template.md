@@ -51,7 +51,7 @@ So that {benefit}
 ### Interaction Changes
 
 | Location | Before | After | User Impact |
-|----------|--------|-------|-------------|
+|---|---|---|---|
 | {path/component} | {old behavior} | {new behavior} | {what changes for user} |
 
 ---
@@ -61,14 +61,14 @@ So that {benefit}
 **CRITICAL: Implementation agent MUST read these files before starting any task:**
 
 | Priority | File | Lines | Why Read This |
-|----------|------|-------|---------------|
+|---|---|---|---|
 | P0 | `path/to/critical.ts` | 10-50 | Pattern to MIRROR exactly |
 | P1 | `path/to/types.ts` | 1-30 | Types to IMPORT |
 | P2 | `path/to/test.ts` | all | Test pattern to FOLLOW |
 
 **External Documentation:**
 | Source | Section | Why Needed |
-|--------|---------|------------|
+|---|---|---|
 | [Lib Docs v{version}](url#anchor) | {section name} | {specific reason} |
 
 ---

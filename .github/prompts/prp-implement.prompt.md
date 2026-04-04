@@ -28,7 +28,7 @@ Execute the plan end-to-end with rigorous self-validation. You are autonomous.
 Check for these files to determine the project's toolchain:
 
 | File Found | Package Manager | Runner |
-|------------|-----------------|--------|
+|---|---|---|
 | `bun.lockb` | bun | `bun` / `bun run` |
 | `pnpm-lock.yaml` | pnpm | `pnpm` / `pnpm run` |
 | `yarn.lock` | yarn | `yarn` / `yarn run` |

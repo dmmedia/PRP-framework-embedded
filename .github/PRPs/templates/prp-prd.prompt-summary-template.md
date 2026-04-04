@@ -11,7 +11,7 @@
 ### Validation Status
 
 | Section | Status |
-|---------|--------|
+|---|---|
 | Problem Statement | {Validated/Assumption} |
 | User Research | {Done/Needed} |
 | Technical Feasibility | {Assessed/TBD} |
@@ -28,7 +28,7 @@
 ### Implementation Phases
 
 | # | Phase | Status | Can Parallel |
-|---|-------|--------|--------------|
+|---|---|---|---|
 {Table of phases from PRD}
 
 ### To Start Implementation

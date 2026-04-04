@@ -52,7 +52,7 @@
 ### Summary
 
 | Severity | Count |
-|----------|-------|
+|---|---|
 | Critical | X |
 | Important | Y |
 | **Total** | Z |

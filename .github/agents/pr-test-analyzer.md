@@ -44,7 +44,7 @@ Pragmatic over academic. Value over metrics.
 Map the PR's changes:
 
 | Change Type | What to Look For |
-|-------------|------------------|
+|---|---|
 | **New features** | Core functionality requiring coverage |
 | **Modified logic** | Changed behavior that needs test updates |
 | **New APIs** | Contracts that must be verified |
@@ -65,7 +65,7 @@ For each significant change, identify:
 Look for untested scenarios that matter:
 
 | Gap Type | Risk Level | Example |
-|----------|------------|---------|
+|---|---|---|
 | **Error handling** | High | Uncaught exceptions causing silent failures |
 | **Validation logic** | High | Invalid input accepted without rejection |
 | **Business logic branches** | High | Critical decision paths untested |
@@ -78,7 +78,7 @@ Look for untested scenarios that matter:
 Assess existing tests:
 
 | Quality Aspect | Good Sign | Bad Sign |
-|----------------|-----------|----------|
+|---|---|---|
 | **Focus** | Tests behavior/contracts | Tests implementation details |
 | **Resilience** | Survives refactoring | Breaks on internal changes |
 | **Clarity** | DAMP (Descriptive and Meaningful) | Cryptic or DRY to a fault |
@@ -90,7 +90,7 @@ Assess existing tests:
 Rate each recommendation 1-10:
 
 | Rating | Criticality | Action |
-|--------|-------------|--------|
+|---|---|---|
 | **9-10** | Critical - data loss, security, system failure | Must add |
 | **7-8** | Important - user-facing errors, business logic | Should add |
 | **5-6** | Moderate - edge cases, minor issues | Consider adding |
