@@ -18,9 +18,8 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 **TODO:**
 
-- Review `AGENTS.md` according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide.
-- Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax" section.
-- Review prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax" section.
+- Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
+- Review prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
 - Review PRD template for excessiveness.
 - Review Plan template for excessiveness.
 - Review prompts:
