@@ -18,14 +18,13 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 **TODO:**
 
+- Review `AGENTS.md` according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide.
+- Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax" section.
+- Review prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax" section.
+- Review PRD template for excessiveness.
+- Review Plan template for excessiveness.
 - Review prompts:
-   - extract more templates, as it seems that the 1st extraction did not do all of them to separate files and instruct prompts to read and use them when needed in a same way, like in the 1st extraction covered by `.claude\PRPs\prds\completed\extract-prompt-output-templates.prd.md`
-      - `.github\prompts\prp-implement.prompt.md` - extract phase 6 output report to user summary template
-      - `.github\prompts\prp-issue-fix.prompt.md` - extract 7.2 create pr pr template between eof
-      - `.github\prompts\prp-issue-fix.prompt.md` - extract 8.2 post review to pr review template between eof
-      - `.github\prompts\prp-issue-investigate.prompt.md` - extract phase 6 post github comment comment template between eof
-      - `.github\prompts\prp-plan.prompt.md` - extract phase 6 report to user summary template
-      - `.github\prompts\prp-ralph.prompt.md` - extract 4.2 1. implementation report template
+   - extract more templates, as it seems that the 1st and 2nd extraction did not do all of them to separate files and instruct prompts to read and use them when needed in a same way, like in the 1st extraction covered by `.claude\PRPs\prds\completed\extract-prompt-output-templates.prd.md`
    - fix heredoc template usage in:
       - `.github\prompts\prp-issue-fix.prompt.md`
       - `.github\prompts\prp-issue-investigate.prompt.md`
@@ -36,24 +35,10 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
    - minimize prompts
       - `.github\prompts\prp-issue-fix.prompt.md` - replace 3.2 decision tree ascii with mermaid or list
       - `.github\prompts\prp-plan.prompt.md` - ask gemini if it is beneficial using <context>, <objective>, <process> tags along markdown in vs code github copilot prompts
-      - `.github\prompts\prp-pr.prompt.md` - remove 2.1 template search
-      - `.github\prompts\prp-pr.prompt.md` - remove phasee 6 output report to user multiple pr templates section
       - `.github\prompts\prp-prd.prompt.md` - replace process overview ascii with mermaid or list
       - `.github\prompts\prp-prd.prompt.md` - replace question flow summary ascii with mermaid or list
 - Review agents:
    - extract templates to separate files and reference them
-      - `.github\agents\code-reviewer.md` - extract output format code review template
-      - `.github\agents\code-simplifier.md` - extract output format code simplification report template
-      - `.github\agents\codebase-analyst.md` - extract output format codebase analysis report template
-      - `.github\agents\codebase-explorer.md` - extract output format exploration report template
-      - `.github\agents\comment-analyzer.md` - extract output format comment analysis report template
-      - `.github\agents\gpui-researcher.md` - extract output format research report template
-      - `.github\agents\pr-test-analyzer.md` - extract output format pr test analysis report template
-      - `.github\agents\pr-test-analyzer.md` - extract output format pr test adequate coverage report template
-      - `.github\agents\silent-failure-hunter.md` - extract output format silent failure analysis report template
-      - `.github\agents\silent-failure-hunter.md` - extract output format silent failure no issues report template
-      - `.github\agents\type-design-analyzer.md` - extract output format type design analysis report template
-      - `.github\agents\web-researcher.md` - extract output format web research report template
    - remove all duplications
    - minimize prompts
 - Review new `AGENT.md` templates and extend content from migrated `claude_md_files/` where possible. Remove other files. Remove old `claude_md_files/`.
