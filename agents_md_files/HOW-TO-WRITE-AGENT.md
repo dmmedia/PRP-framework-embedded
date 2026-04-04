@@ -140,7 +140,7 @@ But the `AGENTS.md` file affects **every single phase of your workflow** and eve
 +------------------------------------------------------------------------+
 ```
 
-### Syntax notes
+### Markdown Syntax
 
 These are answers given by [Gemini](https://gemini.google.com/).
 
@@ -260,6 +260,92 @@ These are answers given by [Gemini](https://gemini.google.com/).
      RETURN 403_error
    ```
 
+### XML tags in prompts, agents and skills
+
+It's extremely beneficial to use XML tags. While Markdown headers (`#`, `##`) are great for humans, XML-style tags like `<context>` and `<objective>` are like **GPS coordinates** for an AI. Large Language Models are trained heavily on code and documentation where tags are used to define strict boundaries.
+
+1. **The "Container" Effect**: Markdown headers are "one-sided" -- they mark the beginning of a section but not the end. The AI has to guess where the "Context" section ends and the "Instructions" begins. GitHub Copilot often pulls in "neighboring files" and "open tabs" as hidden context. Using tags creates a **high-contrast barrier** between **your prompt instructions**, **highlighted code** and **other pulled-in context**. Combine Markdown and XML tags. Use Markdown for readability (`### Instructions`) and use tags for structural isolation (`<instructions>...</instructions>`).
+
+2. **Common Tag Schema for Copilot Prompts**:
+
+| Tag | Purpose |
+|---|---|
+| `<role>` | Defines the persona (e.g., Senior DevOps, Security Auditor) |
+| `<context>` | Provides background on the codebase or the "why" behind the task. |
+| `<constraints>` | Lists the "No-Go" zones (e.g., no external libraries, must be ES6) |
+| `<task>` | The core action you want performed |
+| `<example>` | Few-shot examples to guide the output style |
+| `<output>` | Specifies the exact format (JSON, YAML, a specific function) |
+
+3. **Prompt Example**
+
+```markdown
+<role>
+You are an expert TypeScript developer focusing on performance optimization.
+</role>
+
+<context>
+The current function handles massive JSON arrays from a legacy API.  
+The current bottleneck is the nested mapping logic.
+</context>
+
+<task>
+Refactor the following code to use a single pass through the data.
+</task>
+
+<constraints>
+- Do not use Lodash.
+- Maintain O(n) time complexity.
+</constraints>
+
+<code>
+[Insert Code Here]
+</code>
+```
+
+3. Agents and skills are unique because they use **Tools** (e.g. searching the codebase, running a terminal command). When an agent runs a tool, the result is dumped back into the conversation context. Instruct the agent:
+
+```markdown
+"Always wrap the output of your analysis in `<analysis>` tags before calling the next tool."
+```
+
+This makes it incredibly easy for the agent to find its own previus thoughts amidst raw logs and search results. In an agent file, you are often managing three distinct "streams" of information:
+
+   - `<persona>`: Who the agent is.
+   - `<tools_guidance>`: Precise logic on *how* and *when* to use specific tools (e.g., "Only use `grep` if the file is over 500 lines").
+   - `<knowledge>`: Static snippets of documentation or "tribal knowledge" the agent must always remember.
+
+**Example: A Skill Definition (`SKILL.md`):**
+
+```markdown
+---
+name: migration-pattern
+description: Migrating from REST to GraphQL
+---
+
+<objective>
+Refactor legacy Express.js endpoints to Apollo Server resolvers.
+</objective>
+
+<process>
+1. Parse the REST route in <input_code>.
+2. Define the equivalent GQL schema.
+3. Map the database logic into the resolver.
+</process>
+
+<knowledge_base>
+- Use the 'BaseResolver' class found in /src/shared/base.ts.
+- All resolvers must include the @Authorized() decorator.
+</knowledge_base>
+
+<rules>
+- NEVER modify the database schema during migration.
+- DO NOT use any libraries except 'type-graphql'.
+</rules>
+```
+
+4. **Do not use tags for simple prompts**.
+
 ## In Conclusion
 
 1. `AGENTS.md` is for onboarding agent into your codebase. It should define your project's **WHY**, **WHAT**, and **HOW**.
@@ -267,5 +353,6 @@ These are answers given by [Gemini](https://gemini.google.com/).
 3. Keep the contents of your `AGENTS.md` **concise and universally applicable**.
 4. Use **Progressive Disclosure** - don't tell agent all the information you could possibly want it to know. Rather, tell it *how to find* important information so that it can find and use it, but only when it needs to to avoid bloating your context window or instruction count.
 5. **Syntax matters**. Use markdown syntax strategically to minimize the context pollution and keeping your instructions clear and easy to follow for the model.
-6. Agent is not a linter. Use linters and code formatters, and use other features like Hooks and Slash Commands as necessary.
-7. `AGENTS.md` **is the highest leverage point of the harness**, so avoid auto-generating it. You should carefully craft its contents for best results.
+6. **Use XML tags in prompts, agents and skills**. If you design tools or agents to handle complex multi-step workflows, XML tags are the best defence against "context collapse". They ensure the AI never forgets it's an agent, even when it's looking at 1,000 lines of error logs.
+7. Agent is not a linter. Use linters and code formatters, and use other features like Hooks and Slash Commands as necessary.
+8. `AGENTS.md` **is the highest leverage point of the harness**, so avoid auto-generating it. You should carefully craft its contents for best results.
