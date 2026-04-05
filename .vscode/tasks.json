@@ -4,7 +4,14 @@
     {
       "label": "PRP: Create PRD",
       "type": "shell",
-      "command": "uv run .github/PRPs/scripts/prp_workflow.py --no-commit --no-pr \"Create PRD workflow\"",
+      "command": "uv",
+      "args": [
+        "run",
+        ".github/PRPs/scripts/prp_workflow.py",
+        "${input:commitMode}",
+        "${input:prMode}",
+        "${input:featureDescription}"
+      ],
       "group": "build",
       "presentation": {
         "reveal": "always",
@@ -15,7 +22,16 @@
     {
       "label": "PRP: Plan",
       "type": "shell",
-      "command": "uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode-phase-4.plan.md --no-commit --no-pr",
+      "command": "uv",
+      "args": [
+        "run",
+        ".github/PRPs/scripts/prp_workflow.py",
+        "${input:skipPlanCreate}",
+        "--prp-path",
+        "${input:prdPath}",
+        "${input:commitMode}",
+        "${input:prMode}"
+      ],
       "group": "build",
       "presentation": {
         "reveal": "always",
@@ -26,13 +42,62 @@
     {
       "label": "PRP: Implement",
       "type": "shell",
-      "command": "uv run .github/PRPs/scripts/prp_workflow.py --skip-create --prp-path .claude/PRPs/plans/migrate-prp-framework-to-github-copilot-vscode-phase-4.plan.md --no-pr",
+      "command": "uv",
+      "args": [
+        "run",
+        ".github/PRPs/scripts/prp_workflow.py",
+        "${input:skipPlanCreate}",
+        "--prp-path",
+        "${input:prpPath}",
+        "${input:prMode}"
+      ],
       "group": "build",
       "presentation": {
         "reveal": "always",
         "panel": "shared"
       },
       "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "commitMode",
+      "type": "pickString",
+      "options": ["--no-commit", ""],
+      "default": "--no-commit",
+      "description": "Commit mode"
+    },
+    {
+      "id": "prMode",
+      "type": "pickString",
+      "options": ["--no-pr", ""],
+      "default": "--no-pr",
+      "description": "PR mode"
+    },
+    {
+      "id": "featureDescription",
+      "type": "promptString",
+      "description": "Feature description to implement or empty for questions",
+      "default": ""
+    },
+    {
+      "id": "skipPlanCreate",
+      "type": "pickString",
+      "options": ["--skip-create", ""],
+      "default": "--skip-create",
+      "description": "Skip plan creation and use existing plan"
+    },
+    {
+      "id": "prpPath",
+      "type": "promptString",
+      "description": "Path to existing PRP plan to use for implementation",
+      "default": ""
+    },
+    {
+      "id": "prdPath",
+      "type": "promptString",
+      "description": "Path to existing PRD to use for planning",
+      "default": ""
     }
   ]
 }
