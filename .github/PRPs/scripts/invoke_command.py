@@ -2,9 +2,9 @@
 """Invoke a Claude Code slash command from Python.
 
 Usage:
-    uv run .claude/PRPs/scripts/invoke_command.py prp-core-create "Add JWT authentication"
-    uv run .claude/PRPs/scripts/invoke_command.py prp-core-execute my-feature --interactive
-    uv run .claude/PRPs/scripts/invoke_command.py .claude/commands/prp-core/prp-core-pr.md "Add auth feature"
+    uv run .github/PRPs/scripts/invoke_command.py prp-core-create "Add JWT authentication"
+    uv run .github/PRPs/scripts/invoke_command.py prp-core-execute my-feature --interactive
+    uv run .github/PRPs/scripts/invoke_command.py .github/prompts/prp-pr.prompt.md "Add auth feature"
 """
 
 from __future__ import annotations
@@ -54,13 +54,13 @@ def resolve_command_path(command: str) -> Path:
             return path
         return get_workdir() / path
 
-    # Otherwise, search in .claude/commands/ under effective workdir
+    # Otherwise, search in .github/prompts/ under effective workdir
     workdir = get_workdir()
-    commands_dir = workdir / ".claude" / "commands"
+    commands_dir = workdir / ".github" / "prompts"
 
     # Try common locations
     search_paths = [
-        commands_dir / f"{command}.md",
+        commands_dir / f"{command}.prompt.md",
         commands_dir / "prp-core" / f"{command}.md",
         commands_dir / "prp-commands" / f"{command}.md",
         commands_dir / "development" / f"{command}.md",
@@ -181,7 +181,7 @@ def main() -> None:
 Examples:
   %(prog)s prp-core-create "Add JWT authentication"
   %(prog)s prp-core-execute my-feature --interactive
-  %(prog)s .claude/commands/prp-core/prp-core-pr.md "Add auth" --output-format json
+  %(prog)s .github/prompts/prp-pr.prompt.md "Add auth" --output-format json
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

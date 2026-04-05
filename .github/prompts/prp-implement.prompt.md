@@ -302,12 +302,12 @@ Run any edge case tests specified in the plan.
 ### 5.1 Create Report Directory
 
 ```bash
-mkdir -p .claude/PRPs/reports
+mkdir -p .github/PRPs/reports
 ```
 
 ### 5.2 Generate Report
 
-**Path**: `.claude/PRPs/reports/{plan-name}-report.md`
+**Path**: `.github/PRPs/reports/{plan-name}-report.md`
 
 > **Output Template**: See `.github/PRPs/templates/prp-implement.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
@@ -332,13 +332,13 @@ mkdir -p .claude/PRPs/reports
 ### 5.4 Archive Plan
 
 ```bash
-mkdir -p .claude/PRPs/plans/completed
-mv $ARGUMENTS .claude/PRPs/plans/completed/
+mkdir -p .github/PRPs/plans/completed
+mv $ARGUMENTS .github/PRPs/plans/completed/
 ```
 
 **PHASE_5_CHECKPOINT:**
 
-- [ ] Report created at `.claude/PRPs/reports/`
+- [ ] Report created at `.github/PRPs/reports/`
 - [ ] PRD updated (if applicable) - phase marked complete
 - [ ] Plan moved to completed folder
 

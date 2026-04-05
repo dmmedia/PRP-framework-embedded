@@ -215,9 +215,9 @@ Ask final clarifying questions:
 
 ## Phase 7: GENERATE - Write PRD
 
-**Output path**: `.claude/PRPs/prds/{kebab-case-name}.prd.md`
+**Output path**: `.github/PRPs/prds/{kebab-case-name}.prd.md`
 
-Create directory if needed: `mkdir -p .claude/PRPs/prds`
+Create directory if needed: `mkdir -p .github/PRPs/prds`
 
 ### PRD Template
 
@@ -264,7 +264,7 @@ After generating, report:
 └─────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
-│  GENERATE: Write PRD to .claude/PRPs/prds/              │
+│  GENERATE: Write PRD to .github/PRPs/prds/              │
 └─────────────────────────────────────────────────────────┘
 ```
 

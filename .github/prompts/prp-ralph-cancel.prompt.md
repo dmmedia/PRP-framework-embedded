@@ -11,7 +11,7 @@ description: Cancel active PRP Ralph loop
 1. **Check if loop is active**:
 
    ```bash
-   test -f .claude/prp-ralph.state.md && echo "ACTIVE" || echo "NOT_FOUND"
+   test -f .github/prp-ralph.state.md && echo "ACTIVE" || echo "NOT_FOUND"
    ```
 
 2. **If NOT_FOUND**: Report "No active Ralph loop found."
@@ -21,7 +21,7 @@ description: Cancel active PRP Ralph loop
    a. Read the state file to get current iteration:
 
    ```bash
-   head -20 .claude/prp-ralph.state.md
+   head -20 .github/prp-ralph.state.md
    ```
 
    b. Extract iteration number from the YAML frontmatter
@@ -29,7 +29,7 @@ description: Cancel active PRP Ralph loop
    c. Remove the state file:
 
    ```bash
-   rm .claude/prp-ralph.state.md
+   rm .github/prp-ralph.state.md
    ```
 
    d. Report:

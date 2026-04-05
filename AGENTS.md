@@ -39,12 +39,6 @@ curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" 
 
 ## Project Structure
 
-- `.claude/`: obsolete Claude Code specific directory, being phased out in favor of `.github/` structure
-   - `PRPs/`: PRP artifacts
-      - `plans/`: Plans created based on PRDs
-         - `completed/`: Executed plans
-      - `PRDs/`: PRDs created from user requests by `/prp-prd` slash command
-      - `reports/`: Post-implementation reports
 - `.claude-plugin/`: Claude Code specific directory with undetermined purpose
 - `.github/`: VS Code and Copilot PRP framework project
    - `agents/`: Pre-configured agents for specific tasks
@@ -55,6 +49,10 @@ curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" 
       - `features/`: Feature-specific PRDs
          - `completed/`: Implemented feature PRDs
       - `scripts/`: PRP runner and utilities
+      - `plans/`: Plans created based on PRDs
+         - `completed/`: Executed plans
+      - `PRDs/`: PRDs created from user requests by `/prp-prd` slash command
+      - `reports/`: Post-implementation reports
       - `templates/`: PRP templates
    - `skills/`: Autonomous agent skills
 - `.venv/`: Virtual environment for Python dependencies
@@ -64,7 +62,6 @@ curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" 
 - `old-prp-commands/`: Obsolete PRP framework developments
 - `plugins/`: PRP framework packed as a plugin (for Claude Code only?)
    - `prp-core/`: Core PRP framework plugin. Should be finally a copy of the `.github/` contents
-- `PRPs/scripts/`: Obsolete location for scripts, being phased out in favor of `.github/PRPs/scripts/`
 - `tests/`: Python unit tests for PRP framework
 - `.gitignore`: Git ignore file
 - `.python-version`: Python version for `pyenv`/`uv`

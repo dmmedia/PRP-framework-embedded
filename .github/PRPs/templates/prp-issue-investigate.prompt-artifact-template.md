@@ -173,4 +173,4 @@ describe("{feature}", () => {
 
 - **Investigated by**: Claude
 - **Timestamp**: {ISO timestamp}
-- **Artifact**: `.claude/PRPs/issues/issue-{number}.md`
+- **Artifact**: `.github/PRPs/issues/issue-{number}.md`

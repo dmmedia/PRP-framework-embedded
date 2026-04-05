@@ -207,7 +207,7 @@ basename $(git rev-parse --show-toplevel)
 ### 5.2 Create Research Directory
 
 ```bash
-mkdir -p .claude/PRPs/research
+mkdir -p .github/PRPs/research
 ```
 
 ### 5.3 Determine Filename
@@ -216,7 +216,7 @@ mkdir -p .claude/PRPs/research
 
 **If new research**:
 
-**Path**: `.claude/PRPs/research/{YYYY-MM-DD}-{kebab-case-topic}.md`
+**Path**: `.github/PRPs/research/{YYYY-MM-DD}-{kebab-case-topic}.md`
 
 Examples:
 
@@ -301,6 +301,6 @@ If `--follow-up` flag and existing research file:
 - **QUESTION_ANSWERED**: User's question addressed with concrete evidence
 - **AGENTS_USED**: Specialized agents spawned for each research area
 - **EVIDENCE_COMPLETE**: Every finding has `file:line` references
-- **DOCUMENT_CREATED**: Research file saved at `.claude/PRPs/research/`
+- **DOCUMENT_CREATED**: Research file saved at `.github/PRPs/research/`
 - **NO_OPINIONS**: Document describes what exists, not what should change
 - **PERMALINKS_ADDED**: GitHub links included when possible

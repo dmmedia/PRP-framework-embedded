@@ -9,7 +9,7 @@ The stop hook is now active. When you try to exit:
 - If validations incomplete → same prompt fed back
 - If all validations pass → loop exits
 
-To monitor: `cat .claude/prp-ralph.state.md`
+To monitor: `cat .github/prp-ralph.state.md`
 To cancel: `/prp-ralph-cancel`
 
 ______________________________________________________________________

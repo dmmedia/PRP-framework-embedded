@@ -22,7 +22,7 @@ Wrong docs are worse than missing docs. Bloated docs are worse than concise docs
 
 **UPDATE these files**:
 
-- `CLAUDE.md` - AI assistant instructions and project rules
+- `AGENTS.md` - AI assistant instructions and project rules
 - `README.md` - User-facing getting started guide
 - `docs/*.md` - Architecture, configuration, guides
 - `CONTRIBUTING.md` - Contributor guidelines
@@ -30,8 +30,8 @@ Wrong docs are worse than missing docs. Bloated docs are worse than concise docs
 
 **DO NOT touch these** (system files, not project docs):
 
-- `.claude/agents/*.md` - Agent definitions
-- `.claude/commands/*.md` - Command templates
+- `.github/agents/*.md` - Agent definitions
+- `.github/commands/*.md` - Command templates
 - `.agents/**/*.md` - Agent reference files
 - Plugin and workflow files
 

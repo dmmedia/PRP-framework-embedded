@@ -241,12 +241,12 @@ git blame -L {start},{end} {affected-file}
 ### 4.1 Artifact Path
 
 ```bash
-mkdir -p .claude/PRPs/issues
+mkdir -p .github/PRPs/issues
 ```
 
-**Path:** `.claude/PRPs/issues/issue-{number}.md`
+**Path:** `.github/PRPs/issues/issue-{number}.md`
 
-If free-form (no issue number): `.claude/PRPs/issues/investigation-{timestamp}.md`
+If free-form (no issue number): `.github/PRPs/issues/investigation-{timestamp}.md`
 
 ### 4.2 Artifact Template
 
@@ -274,7 +274,7 @@ Write this structure to the artifact file.
 ## Phase 5: COMMIT - Save Artifact
 
 ```bash
-git add .claude/PRPs/issues/
+git add .github/PRPs/issues/
 git status
 ```
 
@@ -341,7 +341,7 @@ gh issue comment {number} --body "$(cat .github/PRPs/templates/prp-issue-investi
 
 ### Artifact
 
-`.claude/PRPs/issues/issue-{number}.md`
+`.github/PRPs/issues/issue-{number}.md`
 
 ### GitHub
 

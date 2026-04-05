@@ -322,9 +322,9 @@ NOT_BUILDING (explicit scope limits):
 
 ## Phase 6: GENERATE - Implementation Plan File
 
-**OUTPUT_PATH**: `.claude/PRPs/plans/{kebab-case-feature-name}.plan.md`
+**OUTPUT_PATH**: `.github/PRPs/plans/{kebab-case-feature-name}.plan.md`
 
-Create directory if needed: `mkdir -p .claude/PRPs/plans`
+Create directory if needed: `mkdir -p .github/PRPs/plans`
 
 **PLAN_STRUCTURE** (the template to fill and save):
 
@@ -334,7 +334,7 @@ Create directory if needed: `mkdir -p .claude/PRPs/plans`
 </process>
 
 <output>
-**OUTPUT_FILE**: `.claude/PRPs/plans/{kebab-case-feature-name}.plan.md`
+**OUTPUT_FILE**: `.github/PRPs/plans/{kebab-case-feature-name}.plan.md`
 
 **If input was from PRD file**, also update the PRD:
 

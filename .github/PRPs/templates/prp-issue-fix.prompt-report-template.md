@@ -25,7 +25,7 @@
 
 ### Artifact
 
-📄 Archived to `.claude/PRPs/issues/completed/issue-{number}.md`
+📄 Archived to `.github/PRPs/issues/completed/issue-{number}.md`
 
 ### Next Steps
 

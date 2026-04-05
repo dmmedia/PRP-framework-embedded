@@ -1,7 +1,7 @@
 ## Research Complete
 
 **Question**: {original question}
-**Document**: `.claude/PRPs/research/{filename}.md`
+**Document**: `.github/PRPs/research/{filename}.md`
 
 ### Summary
 

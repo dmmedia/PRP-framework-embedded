@@ -38,7 +38,7 @@ Fixes #{number}
 
 ### Implementation followed artifact:
 
-`.claude/PRPs/issues/issue-{number}.md`
+`.github/PRPs/issues/issue-{number}.md`
 
 ### Deviations from plan:
 

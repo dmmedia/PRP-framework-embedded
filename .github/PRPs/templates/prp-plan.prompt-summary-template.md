@@ -1,6 +1,6 @@
 ﻿## Plan Created
 
-**File**: `.claude/PRPs/plans/{feature-name}.plan.md`
+**File**: `.github/PRPs/plans/{feature-name}.plan.md`
 
 {If from PRD:}
 **Source PRD**: `{prd-file-path}`
@@ -44,4 +44,4 @@ To start: `git worktree add -b phase-{X} ../project-phase-{X} && cd ../project-p
 
 - {Rationale for score}
 
-**Next Step**: To execute, run: `/prp-implement .claude/PRPs/plans/{feature-name}.plan.md`
+**Next Step**: To execute, run: `/prp-implement .github/PRPs/plans/{feature-name}.plan.md`

@@ -97,7 +97,7 @@ Read and internalize:
 cat CLAUDE.md
 
 # Check for additional reference docs
-ls -la .claude/docs/ 2>/dev/null
+ls -la .github/docs/ 2>/dev/null
 ls -la docs/ 2>/dev/null
 ```
 
@@ -114,13 +114,13 @@ Look for implementation artifacts:
 
 ```bash
 # Find implementation report by branch name
-ls .claude/PRPs/reports/*{branch-name}*.md 2>/dev/null
+ls .github/PRPs/reports/*{branch-name}*.md 2>/dev/null
 
 # Find completed plans
-ls .claude/PRPs/plans/completed/ 2>/dev/null
+ls .github/PRPs/plans/completed/ 2>/dev/null
 
 # Find issue investigations
-ls .claude/PRPs/issues/completed/ 2>/dev/null
+ls .github/PRPs/issues/completed/ 2>/dev/null
 ```
 
 **If implementation report exists:**
@@ -350,12 +350,12 @@ npm test -- {relevant-test-pattern}
 ### 6.1 Create Report Directory
 
 ```bash
-mkdir -p .claude/PRPs/reviews
+mkdir -p .github/PRPs/reviews
 ```
 
 ### 6.2 Generate Report File
 
-**Path**: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`
+**Path**: `.github/PRPs/reviews/pr-{NUMBER}-review.md`
 
 > **Output Template**: See `.github/PRPs/templates/prp-review.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
@@ -375,13 +375,13 @@ Based on recommendation and flags:
 
 ```bash
 # If --approve flag AND no critical/high issues
-gh pr review {NUMBER} --approve --body-file .claude/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr review {NUMBER} --approve --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
 
 # If --request-changes flag OR high issues found
-gh pr review {NUMBER} --request-changes --body-file .claude/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr review {NUMBER} --request-changes --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
 
 # Otherwise just comment
-gh pr comment {NUMBER} --body-file .claude/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr comment {NUMBER} --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
 ```
 
 ### 7.2 Get Comment URL

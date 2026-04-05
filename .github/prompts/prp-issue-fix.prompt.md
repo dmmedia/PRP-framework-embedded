@@ -58,7 +58,7 @@ Determine the base branch for branching, syncing, and PR creation:
 
 ```bash
 # Look for artifact
-ls .claude/PRPs/issues/issue-{number}.md
+ls .github/PRPs/issues/issue-{number}.md
 ```
 
 **If input is a path**:
@@ -85,7 +85,7 @@ cat {artifact-path}
 **If artifact not found:**
 
 ```text
-❌ Artifact not found at .claude/PRPs/issues/issue-{number}.md
+❌ Artifact not found at .github/PRPs/issues/issue-{number}.md
 
 Run `/prp-issue-investigate {number}` first to create the implementation plan.
 ```
@@ -441,14 +441,14 @@ gh pr comment --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-review-t
 ### 9.1 Move Artifact to Completed
 
 ```bash
-mkdir -p .claude/PRPs/issues/completed
-mv .claude/PRPs/issues/issue-{number}.md .claude/PRPs/issues/completed/
+mkdir -p .github/PRPs/issues/completed
+mv .github/PRPs/issues/issue-{number}.md .github/PRPs/issues/completed/
 ```
 
 ### 9.2 Commit and Push Archive
 
 ```bash
-git add .claude/PRPs/issues/
+git add .github/PRPs/issues/
 git commit -m "Archive investigation for issue #{number}"
 git push
 ```

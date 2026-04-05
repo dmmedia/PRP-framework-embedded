@@ -24,7 +24,7 @@
 
 ### Artifacts
 
-- Report: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`
+- Report: `.github/PRPs/reviews/pr-{NUMBER}-review.md`
 - PR Comment: {comment_url}
 
 ### Next Steps

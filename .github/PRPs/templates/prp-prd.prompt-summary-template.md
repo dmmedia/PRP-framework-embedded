@@ -1,6 +1,6 @@
 ## PRD Created
 
-**File**: `.claude/PRPs/prds/{name}.prd.md`
+**File**: `.github/PRPs/prds/{name}.prd.md`
 
 ### Summary
 
@@ -33,6 +33,6 @@
 
 ### To Start Implementation
 
-Run: `/prp-plan .claude/PRPs/prds/{name}.prd.md`
+Run: `/prp-plan .github/PRPs/prds/{name}.prd.md`
 
 This will automatically select the next pending phase and create an implementation plan.

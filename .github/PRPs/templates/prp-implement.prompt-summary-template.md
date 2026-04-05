@@ -27,8 +27,8 @@
 
 ### Artifacts
 
-- Report: `.claude/PRPs/reports/{name}-report.md`
-- Plan archived to: `.claude/PRPs/plans/completed/`
+- Report: `.github/PRPs/reports/{name}-report.md`
+- Plan archived to: `.github/PRPs/plans/completed/`
 
 {If from PRD:}
 ### PRD Progress

@@ -100,4 +100,4 @@ recommendation: {approve|request-changes|block}
 ---
 
 *Reviewed by Claude*
-*Report: `.claude/PRPs/reviews/pr-{NUMBER}-review.md`*
+*Report: `.github/PRPs/reviews/pr-{NUMBER}-review.md`*

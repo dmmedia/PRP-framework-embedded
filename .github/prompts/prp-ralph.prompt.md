@@ -47,7 +47,7 @@ Create one first:
   /prp-prd "your product idea"           # Creates PRD with phases
 
 Then run:
-  /prp-ralph .claude/PRPs/plans/your-feature.plan.md --max-iterations 20
+  /prp-ralph .github/PRPs/plans/your-feature.plan.md --max-iterations 20
 ```
 
 ### 1.3 Verify File Exists
@@ -80,11 +80,11 @@ If input is a `.prd.md` file:
 
 ### 2.1 Create State File
 
-Create `.claude/prp-ralph.state.md`:
+Create `.github/prp-ralph.state.md`:
 
 ```bash
-mkdir -p .claude
-mkdir -p .claude/PRPs/ralph-archives
+mkdir -p .github
+mkdir -p .github/PRPs/ralph-archives
 ```
 
 Write state file with this structure:
@@ -249,7 +249,7 @@ ALL of these must be true:
 
 1. **Generate Implementation Report**:
 
-   Create `.claude/PRPs/reports/{plan-name}-report.md`:
+   Create `.github/PRPs/reports/{plan-name}-report.md`:
 
    > **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-report-template.md`
    > Load this file and use its structure exactly when generating output.
@@ -260,18 +260,18 @@ ALL of these must be true:
    # Create archive directory
    DATE=$(date +%Y-%m-%d)
    PLAN_NAME=$(basename {plan_path} .plan.md)
-   ARCHIVE_DIR=".claude/PRPs/ralph-archives/${DATE}-${PLAN_NAME}"
+   ARCHIVE_DIR=".github/PRPs/ralph-archives/${DATE}-${PLAN_NAME}"
    mkdir -p "$ARCHIVE_DIR"
 
    # Copy state file (with all learnings)
-   cp .claude/prp-ralph.state.md "$ARCHIVE_DIR/state.md"
+   cp .github/prp-ralph.state.md "$ARCHIVE_DIR/state.md"
 
    # Copy the plan
    cp {plan_path} "$ARCHIVE_DIR/plan.md"
 
    # Extract consolidated learnings
    # (The report serves as learnings.md)
-   cp .claude/PRPs/reports/{plan-name}-report.md "$ARCHIVE_DIR/learnings.md"
+   cp .github/PRPs/reports/{plan-name}-report.md "$ARCHIVE_DIR/learnings.md"
    ```
 
 3. **Update CLAUDE.md with Permanent Patterns (if applicable)**:
@@ -292,14 +292,14 @@ ALL of these must be true:
 4. **Archive Plan to Completed**:
 
    ```bash
-   mkdir -p .claude/PRPs/plans/completed
-   mv {plan_path} .claude/PRPs/plans/completed/
+   mkdir -p .github/PRPs/plans/completed
+   mv {plan_path} .github/PRPs/plans/completed/
    ```
 
 5. **Clean Up State**:
 
    ```bash
-   rm .claude/prp-ralph.state.md
+   rm .github/prp-ralph.state.md
    ```
 
 6. **Output Completion Promise**:
@@ -362,7 +362,7 @@ The Ralph loop captures learnings that can improve the system:
 
 ### After Completion
 
-- **Archive**: Full state preserved in `.claude/PRPs/ralph-archives/`
+- **Archive**: Full state preserved in `.github/PRPs/ralph-archives/`
 - **Report**: Consolidated learnings in report file
 - **CLAUDE.md Updates**: Permanent patterns added to project config
 
@@ -377,10 +377,10 @@ Archives can be used to:
 
 ```bash
 # List all Ralph archives
-ls -la .claude/PRPs/ralph-archives/
+ls -la .github/PRPs/ralph-archives/
 
 # Review learnings from a specific run
-cat .claude/PRPs/ralph-archives/2024-01-12-feature-name/learnings.md
+cat .github/PRPs/ralph-archives/2024-01-12-feature-name/learnings.md
 ```
 
 ---
