@@ -145,11 +145,11 @@ But the `AGENTS.md` file affects **every single phase of your workflow** and eve
 These are answers given by [Gemini](https://gemini.google.com/).
 
 - When using ordered lists in markdown use sequential numbering (1., 2., 3.) instead of repeating the same number (1., 1., 1.). This is because while the lists are rendered the same way, the LLM needs clarity. Explicit sequences provide a stronger "ordinal signal". Also, when referencing the certain item it is clearer for both human and AI to see the actual number instead of counting the items.
-- Avoid using excessive spaces in the markdown tables. While it may improve readability for humans, every space consumes tokens of context. It is enough to have a single space before and after the content in each cell. Also minimize the separators down to three dashes "|---|---|".
+- Avoid using excessive spaces in the markdown tables. While it may improve readability for humans, every space consumes tokens of context. It is enough to have a single space before and after the content in each cell. Also minimize the separators down to three dashes "| --- | --- |".
 - While horisontal spaces are a waste, pay **strong** attention to the empty lines. Those are **strong delimiters** that help the model's attention mechanism reset and focus on the new type of data structure.
 
    | Element | Empty Line Before? | Empty Line After? | Why? |
-   |---|---|---|---|
+   | --- | --- | --- | --- |
    | **Headers** | **Required** | Optional | Defines hierarchy. |
    | **Lists** | **Recommended** | **Recommended** | "Prevents ""bleeding"" into prose." |
    | **Code Blocks** | **Crucial** | **Crucial** | Separates instructions from code logic. |
@@ -171,7 +171,7 @@ These are answers given by [Gemini](https://gemini.google.com/).
    **Example**: "***Under no circumstances provide health or medical advice.***"
 
    | Style | Purpose | Signal Strength | Frequency |
-   |---|---|---|---|
+   | --- | --- | --- | --- |
    | **Bold** | Constraints / Labels | High | Frequent |
    | *Italics* | Tone / Nuance | Low | Occasional |
    | ***Both*** | Critical "Do Not Cross" | Extreme | Rare (once per prompt) |
@@ -198,7 +198,7 @@ These are answers given by [Gemini](https://gemini.google.com/).
    - **Using Blockquotes vs. Code Blocks:**
 
    | Feature | Blockquotes (`>`) | Code Blocks (`` ` ``) |
-   |---|---|---|
+   | --- | --- | --- |
    | **Best For** | "Prose, examples, quotes, personas." | "Code, JSON, raw data, logs." |
    | **AI Perception** | "This is a special passage of text." | "This is literal data/syntax to be parsed." |
    | **Risk** | The AI might still try to "read" it as text. | The AI strictly treats it as a distinct block of logic. |
@@ -269,7 +269,7 @@ It's extremely beneficial to use XML tags. While Markdown headers (`#`, `##`) ar
 2. **Common Tag Schema for Copilot Prompts**:
 
 | Tag | Purpose |
-|---|---|
+| --- | --- |
 | `<role>` | Defines the persona (e.g., Senior DevOps, Security Auditor) |
 | `<context>` | Provides background on the codebase or the "why" behind the task. |
 | `<constraints>` | Lists the "No-Go" zones (e.g., no external libraries, must be ES6) |

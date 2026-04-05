@@ -3,29 +3,41 @@ description: Create comprehensive feature implementation plan with codebase anal
 argument-hint: <feature description | path/to/prd.md>
 ---
 
+# Product or Feature Implementation Plan Generator
+
+<role>
+
+You are a Software Engineer who:
+
+- Transforms feature descriptions or PRD phases into **information dense** implementation plans
+- Uses **codebase intelligence** to ensure solutions fit existing patterns
+- Conducts **targeted research** only after understanding codebase constraints
+
+</role>
+
 <objective>
-Transform "$ARGUMENTS" into a battle-tested implementation plan through systematic codebase exploration, pattern extraction, and strategic research.
 
-**Core Principle**: PLAN ONLY - no code written. Create a context-rich document that enables one-pass implementation success.
+## Objective
 
-**Execution Order**: CODEBASE FIRST, RESEARCH SECOND. Solutions must fit existing patterns before introducing new ones.
+Transform "$ARGUMENTS" into a battle-tested implementation plan through systematic codebase exploration, pattern extraction, and strategic research. Apply **Constraints** from the section below and validate the plan against the **Success Criteria** before saving the output file.
 
-**Agent Strategy**: Use specialized agents for intelligence gathering:
-
-- `prp-core:codebase-explorer` — finds WHERE code lives and extracts implementation patterns
-- `prp-core:codebase-analyst` — analyzes HOW integration points work and traces data flow
-- `prp-core:web-researcher` — strategic web research with citations and gap analysis
-
-Launch codebase agents in parallel first, then research agent second.
 </objective>
 
+<constraints>
+
+## Constraints
+
+- **Core Principle**: ***PLAN ONLY - no code written***. Create a context-rich document that enables one-pass implementation success.
+- **Execution Order**: **CODEBASE FIRST, RESEARCH SECOND**. Solutions must fit existing patterns before introducing new ones.
+
+</constraints>
+
+---
+
 <context>
-AGENTS.md rules: @AGENTS.md
 
-**Directory Discovery** (run these to understand project structure):
+**Codebase Discovery**
 
-- List root contents: `ls -la`
-- Find main source directories: `ls -la */ 2>/dev/null | head -50`
 - Identify project type from config files (package.json, pyproject.toml, Cargo.toml, go.mod, etc.)
 
 **IMPORTANT**: Do NOT assume `src/` exists. Common alternatives include:
@@ -37,6 +49,7 @@ AGENTS.md rules: @AGENTS.md
 - Root-level source files (Python, scripts)
 
 Discover the actual structure before proceeding.
+
 </context>
 
 <process>
@@ -46,7 +59,7 @@ Discover the actual structure before proceeding.
 **Determine input type:**
 
 | Input Pattern | Type | Action |
-|---|---|---|
+| --- | --- | --- |
 | Ends with `.prd.md` | PRD file | Parse PRD, select next phase |
 | Ends with `.md` and contains "Implementation Phases" | PRD file | Parse PRD, select next phase |
 | File path that exists | Document | Read and extract feature description |
@@ -63,9 +76,9 @@ Discover the actual structure before proceeding.
    - First pending phase with all dependencies complete
    - If multiple candidates with same dependencies, note parallelism opportunity
 
-4. **Extract phase context:**
+5. **Extract phase context:**
 
-   ```
+   ```text
    PHASE: {phase number and name}
    GOAL: {from phase details}
    SCOPE: {from phase details}
@@ -73,9 +86,9 @@ Discover the actual structure before proceeding.
    PRD CONTEXT: {problem statement, user, hypothesis from PRD}
    ```
 
-5. **Report selection to user:**
+6. **Report selection to user:**
 
-   ```
+   ```text
    PRD: {prd file path}
    Selected Phase: #{number} - {name}
 
@@ -122,7 +135,7 @@ So that <benefit/value>
 - [ ] Complexity assessment has rationale
 - [ ] Affected systems identified
 
-**GATE**: If requirements are AMBIGUOUS → STOP and ASK user for clarification before proceeding.
+**GATE**: **If requirements are AMBIGUOUS** then ***STOP and ASK*** user for clarification before proceeding.
 
 ---
 
@@ -151,6 +164,8 @@ LOCATE:
 
 Categorize findings by purpose (implementation, tests, config, types, docs).
 Return ACTUAL code snippets from codebase, not generic examples.
+
+Always wrap the output of your analysis in `<analysis>` tags.
 ```
 
 ### Agent 2: `prp-core:codebase-analyst`
@@ -170,20 +185,22 @@ TRACE:
 5. Patterns in use - design patterns and architectural decisions
 
 Document what exists with precise file:line references. No suggestions or improvements.
+
+Always wrap the output of your analysis in `<analysis>` tags.
 ```
 
 ### Merge Agent Results
 
-Combine findings from both agents into a unified discovery table:
+Extract information from both agents analysis reports and combine findings into a unified discovery table:
 
-| Category | File:Lines | Pattern Description | Code Snippet |
-| -------- | ------------------------------------------- | -------------------- | ----------------------------------------- |
-| NAMING | `src/features/X/service.ts:10-15` | camelCase functions | `export function createThing()` |
-| ERRORS | `src/features/X/errors.ts:5-20` | Custom error classes | `class ThingNotFoundError` |
-| LOGGING | `src/core/logging/index.ts:1-10` | getLogger pattern | `const logger = getLogger("domain")` |
-| TESTS | `src/features/X/tests/service.test.ts:1-30` | describe/it blocks | `describe("service", () => {` |
-| TYPES | `src/features/X/models.ts:1-20` | Drizzle inference | `type Thing = typeof things.$inferSelect` |
-| FLOW | `src/features/X/service.ts:40-60` | Data transformation | `input → validate → persist → respond` |
+> | Category | File:Lines | Pattern Description | Code Snippet |
+> | --- | --- | --- | --- |
+> | NAMING | `src/features/X/service.ts:10-15` | camelCase functions | `export function createThing()` |
+> | ERRORS | `src/features/X/errors.ts:5-20` | Custom error classes | `class ThingNotFoundError` |
+> | LOGGING | `src/core/logging/index.ts:1-10` | getLogger pattern | `const logger = getLogger("domain")` |
+> | TESTS | `src/features/X/tests/service.test.ts:1-30` | describe/it blocks | `describe("service", () => {` |
+> | TYPES | `src/features/X/models.ts:1-20` | Drizzle inference | `type Thing = typeof things.$inferSelect` |
+> | FLOW | `src/features/X/service.ts:40-60` | Data transformation | `input → validate → persist → respond` |
 
 **PHASE_2_CHECKPOINT:**
 
@@ -219,9 +236,11 @@ Return findings with:
 - Key insights that affect implementation
 - Gotchas with mitigation strategies
 - Any conflicts between docs and existing codebase patterns found in Phase 2
+
+Always wrap the output of your analysis in `<analysis>` tags.
 ```
 
-**FORMAT the agent's findings into plan references:**
+**Extract analysis results and FORMAT the agent's findings into plan references:**
 
 ```markdown
 - [Library Docs v{version}](https://url#specific-section)
@@ -242,7 +261,7 @@ Return findings with:
 
 ## Phase 4: DESIGN - UX Transformation
 
-**CREATE ASCII diagrams showing user experience before and after:**
+**CREATE ASCII diagrams showing user experience before and after for report to human:**
 
 > **Output Template**: See `.github/PRPs/templates/prp-plan.prompt-design-template.md`
 > Load this file and use its structure exactly when generating output.
@@ -250,7 +269,7 @@ Return findings with:
 **DOCUMENT interaction changes:**
 
 | Location | Before | After | User_Action | Impact |
-| --------------- | --------------- | ----------- | ----------- | ------------- |
+| --- | --- | --- | --- | --- |
 | `/route` | State A | State B | Click X | Can now Y |
 | `Component.tsx` | Missing feature | Has feature | Input Z | Gets result W |
 
@@ -265,7 +284,9 @@ Return findings with:
 
 ## Phase 5: ARCHITECT - Strategic Design
 
-**For complex features with multiple integration points**, use `prp-core:codebase-analyst` to trace how existing architecture works at the integration points identified in Phase 2:
+**IF Complexity == LOW (from Phase 1)**: skip Task tool calls directly to **analysis** below.
+
+**For more complex features with multiple integration points**, use `prp-core:codebase-analyst` to trace how existing architecture works at the integration points identified in Phase 2:
 
 Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
 
@@ -283,7 +304,11 @@ ANALYZE:
 4. What error handling patterns are in place
 
 Document what exists with precise file:line references. No suggestions.
+
+Always wrap the output of your analysis in `<analysis>` tags.
 ```
+
+If agent was used, extract analysis results and merge with your knowledge base.
 
 **Then ANALYZE deeply (use extended thinking if needed):**
 
@@ -334,6 +359,7 @@ Create directory if needed: `mkdir -p .github/PRPs/plans`
 </process>
 
 <output>
+
 **OUTPUT_FILE**: `.github/PRPs/plans/{kebab-case-feature-name}.plan.md`
 
 **If input was from PRD file**, also update the PRD:
@@ -353,14 +379,11 @@ Create directory if needed: `mkdir -p .github/PRPs/plans`
 </output>
 
 <verification>
+
 **FINAL_VALIDATION before saving plan:**
 
 **CONTEXT_COMPLETENESS:**
 
-- [ ] All patterns from `prp-core:codebase-explorer` and `prp-core:codebase-analyst` documented with file:line references
-- [ ] External docs versioned to match package.json
-- [ ] Integration points mapped with specific file paths
-- [ ] Gotchas captured with mitigation strategies
 - [ ] Every task has at least one executable validation command
 
 **IMPLEMENTATION_READINESS:**
@@ -368,7 +391,6 @@ Create directory if needed: `mkdir -p .github/PRPs/plans`
 - [ ] Tasks ordered by dependency (can execute top-to-bottom)
 - [ ] Each task is atomic and independently testable
 - [ ] No placeholders - all content is specific and actionable
-- [ ] Pattern references include actual code snippets (copy-pasted, not invented)
 
 **PATTERN_FAITHFULNESS:**
 
@@ -380,24 +402,21 @@ Create directory if needed: `mkdir -p .github/PRPs/plans`
 
 **VALIDATION_COVERAGE:**
 
-- [ ] Every task has executable validation command
-- [ ] All 6 validation levels defined where applicable
-- [ ] Edge cases enumerated with test plans
-
-**UX_CLARITY:**
-
-- [ ] Before/After ASCII diagrams are detailed and accurate
-- [ ] Data flows are traceable
-- [ ] User value is explicit and measurable
+- [ ] All 6 validation levels defined in the plan generated from the loaded template where applicable
 
 **NO_PRIOR_KNOWLEDGE_TEST**: Could an agent unfamiliar with this codebase implement using ONLY the plan?
+
 </verification>
 
 <success_criteria>
-**CONTEXT_COMPLETE**: All patterns, gotchas, integration points documented from actual codebase via `prp-core:codebase-explorer` and `prp-core:codebase-analyst` agents
-**IMPLEMENTATION_READY**: Tasks executable top-to-bottom without questions, research, or clarification
-**PATTERN_FAITHFUL**: Every new file mirrors existing codebase style exactly
-**VALIDATION_DEFINED**: Every task has executable verification command
-**UX_DOCUMENTED**: Before/After transformation is visually clear with data flows
-**ONE_PASS_TARGET**: Confidence score 8+ indicates high likelihood of first-attempt success
+
+## Success Criteria
+
+- **CONTEXT_COMPLETE**: All patterns, gotchas, integration points documented from actual codebase via `prp-core:codebase-explorer` and `prp-core:codebase-analyst` agents
+- **IMPLEMENTATION_READY**: Tasks executable top-to-bottom without questions, research, or clarification
+- **PATTERN_FAITHFUL**: Every new file mirrors existing codebase style exactly
+- **VALIDATION_DEFINED**: Every task has executable verification command
+- **UX_DOCUMENTED**: Before/After transformation is visually clear with data flows
+- **ONE_PASS_TARGET**: Confidence score 8+ indicates high likelihood of first-attempt success
+
 </success_criteria>
