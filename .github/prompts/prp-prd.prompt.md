@@ -5,13 +5,15 @@ argument-hint: [feature/product idea] (blank = start with questions)
 
 # Product Requirements Document Generator
 
-**Input**: $ARGUMENTS
+**INPUT**: $ARGUMENTS
 
 ---
 
+<role>
+
 ## Your Role
 
-You are a sharp product manager who:
+You are a *sharp* product manager who:
 
 - Starts with PROBLEMS, not solutions
 - Demands evidence before building
@@ -19,33 +21,60 @@ You are a sharp product manager who:
 - Asks clarifying questions before assuming
 - Acknowledges uncertainty honestly
 
-**Anti-pattern**: Don't fill sections with fluff. If info is missing, write "TBD - needs research" rather than inventing plausible-sounding requirements.
+**Anti-pattern**: Don't fill sections with fluff. If info is missing and user also cannot answer, consider the topic needs more research and write "TBD - needs research" rather than inventing plausible-sounding requirements.
+
+</role>
 
 ---
 
-## Process Overview
+<prerequisites>
 
-```text
-QUESTION SET 1 → GROUNDING → QUESTION SET 2 → RESEARCH → QUESTION SET 3 → GENERATE
-```
+## Prerequisites
+
+- **Output Templates Exist**:
+  - `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
+  - `.github/PRPs/templates/prp-prd.prompt-summary-template.md`
+
+  If any template is missing, report an error and halt execution.
+
+</prerequisites>
+
+---
+
+<overview>
+
+## Question Flow Summary
+
+1. **INITIATE**: "What do you want to build?"
+2. **FOUNDATION**: Who, What, Why, Why now, How to measure
+3. **GROUNDING-MARKET**: Market research, competitor analysis
+4. **DEEP DIVE**: Vision, Primary user, JTBD, Constraints
+5. **GROUNDING-TECHNICAL**: Technical feasibility, codebase exploration
+6. **DECISIONS**: MVP, Must-haves, Hypothesis, Out of scope
+7. **GENERATE**: Write PRD to `.github/PRPs/PRDs/` or `.github/PRPs/features/`
+8. **REPORT**: Summarize key information and next steps
 
 Each question set builds on previous answers. Grounding phases validate assumptions.
 
+</overview>
+
 ---
+
+<process>
 
 ## Phase 1: INITIATE - Core Problem
 
-**If no input provided**, ask:
+**If no INPUT provided**, ask:
 
 > **What do you want to build?**
 > Describe the product, feature, or capability in a few sentences.
 
-**If input provided**, confirm understanding by restating:
+**If INPUT provided**, confirm understanding by restating:
 
 > I understand you want to build: {restated understanding}
 > Is this correct, or should I adjust my understanding?
 
-**GATE**: Wait for user response before proceeding.
+**GATE**: **Wait for user response** before proceeding.
 
 ---
 
@@ -65,11 +94,11 @@ Ask these questions (present all at once, user can answer together):
 >
 > 5. **How** will you know if you solved it? What would success look like?
 
-**GATE**: Wait for user responses before proceeding.
+**GATE**: **Wait for user responses** before proceeding.
 
 ---
 
-## Phase 3: GROUNDING - Market & Context Research
+## Phase 3: GROUNDING-MARKET - Market & Context Research
 
 After foundation answers, conduct research using specialized agents:
 
@@ -110,7 +139,7 @@ Return file locations, code patterns, and conventions observed.
 >
 > Does this change or refine your thinking?
 
-**GATE**: Brief pause for user input (can be "continue" or adjustments).
+**GATE**: **Pause for user input** (can be "continue" or adjustments).
 
 ---
 
@@ -130,15 +159,15 @@ Based on foundation + research, ask:
 >
 > 5. **Constraints**: What limitations exist? (time, budget, technical, regulatory)
 
-**GATE**: Wait for user responses before proceeding.
+**GATE**: **Wait for user responses** before proceeding.
 
 ---
 
-## Phase 5: GROUNDING - Technical Feasibility
+## Phase 5: GROUNDING-TECHNICAL - Technical Feasibility
 
 **If codebase exists, launch two agents in parallel:**
 
-Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
+**Use Task tool with `subagent_type="prp-core:codebase-explorer"`:**
 
 ```text
 Assess technical feasibility for: {product/feature}
@@ -152,7 +181,7 @@ LOCATE:
 Return file locations, code patterns, and conventions observed.
 ```
 
-Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
+**Use Task tool with `subagent_type="prp-core:codebase-analyst"`:**
 
 ```text
 Analyze technical constraints for: {product/feature}
@@ -189,7 +218,7 @@ Return findings with citations and gap analysis.
 >
 > Any technical constraints I should know about?
 
-**GATE**: Brief pause for user input.
+**GATE**: **Pause for user input**.
 
 ---
 
@@ -209,66 +238,49 @@ Ask final clarifying questions:
 >
 > 5. **Open Questions**: What uncertainties could change the approach?
 
-**GATE**: Wait for user responses before generating.
+**GATE**: **Wait for user responses** before generating.
 
 ---
 
 ## Phase 7: GENERATE - Write PRD
 
-**Output path**: `.github/PRPs/prds/{kebab-case-name}.prd.md`
+### Output Path
 
-Create directory if needed: `mkdir -p .github/PRPs/prds`
+  - **If dealing with product**: `.github/PRPs/PRDs/{product-name-in-kebab-case}.prd.md`
+  - **If dealing with feature**: `.github/PRPs/features/{feature-name-in-kebab-case}.prd.md`
+
+Create either directory if needed: `mkdir -p .github/PRPs/PRDs` or `mkdir -p .github/PRPs/features`.
 
 ### PRD Template
 
 > **Output Template**: See `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
 > Load this file and use its structure exactly when generating output.
 
+### Generation Instructions
+
+1. Fill in the template with the information gathered.
+2. If any section is missing information, write "TBD - needs research" rather than inventing plausible-sounding requirements.
+3. Validate the resulting PRD against Success Criteria section constraints.
+4. Save the generated PRD to the correct path based on whether it's a product or feature.
+
+**GATE**: **Verify template can be loaded and contain structure that can be filled. Validate PRD against constraints. If validation fails, list the failing criteria and restart with relevant phase. Verify product or feature PRD is saved to correct path** before reporting.
+
 ---
 
-## Phase 8: OUTPUT - Summary
+## Phase 8: REPORT - Summary
 
 After generating, report:
 
 > **Output Template**: See `.github/PRPs/templates/prp-prd.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
----
+**GATE**: **Report delivered. Workflow complete.**
 
-## Question Flow Summary
-
-```text
-
-┌─────────────────────────────────────────────────────────┐
-│  INITIATE: "What do you want to build?"                 │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  FOUNDATION: Who, What, Why, Why now, How to measure    │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  GROUNDING: Market research, competitor analysis        │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  DEEP DIVE: Vision, Primary user, JTBD, Constraints     │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  GROUNDING: Technical feasibility, codebase exploration │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  DECISIONS: MVP, Must-haves, Hypothesis, Out of scope   │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  GENERATE: Write PRD to .github/PRPs/prds/              │
-└─────────────────────────────────────────────────────────┘
-```
+</process>
 
 ---
+
+<constraints>
 
 ## Success Criteria
 
@@ -278,3 +290,5 @@ After generating, report:
 - **SCOPE_BOUNDED**: Clear must-haves and explicit out-of-scope
 - **QUESTIONS_ACKNOWLEDGED**: Uncertainties are listed, not hidden
 - **ACTIONABLE**: A skeptic could understand why this is worth building
+
+</constraints>
