@@ -19,9 +19,18 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 **TODO:**
 
 - Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
-- Review prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
-- Review PRD template for excessiveness.
-- Review Plan template for excessiveness.
+- Review remaining prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
+    - `.github\prompts\prp-codebase-question.prompt.md`
+    - `.github\prompts\prp-commit.prompt.md`
+    - `.github\prompts\prp-debug.prompt.md`
+    - `.github\prompts\prp-issue-fix.prompt.md`
+    - `.github\prompts\prp-issue-investigate.prompt.md`
+    - `.github\prompts\prp-pr.prompt.md`
+    - `.github\prompts\prp-ralph-cancel.prompt.md`
+    - `.github\prompts\prp-ralph.prompt.md`
+    - `.github\prompts\prp-review-agents.prompt.md`
+    - `.github\prompts\prp-review.prompt.md`
+- Review remaining agent-to-agent templates
 - Review prompts:
    - extract more templates, as it seems that the 1st and 2nd extraction did not do all of them to separate files and instruct prompts to read and use them when needed in a same way, like in the 1st extraction covered by `.claude\PRPs\prds\completed\extract-prompt-output-templates.prd.md`
    - fix heredoc template usage in:
@@ -30,11 +39,8 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
    - exclude project specific information already covered in `AGENTS.md`
    - remove all duplications
       - `.github\prompts\prp-issue-fix.prompt.md` - replace 6.2 write commit message duplicated template with a single template
-      - `.github\prompts\prp-plan.prompt.md` - deduplicate phase 6 generate implementation plan file output location
    - minimize prompts
       - `.github\prompts\prp-issue-fix.prompt.md` - replace 3.2 decision tree ascii with mermaid or list
-      - `.github\prompts\prp-prd.prompt.md` - replace process overview ascii with mermaid or list
-      - `.github\prompts\prp-prd.prompt.md` - replace question flow summary ascii with mermaid or list
 - Review agents:
    - extract templates to separate files and reference them
    - remove all duplications
