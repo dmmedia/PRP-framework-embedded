@@ -21,7 +21,7 @@ So that {benefit}
 ## Metadata
 
 | Field | Value |
-| ---------------- | ------------------------------------------------- |
+| --- | --- |
 | Type | NEW_CAPABILITY / ENHANCEMENT / REFACTOR / BUG_FIX |
 | Complexity | LOW / MEDIUM / HIGH |
 | Systems Affected | {comma-separated list} |
@@ -51,7 +51,7 @@ So that {benefit}
 ### Interaction Changes
 
 | Location | Before | After | User Impact |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | {path/component} | {old behavior} | {new behavior} | {what changes for user} |
 
 ---
@@ -61,64 +61,36 @@ So that {benefit}
 **CRITICAL: Implementation agent MUST read these files before starting any task:**
 
 | Priority | File | Lines | Why Read This |
-|---|---|---|---|
-| P0 | `path/to/critical.ts` | 10-50 | Pattern to MIRROR exactly |
-| P1 | `path/to/types.ts` | 1-30 | Types to IMPORT |
-| P2 | `path/to/test.ts` | all | Test pattern to FOLLOW |
+| --- | --- | --- | --- |
+| P0 | `path/to/critical/module` | 10-50 | Pattern to MIRROR exactly |
+| P1 | `path/to/types/definitions` | 1-30 | Types/interfaces to IMPORT |
+| P2 | `path/to/tests/example` | all | Test pattern to FOLLOW |
 
 **External Documentation:**
 | Source | Section | Why Needed |
-|---|---|---|
+| --- | --- | --- |
 | [Lib Docs v{version}](url#anchor) | {section name} | {specific reason} |
 
 ---
 
 ## Patterns to Mirror
 
-**NAMING_CONVENTION:**
+<!--
+  PATTERN_NAME_N: An actual pattern from this codebase in all caps with underscores, e.g., (NAMING_CONVENTION, ERROR_HANDLING, LOGGING_PATTERN, etc.)
+-->
 
-```typescript
-// SOURCE: src/features/example/service.ts:10-15
+**{PATTERN_NAME_1}:**
+
+```{language}
+// SOURCE: path/to/source/file1:10-15
 // COPY THIS PATTERN:
 {actual code snippet from codebase}
 ```
 
-**ERROR_HANDLING:**
+**{PATTERN_NAME_2}:**
 
-```typescript
-// SOURCE: src/features/example/errors.ts:5-20
-// COPY THIS PATTERN:
-{actual code snippet from codebase}
-```
-
-**LOGGING_PATTERN:**
-
-```typescript
-// SOURCE: src/features/example/service.ts:25-30
-// COPY THIS PATTERN:
-{actual code snippet from codebase}
-```
-
-**REPOSITORY_PATTERN:**
-
-```typescript
-// SOURCE: src/features/example/repository.ts:10-40
-// COPY THIS PATTERN:
-{actual code snippet from codebase}
-```
-
-**SERVICE_PATTERN:**
-
-```typescript
-// SOURCE: src/features/example/service.ts:40-80
-// COPY THIS PATTERN:
-{actual code snippet from codebase}
-```
-
-**TEST_STRUCTURE:**
-
-```typescript
-// SOURCE: src/features/example/tests/service.test.ts:1-25
+```{language}
+// SOURCE: path/to/source/file2:5-20
 // COPY THIS PATTERN:
 {actual code snippet from codebase}
 ```
@@ -128,14 +100,13 @@ So that {benefit}
 ## Files to Change
 
 | File | Action | Justification |
-| -------------------------------- | ------ | ---------------------------------------- |
-| `src/features/new/models.ts` | CREATE | Type definitions - re-export from schema |
-| `src/features/new/schemas.ts` | CREATE | Zod validation schemas |
-| `src/features/new/errors.ts` | CREATE | Feature-specific errors |
-| `src/features/new/repository.ts` | CREATE | Database operations |
-| `src/features/new/service.ts` | CREATE | Business logic |
-| `src/features/new/index.ts` | CREATE | Public API exports |
-| `src/core/database/schema.ts` | UPDATE | Add table definition |
+| --- | --- | --- |
+| `{source-dir}/{feature}/models.{ext}` | CREATE | Data models / type definitions |
+| `{source-dir}/{feature}/service.{ext}` | CREATE | Business logic |
+| `{source-dir}/{feature}/tests/test_{feature}.{ext}` | CREATE | Unit tests |
+| `{source-dir}/{config-file}` | UPDATE | Register new module |
+
+{verbatim: This table is a map only -- all execution details are in tasks below.}
 
 ---
 
@@ -152,75 +123,28 @@ Explicit exclusions to prevent scope creep:
 
 Execute in order. Each task is atomic and independently verifiable.
 
-### Task 1: CREATE `src/core/database/schema.ts` (update)
+<!--
+  TASK_FIELDS: Use only the fields relevant to each task.
+  Required: ACTION, IMPLEMENT, VALIDATE
+  Optional: MIRROR, IMPORTS, GOTCHA, TYPES (language-specific), PATTERN
+-->
 
-- **ACTION**: ADD table definition to schema
-- **IMPLEMENT**: {specific columns, types, constraints}
-- **MIRROR**: `src/core/database/schema.ts:XX-YY` - follow existing table pattern
-- **IMPORTS**: `import { pgTable, text, timestamp } from "drizzle-orm/pg-core"`
-- **GOTCHA**: {known issue to avoid, e.g., "use uuid for id, not serial"}
-- **VALIDATE**: `npx tsc --noEmit` - types must compile
+### Task 1: {ACTION} `{path/to/file.ext}`
 
-### Task 2: CREATE `src/features/new/models.ts`
+- **ACTION**: CREATE / UPDATE / DELETE
+- **IMPLEMENT**: {What to build or change — data structures, logic, behavior}
+- **MIRROR**: `{path/to/similar/existing/file.ext}:{start}-{end}`
+- **IMPORTS**: `{import statement for this language}`
+- **GOTCHA**: {Known pitfall for this task}
+- **VALIDATE**: `{validation-cmd-from-Validation-Commands-section}`
 
-- **ACTION**: CREATE type definitions file
-- **IMPLEMENT**: Re-export table, define inferred types
-- **MIRROR**: `src/features/projects/models.ts:1-10`
-- **IMPORTS**: `import { things } from "@/core/database/schema"`
-- **TYPES**: `type Thing = typeof things.$inferSelect`
-- **GOTCHA**: Use `$inferSelect` for read types, `$inferInsert` for write
-- **VALIDATE**: `npx tsc --noEmit`
+### Task 2: {ACTION} `{path/to/file.ext}`
 
-### Task 3: CREATE `src/features/new/schemas.ts`
-
-- **ACTION**: CREATE Zod validation schemas
-- **IMPLEMENT**: CreateThingSchema, UpdateThingSchema
-- **MIRROR**: `src/features/projects/schemas.ts:1-30`
-- **IMPORTS**: `import { z } from "zod/v4"` (note: zod/v4 not zod)
-- **GOTCHA**: z.record requires two args in v4
-- **VALIDATE**: `npx tsc --noEmit`
-
-### Task 4: CREATE `src/features/new/errors.ts`
-
-- **ACTION**: CREATE feature-specific error classes
-- **IMPLEMENT**: ThingNotFoundError, ThingAccessDeniedError
-- **MIRROR**: `src/features/projects/errors.ts:1-40`
-- **PATTERN**: Extend base Error, include code and statusCode
-- **VALIDATE**: `npx tsc --noEmit`
-
-### Task 5: CREATE `src/features/new/repository.ts`
-
-- **ACTION**: CREATE database operations
-- **IMPLEMENT**: findById, findByUserId, create, update, delete
-- **MIRROR**: `src/features/projects/repository.ts:1-60`
-- **IMPORTS**: `import { db } from "@/core/database/client"`
-- **GOTCHA**: Use `results[0]` pattern, not `.first()` - check noUncheckedIndexedAccess
-- **VALIDATE**: `npx tsc --noEmit`
-
-### Task 6: CREATE `src/features/new/service.ts`
-
-- **ACTION**: CREATE business logic layer
-- **IMPLEMENT**: createThing, getThing, updateThing, deleteThing
-- **MIRROR**: `src/features/projects/service.ts:1-80`
-- **PATTERN**: Use repository, add logging, throw custom errors
-- **IMPORTS**: `import { getLogger } from "@/core/logging"`
-- **VALIDATE**: `{type-check-cmd} && {lint-cmd}`
-
-### Task 7: CREATE `{source-dir}/features/new/index.ts`
-
-- **ACTION**: CREATE public API exports
-- **IMPLEMENT**: Export types, schemas, errors, service functions
-- **MIRROR**: `{source-dir}/features/{example}/index.ts:1-20`
-- **PATTERN**: Named exports only, hide repository (internal)
-- **VALIDATE**: `{type-check-cmd}`
-
-### Task 8: CREATE `{source-dir}/features/new/tests/service.test.ts`
-
-- **ACTION**: CREATE unit tests for service
-- **IMPLEMENT**: Test each service function, happy path + error cases
-- **MIRROR**: `{source-dir}/features/{example}/tests/service.test.ts:1-100`
-- **PATTERN**: Use project's test framework (jest, vitest, bun:test, pytest, etc.)
-- **VALIDATE**: `{test-cmd} {path-to-tests}`
+- **ACTION**: CREATE / UPDATE / DELETE
+- **IMPLEMENT**: {What to build}
+- **MIRROR**: `{path/to/similar/existing/file.ext}:{start}-{end}`
+- **VALIDATE**: `{validation-cmd-from-Validation-Commands-section}`
+- **PATTERN**: {Codebase or custom pattern to follow}
 
 ---
 
@@ -228,11 +152,15 @@ Execute in order. Each task is atomic and independently verifiable.
 
 ### Unit Tests to Write
 
+<!--
+  Adapt test file naming/paths to the project's test conventions
+  (e.g., tests/test_feature.py, src/feature/__tests__/service.test.ts, feature_test.go)
+-->
+
 | Test File | Test Cases | Validates |
-| ---------------------------------------- | -------------------------- | -------------- |
-| `src/features/new/tests/schemas.test.ts` | valid input, invalid input | Zod schemas |
-| `src/features/new/tests/errors.test.ts` | error properties | Error classes |
-| `src/features/new/tests/service.test.ts` | CRUD ops, access control | Business logic |
+|---|---|---|
+| `{tests-dir}/test_{feature}.{ext}` | happy path, error cases | Core business logic |
+| `{tests-dir}/test_{feature}_edge.{ext}` | boundary inputs, missing fields | Input validation |
 
 ### Edge Cases Checklist
 
@@ -276,7 +204,7 @@ Execute in order. Each task is atomic and independently verifiable.
 
 **EXPECT**: All tests pass, build succeeds
 
-### Level 4: DATABASE_VALIDATION (if schema changes)
+### Level 4: DATABASE_VALIDATION (if schema changes) (OPTIONAL: if project has database)
 
 Use Supabase MCP to verify:
 
@@ -284,7 +212,7 @@ Use Supabase MCP to verify:
 - [ ] RLS policies applied
 - [ ] Indexes created
 
-### Level 5: BROWSER_VALIDATION (if UI changes)
+### Level 5: BROWSER_VALIDATION (if UI changes) (OPTIONAL: if project has browser-based UI)
 
 Use Browser MCP to verify:
 
@@ -325,7 +253,7 @@ Use Browser MCP to verify:
 ## Risks and Mitigations
 
 | Risk | Likelihood | Impact | Mitigation |
-| ------------------ | ------------ | ------------ | --------------------------------------- |
+| --- | --- | --- | --- |
 | {Risk description} | LOW/MED/HIGH | LOW/MED/HIGH | {Specific prevention/handling strategy} |
 
 ---
