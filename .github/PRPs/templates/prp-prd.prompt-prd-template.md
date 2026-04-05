@@ -10,6 +10,11 @@
 - {Another piece of evidence}
 - {If none: "Assumption - needs validation through [method]"}
 
+## Affected Systems
+
+- {System/Component 1} - {How it's impacted}
+- {System/Component 2} - {How it's impacted}
+
 ## Proposed Solution
 
 {One paragraph: What we're building and why this approach over alternatives}
@@ -27,7 +32,7 @@ We'll know we're right when {measurable outcome}.
 ## Success Metrics
 
 | Metric | Target | How Measured |
-|---|---|---|
+| --- | --- | --- |
 | {Primary metric} | {Specific number} | {Method} |
 | {Secondary metric} | {Specific number} | {Method} |
 
@@ -60,7 +65,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ### Core Capabilities (MoSCoW)
 
 | Priority | Capability | Rationale |
-|---|---|---|
+| --- | --- | --- |
 | Must | {Feature} | {Why essential} |
 | Must | {Feature} | {Why essential} |
 | Should | {Feature} | {Why important but not blocking} |
@@ -74,6 +79,10 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ### User Flow
 
 {Critical path - shortest journey to value}
+
+### Definition of Done
+
+{What conditions must be met for this to be considered complete}
 
 ---
 
@@ -89,7 +98,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 **Technical Risks**
 
 | Risk | Likelihood | Mitigation |
-|---|---|---|
+| --- | --- | --- |
 | {Risk} | {H/M/L} | {How to handle} |
 
 ---
@@ -97,14 +106,15 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 ## Implementation Phases
 
 <!--
+  Phase Number (#): sequential integer greater than (e.g. "1", "2", "3", etc.). Count varies depending on the scope, but should be consistent between the table and the detailed descriptions below.
   STATUS: pending | in-progress | complete
   PARALLEL: phases that can run concurrently (e.g., "with 3" or "-")
   DEPENDS: phases that must complete first (e.g., "1, 2" or "-")
-  PRP: link to generated plan file once created
+  PRP Plan: link to generated plan file once created
 -->
 
 | # | Phase | Description | Status | Parallel | Depends | PRP Plan |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 1 | {Phase name} | {What this phase delivers} | pending | - | - | - |
 | 2 | {Phase name} | {What this phase delivers} | pending | - | 1 | - |
 | 3 | {Phase name} | {What this phase delivers} | pending | with 4 | 2 | - |
@@ -127,16 +137,12 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 
 {Continue for each phase...}
 
-### Parallelism Notes
-
-{Explain which phases can run in parallel and why, e.g., "Phases 3 and 4 can run in parallel in separate worktrees as they touch different domains (frontend vs auth)"}
-
 ---
 
 ## Decisions Log
 
 | Decision | Choice | Alternatives | Rationale |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | {Decision} | {Choice} | {Options considered} | {Why this one} |
 
 ---
@@ -147,7 +153,7 @@ When {situation}, I want to {motivation}, so I can {outcome}.
 {Key findings from market research}
 
 **Technical Context**
-{Key findings from technical exploration}
+{Detailed findings from technical exploration, that could save redundant work for implementation planning agent}
 
 ---
 

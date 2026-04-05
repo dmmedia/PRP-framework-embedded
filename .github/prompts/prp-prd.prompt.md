@@ -290,5 +290,6 @@ After generating, report:
 - **SCOPE_BOUNDED**: Clear must-haves and explicit out-of-scope
 - **QUESTIONS_ACKNOWLEDGED**: Uncertainties are listed, not hidden
 - **ACTIONABLE**: A skeptic could understand why this is worth building
+- **SUCCESS_METRICS_DEFINED**: Metrics are specific, measurable, relevant and cover the most error-prone checks
 
 </constraints>
