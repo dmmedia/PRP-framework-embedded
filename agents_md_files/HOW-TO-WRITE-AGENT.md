@@ -71,15 +71,13 @@ Instead of including all your different instructions about building your project
 
 For example:
 
-```
-agent_docs/
-  |- building_the_project.md
-  |- running_tests.md
-  |- code_conventions.md
-  |- service_architecture.md
-  |- database_schema.md
-  |- service_communication_patterns.md
-```
+- `agent_docs/`
+   - `building_the_project.md`
+   - `running_tests.md`
+   - `code_conventions.md`
+   - `service_architecture.md`
+   - `database_schema.md`
+   - `service_communication_patterns.md`
 
 Then, in your `AGENTS.md` file, you can include a list of these files with a brief description of each, and instruct agent to decide which (if any) are relevant and to read them before it starts working. Or, ask agent to present you with the files it wants to read for aproval first before reading them.
 
@@ -112,32 +110,29 @@ A bad line of code is a bad line of code. A bad line of an implementation plan h
 But the `AGENTS.md` file affects **every single phase of your workflow** and every single artifact produced by it. As a result, we think you should spend some time thinking very carefully about every single line that goes into it:
 
 
-```
-                         Hierarchy of Leverage
+**Hierarchy of Leverage**
 
-             +------------------------------------------+
-             | 1 bad line of code == 1 bad line of code |<====+-------------\
-             +------------------------------------------+     |             |
-                                                              |             |
-           +-----------------------------------------------+  |             |
-           | 1 bad line of plan == 100 wrong lines of code |--/             |
-           |             -> WRONG SOLUTION                 |<=====+---------+
-           +-----------------------------------------------+      |         |
-                                                                  |         |
-        +------------------------------------------------------+  |         |
-        | 1 bad line of research == 10-100 wrong lines of plan |--/         |
-        |          -> WRONG UNDERSTANDING OF SYSTEM            |<======+----+
-        +------------------------------------------------------+       |    |
-                                                                       |    |
-    +---------------------------------------------------------------+  |    |
-    | 1 bad line of specification == 10-100 wrong lines of research |--/    |
-    |              -> WRONG UNDERSTANDING OF PROBLEM                |<------+
-    +---------------------------------------------------------------+       |
-                                                                            |
-+------------------------------------------------------------------------+  |
-| 1 bad line of `AGENTS.md` affects every single spec, research and plan |--/
-|           -> DEGRADATION OF CORE COMPETENCY AND METHODOLOGY            |
-+------------------------------------------------------------------------+
+```mermaid
+flowchart BT
+  Code[1 bad line of code == 1 bad line of code]
+  Plan[1 bad line of plan == 100 wrong lines of code<br/>→ WRONG SOLUTION]
+  Research[1 bad line of research == 10-100 wrong lines of plan<br/>→ WRONG UNDERSTANDING OF SYSTEM]
+  Spec[1 bad line of specification == 10-100 wrong lines of research<br/>→ WRONG UNDERSTANDING OF PROBLEM]
+  AgentsMD[1 bad line of AGENTS.md affects every single spec, research and plan<br/>→ DEGRADATION OF CORE COMPETENCY AND METHODOLOGY]
+
+  Plan --> Code
+  Research --> Plan
+  Spec --> Research
+  AgentsMD --> Spec
+  AgentsMD --> Research
+  AgentsMD --> Plan
+  AgentsMD --> Code
+
+  style Code fill:#f8f9fa,stroke:#333,stroke-width:1px
+  style Plan fill:#fff7e6,stroke:#333,stroke-width:1px
+  style Research fill:#fff3f3,stroke:#333,stroke-width:1px
+  style Spec fill:#f3f0ff,stroke:#333,stroke-width:1px
+  style AgentsMD fill:#ffe6e6,stroke:#333,stroke-width:1px
 ```
 
 ### Markdown Syntax
