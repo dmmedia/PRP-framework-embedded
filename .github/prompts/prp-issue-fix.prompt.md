@@ -23,6 +23,8 @@ Execute the implementation plan from `/prp-issue-investigate`:
 
 **Golden Rule**: Follow the artifact. If something seems wrong, validate it first - don't silently deviate.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## Phase 0: DETECT - Base Branch

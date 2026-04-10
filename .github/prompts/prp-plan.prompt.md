@@ -29,6 +29,7 @@ Transform "$ARGUMENTS" into a battle-tested implementation plan through systemat
 
 - **Core Principle**: ***PLAN ONLY - no code written***. Create a context-rich document that enables one-pass implementation success.
 - **Execution Order**: **CODEBASE FIRST, RESEARCH SECOND**. Solutions must fit existing patterns before introducing new ones.
+- **Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
 
 </constraints>
 

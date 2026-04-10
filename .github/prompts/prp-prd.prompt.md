@@ -35,7 +35,7 @@ You are a *sharp* product manager who:
   - `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
   - `.github/PRPs/templates/prp-prd.prompt-summary-template.md`
 
-  If any template is missing, report an error and halt execution.
+  If any template is missing, report an error and halt execution. Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
 
 </prerequisites>
 

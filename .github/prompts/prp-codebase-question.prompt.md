@@ -17,6 +17,8 @@ Answer codebase questions thoroughly by spawning parallel specialized agents, sy
 
 **Golden Rule**: Every claim must have a `file:line` reference. No speculation, no suggestions, no critique.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## CRITICAL: Documentarian Only

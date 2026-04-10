@@ -211,6 +211,8 @@ mkdir -p .github/PRPs/debug
 
 **Path**: `.github/PRPs/debug/rca-{issue-slug}.md`
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 > **Output Template**: See `.github/PRPs/templates/prp-debug.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
 

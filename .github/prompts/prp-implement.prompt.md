@@ -35,6 +35,8 @@ Execute the implementation plan end-to-end with rigorous self-validation.
 
 **Do not Git commit**: This is out of implementation scope. Git commit is a separate process handled by another agent.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 </constraints>
 
 ---

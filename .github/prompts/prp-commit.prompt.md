@@ -65,6 +65,8 @@ git commit -m "{type}: {description}"
 
 ## Phase 4: OUTPUT
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 > **Output Template**: See `.github/PRPs/templates/prp-commit.prompt-output-template.md`
 > Load this file and use its structure exactly when generating output.
 

@@ -21,6 +21,8 @@ Perform a thorough, senior-engineer-level code review:
 
 **Golden Rule**: Be constructive and actionable. Every issue should have a clear recommendation. Acknowledge good work too.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## Phase 1: FETCH - Get PR Context

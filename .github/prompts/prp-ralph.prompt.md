@@ -17,6 +17,8 @@ Start an autonomous Ralph loop that executes a PRP plan iteratively until all va
 
 **Skill Reference**: The `prp-ralph-loop` skill provides detailed execution guidance. It will be automatically available during loop iterations.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## Phase 1: PARSE - Validate Input

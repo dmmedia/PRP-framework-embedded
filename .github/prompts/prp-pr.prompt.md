@@ -15,6 +15,8 @@ Create a well-formatted pull request from the current branch, using repository P
 
 **Golden Rule**: PRs should tell reviewers what changed and why. Use existing templates when available.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## Phase 0: DETECT - Base Branch

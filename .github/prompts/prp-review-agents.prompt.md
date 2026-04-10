@@ -134,6 +134,8 @@ After all agents complete, aggregate findings:
 
 ### Summary Format
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 > **Output Template**: See `.github/PRPs/templates/prp-review-agents.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 

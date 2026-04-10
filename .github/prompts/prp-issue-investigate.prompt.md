@@ -19,6 +19,8 @@ Investigate the issue/problem and produce a comprehensive implementation plan th
 
 **Golden Rule**: The artifact you produce IS the specification. The implementing agent should be able to work from it without asking questions.
 
+**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+
 ---
 
 ## Phase 1: PARSE - Understand Input
