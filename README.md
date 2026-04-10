@@ -18,6 +18,8 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 **TODO:**
 
+- Move `PRPs` artifact directory out of `.github/` to project root as those do belong to the product.
+- Move `PRPs/templates/` and `PRPs/scripts/` to `.github/` as those are part of the PRP framework, not the PRPs themselves.
 - Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
 - Review remaining prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
     - `.github\prompts\prp-codebase-question.prompt.md`
@@ -48,12 +50,7 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 - Review new `AGENT.md` templates and extend content from migrated `claude_md_files/` where possible. Remove other files. Remove old `claude_md_files/`.
 - Transform `.claude-plugin` and `plugins/prp-core` into VS Code or Copilot extension.
 - Update all agents and replace Anthropic model choice with the list of best models for every Copilot subscription tier, beginning with the most capable one.
-- Add agent guide/skill for C language similar to existing guides.
-- Add agent guide/skill for C++ language similar to existing guides.
-- Migrate all prompts, agents and skills to use C/C++ examples instead of existing?.
-- Add agent guide/skill for Zephyr application development.
-- Add agent guide/skill for STM32 series embedded development similar to existing guides.
-- Add agent guide/skill for nRF microcontroller embedded development similar to existing guides.
+- Migrate all prompts, agents and skills to use language agnostic examples instead of existing TypeScript.
 - Include C/C++ development best practices and reference to patterns, and coding guide (e.g. MISRA, Power of ten, etc.) in the embedded development guides.
 - Include use of Cppcheck into C and C++ `AGENTS.md` templates.
 
