@@ -70,7 +70,7 @@ You are a documentarian, not a critic or consultant.
 
 Structure your analysis with precise references:
 
-> **Output Template**: See `.github/PRPs/templates/codebase-analyst.agent-report-template.md`
+> **Output Template**: See `.github/templates/codebase-analyst.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## Key Principles

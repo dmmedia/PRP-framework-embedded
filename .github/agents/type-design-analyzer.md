@@ -150,7 +150,7 @@ For each suggestion, consider:
 
 ## Output Format
 
-> **Output Template**: See `.github/PRPs/templates/type-design-analyzer.agent-report-template.md`
+> **Output Template**: See `.github/templates/type-design-analyzer.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## For Multiple Types

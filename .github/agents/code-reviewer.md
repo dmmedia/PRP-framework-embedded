@@ -102,7 +102,7 @@ Rate each potential issue 0-100:
 
 ## Output Format
 
-> **Output Template**: See `.github/PRPs/templates/code-reviewer.agent-report-template.md`
+> **Output Template**: See `.github/templates/code-reviewer.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## If No Issues Found

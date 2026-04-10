@@ -19,7 +19,7 @@ Investigate the issue/problem and produce a comprehensive implementation plan th
 
 **Golden Rule**: The artifact you produce IS the specification. The implementing agent should be able to work from it without asking questions.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -243,12 +243,12 @@ git blame -L {start},{end} {affected-file}
 ### 4.1 Artifact Path
 
 ```bash
-mkdir -p .github/PRPs/issues
+mkdir -p PRPs/issues
 ```
 
-**Path:** `.github/PRPs/issues/issue-{number}.md`
+**Path:** `PRPs/issues/issue-{number}.md`
 
-If free-form (no issue number): `.github/PRPs/issues/investigation-{timestamp}.md`
+If free-form (no issue number): `PRPs/issues/investigation-{timestamp}.md`
 
 ### 4.2 Artifact Template
 
@@ -261,7 +261,7 @@ Write this structure to the artifact file.
 
 **Important:** Each assessment must include a one-sentence reasoning based on your investigation findings.
 
-> **Output Template**: See `.github/PRPs/templates/prp-issue-investigate.prompt-artifact-template.md`
+> **Output Template**: See `.github/templates/prp-issue-investigate.prompt-artifact-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_4_CHECKPOINT:**
@@ -276,7 +276,7 @@ Write this structure to the artifact file.
 ## Phase 5: COMMIT - Save Artifact
 
 ```bash
-git add .github/PRPs/issues/
+git add PRPs/issues/
 git status
 ```
 
@@ -298,11 +298,11 @@ git commit -m "Investigate issue #{number}: {brief title}"
 
 Format the artifact for GitHub and post:
 
-> **Issue Comment Template**: See `.github/PRPs/templates/prp-issue-investigate.prompt-comment-template.md`
+> **Issue Comment Template**: See `.github/templates/prp-issue-investigate.prompt-comment-template.md`
 > Load this file for the GitHub comment content structure.
 
 ````bash
-gh issue comment {number} --body "$(cat .github/PRPs/templates/prp-issue-investigate.prompt-comment-template.md)"
+gh issue comment {number} --body "$(cat .github/templates/prp-issue-investigate.prompt-comment-template.md)"
 ````
 
 **PHASE_6_CHECKPOINT:**
@@ -343,7 +343,7 @@ gh issue comment {number} --body "$(cat .github/PRPs/templates/prp-issue-investi
 
 ### Artifact
 
-`.github/PRPs/issues/issue-{number}.md`
+`PRPs/issues/issue-{number}.md`
 
 ### GitHub
 

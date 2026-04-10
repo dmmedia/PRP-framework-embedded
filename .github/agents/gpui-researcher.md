@@ -105,7 +105,7 @@ When given a specific topic to research, validate:
 
 ## Output Format
 
-> **Output Template**: See `.github/PRPs/templates/gpui-researcher.agent-report-template.md`
+> **Output Template**: See `.github/templates/gpui-researcher.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## If Validation Fails

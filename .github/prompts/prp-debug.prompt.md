@@ -204,16 +204,16 @@ For deep mode, document why other hypotheses were rejected:
 ### 5.1 Create Report Directory
 
 ```bash
-mkdir -p .github/PRPs/debug
+mkdir -p PRPs/debug
 ```
 
 ### 5.2 Generate Report
 
-**Path**: `.github/PRPs/debug/rca-{issue-slug}.md`
+**Path**: `PRPs/debug/rca-{issue-slug}.md`
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
-> **Output Template**: See `.github/PRPs/templates/prp-debug.prompt-report-template.md`
+> **Output Template**: See `.github/templates/prp-debug.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_5_CHECKPOINT:**
@@ -233,7 +233,7 @@ mkdir -p .github/PRPs/debug
 **Root Cause**: {cause}
 **Confidence**: {High/Medium/Low}
 
-**Report**: `.github/PRPs/debug/rca-{issue-slug}.md`
+**Report**: `PRPs/debug/rca-{issue-slug}.md`
 
 ### Summary
 

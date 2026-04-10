@@ -44,17 +44,10 @@ curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" 
    - `agents/`: Pre-configured agents for specific tasks
    - `ai_docs/`: Curated documentation for agents
    - `hooks/`: Automation hooks
+   - `scripts/`: PRP runner and utilities
    - `prompts/`: Pre-configured VS Code/Copilot slash commands
-   - `PRPs/`: PRP artifacts
-      - `features/`: Feature-specific PRDs
-         - `completed/`: Implemented feature PRDs
-      - `scripts/`: PRP runner and utilities
-      - `plans/`: Plans created based on PRDs
-         - `completed/`: Executed plans
-      - `PRDs/`: PRDs created from user requests by `/prp-prd` slash command
-      - `reports/`: Post-implementation reports
-      - `templates/`: PRP templates
    - `skills/`: Autonomous agent skills
+   - `templates/`: PRP templates
 - `.venv/`: Virtual environment for Python dependencies
 - `.vscode/`: VS Code settings, extensions, tasks
 - `agents_md_files/`: Language/Framework-specific `AGENTS.md` examples
@@ -62,6 +55,14 @@ curl -X POST http://localhost:8000/endpoint -H "Content-Type: application/json" 
 - `old-prp-commands/`: Obsolete PRP framework developments
 - `plugins/`: PRP framework packed as a plugin (for Claude Code only?)
    - `prp-core/`: Core PRP framework plugin. Should be finally a copy of the `.github/` contents
+- `PRPs/`: PRP artifacts
+   - `features/`: Feature-specific PRDs created from user requests by `/prp-prd` slash command
+      - `completed/`: Implemented feature PRDs
+   - `plans/`: Plans created based on PRDs by `/prp-plan` slash command
+      - `completed/`: Executed plans
+   - `PRDs/`: PRDs created from user requests by `/prp-prd` slash command
+      - `completed/`: Implemented product PRDs
+   - `reports/`: Post-implementation reports
 - `tests/`: Python unit tests for PRP framework
 - `.gitignore`: Git ignore file
 - `.python-version`: Python version for `pyenv`/`uv`

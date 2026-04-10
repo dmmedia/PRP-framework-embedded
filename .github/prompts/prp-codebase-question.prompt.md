@@ -17,7 +17,7 @@ Answer codebase questions thoroughly by spawning parallel specialized agents, sy
 
 **Golden Rule**: Every claim must have a `file:line` reference. No speculation, no suggestions, no critique.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -209,7 +209,7 @@ basename $(git rev-parse --show-toplevel)
 ### 5.2 Create Research Directory
 
 ```bash
-mkdir -p .github/PRPs/research
+mkdir -p PRPs/research
 ```
 
 ### 5.3 Determine Filename
@@ -218,7 +218,7 @@ mkdir -p .github/PRPs/research
 
 **If new research**:
 
-**Path**: `.github/PRPs/research/{YYYY-MM-DD}-{kebab-case-topic}.md`
+**Path**: `PRPs/research/{YYYY-MM-DD}-{kebab-case-topic}.md`
 
 Examples:
 
@@ -227,7 +227,7 @@ Examples:
 
 ### 5.4 Write Research Document
 
-> **Output Template**: See `.github/PRPs/templates/prp-codebase-question.prompt-research-template.md`
+> **Output Template**: See `.github/templates/prp-codebase-question.prompt-research-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ### 5.5 Add GitHub Permalinks (if applicable)
@@ -263,7 +263,7 @@ If `--follow-up` flag and existing research file:
 
 ## Phase 6: OUTPUT - Present to User
 
-> **Output Template**: See `.github/PRPs/templates/prp-codebase-question.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-codebase-question.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ---
@@ -303,6 +303,6 @@ If `--follow-up` flag and existing research file:
 - **QUESTION_ANSWERED**: User's question addressed with concrete evidence
 - **AGENTS_USED**: Specialized agents spawned for each research area
 - **EVIDENCE_COMPLETE**: Every finding has `file:line` references
-- **DOCUMENT_CREATED**: Research file saved at `.github/PRPs/research/`
+- **DOCUMENT_CREATED**: Research file saved at `PRPs/research/`
 - **NO_OPINIONS**: Document describes what exists, not what should change
 - **PERMALINKS_ADDED**: GitHub links included when possible

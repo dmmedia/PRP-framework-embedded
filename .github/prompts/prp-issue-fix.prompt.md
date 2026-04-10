@@ -23,7 +23,7 @@ Execute the implementation plan from `/prp-issue-investigate`:
 
 **Golden Rule**: Follow the artifact. If something seems wrong, validate it first - don't silently deviate.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -60,7 +60,7 @@ Determine the base branch for branching, syncing, and PR creation:
 
 ```bash
 # Look for artifact
-ls .github/PRPs/issues/issue-{number}.md
+ls PRPs/issues/issue-{number}.md
 ```
 
 **If input is a path**:
@@ -87,7 +87,7 @@ cat {artifact-path}
 **If artifact not found:**
 
 ```text
-❌ Artifact not found at .github/PRPs/issues/issue-{number}.md
+❌ Artifact not found at PRPs/issues/issue-{number}.md
 
 Run `/prp-issue-investigate {number}` first to create the implementation plan.
 ```
@@ -380,11 +380,11 @@ git push -u origin HEAD --force-with-lease
 
 ### 7.2 Create PR
 
-> **PR Body Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-pr-template.md`
+> **PR Body Template**: See `.github/templates/prp-issue-fix.prompt-pr-template.md`
 > Load this file for the PR body content structure.
 
 ````bash
-gh pr create --base "{base-branch}" --title "Fix: {title} (#{number})" --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-pr-template.md)"
+gh pr create --base "{base-branch}" --title "Fix: {title} (#{number})" --body "$(cat .github/templates/prp-issue-fix.prompt-pr-template.md)"
 ````
 
 ### 7.3 Get PR Number
@@ -424,11 +424,11 @@ Review only the diff, not the entire codebase.
 
 ### 8.2 Post Review to PR
 
-> **Review Comment Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-review-template.md`
+> **Review Comment Template**: See `.github/templates/prp-issue-fix.prompt-review-template.md`
 > Load this file for the review comment content structure.
 
 ```bash
-gh pr comment --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-review-template.md)"
+gh pr comment --body "$(cat .github/templates/prp-issue-fix.prompt-review-template.md)"
 ```
 
 **PHASE_8_CHECKPOINT:**
@@ -443,14 +443,14 @@ gh pr comment --body "$(cat .github/PRPs/templates/prp-issue-fix.prompt-review-t
 ### 9.1 Move Artifact to Completed
 
 ```bash
-mkdir -p .github/PRPs/issues/completed
-mv .github/PRPs/issues/issue-{number}.md .github/PRPs/issues/completed/
+mkdir -p PRPs/issues/completed
+mv PRPs/issues/issue-{number}.md PRPs/issues/completed/
 ```
 
 ### 9.2 Commit and Push Archive
 
 ```bash
-git add .github/PRPs/issues/
+git add PRPs/issues/
 git commit -m "Archive investigation for issue #{number}"
 git push
 ```
@@ -464,7 +464,7 @@ git push
 
 ## Phase 10: REPORT - Output to User
 
-> **Output Template**: See `.github/PRPs/templates/prp-issue-fix.prompt-report-template.md`
+> **Output Template**: See `.github/templates/prp-issue-fix.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ---

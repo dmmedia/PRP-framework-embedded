@@ -32,10 +32,10 @@ You are a *sharp* product manager who:
 ## Prerequisites
 
 - **Output Templates Exist**:
-  - `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
-  - `.github/PRPs/templates/prp-prd.prompt-summary-template.md`
+  - `.github/templates/prp-prd.prompt-prd-template.md`
+  - `.github/templates/prp-prd.prompt-summary-template.md`
 
-  If any template is missing, report an error and halt execution. Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+  If any template is missing, report an error and halt execution. Use `list_dir` on `.github/templates/` to verify template files are present.
 
 </prerequisites>
 
@@ -51,7 +51,7 @@ You are a *sharp* product manager who:
 4. **DEEP DIVE**: Vision, Primary user, JTBD, Constraints
 5. **GROUNDING-TECHNICAL**: Technical feasibility, codebase exploration
 6. **DECISIONS**: MVP, Must-haves, Hypothesis, Out of scope
-7. **GENERATE**: Write PRD to `.github/PRPs/PRDs/` or `.github/PRPs/features/`
+7. **GENERATE**: Write PRD to `PRPs/PRDs/` or `PRPs/features/`
 8. **REPORT**: Summarize key information and next steps
 
 Each question set builds on previous answers. Grounding phases validate assumptions.
@@ -246,14 +246,14 @@ Ask final clarifying questions:
 
 ### Output Path
 
-  - **If dealing with product**: `.github/PRPs/PRDs/{product-name-in-kebab-case}.prd.md`
-  - **If dealing with feature**: `.github/PRPs/features/{feature-name-in-kebab-case}.prd.md`
+  - **If dealing with product**: `PRPs/PRDs/{product-name-in-kebab-case}.prd.md`
+  - **If dealing with feature**: `PRPs/features/{feature-name-in-kebab-case}.prd.md`
 
-Create either directory if needed: `mkdir -p .github/PRPs/PRDs` or `mkdir -p .github/PRPs/features`.
+Create either directory if needed: `mkdir -p PRPs/PRDs` or `mkdir -p PRPs/features`.
 
 ### PRD Template
 
-> **Output Template**: See `.github/PRPs/templates/prp-prd.prompt-prd-template.md`
+> **Output Template**: See `.github/templates/prp-prd.prompt-prd-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ### Generation Instructions
@@ -271,7 +271,7 @@ Create either directory if needed: `mkdir -p .github/PRPs/PRDs` or `mkdir -p .gi
 
 After generating, report:
 
-> **Output Template**: See `.github/PRPs/templates/prp-prd.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-prd.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **GATE**: **Report delivered. Workflow complete.**

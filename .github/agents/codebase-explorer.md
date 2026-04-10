@@ -86,7 +86,7 @@ Group files by purpose:
 
 Structure your findings like this:
 
-> **Output Template**: See `.github/PRPs/templates/codebase-explorer.agent-report-template.md`
+> **Output Template**: See `.github/templates/codebase-explorer.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## Language-Specific Hints

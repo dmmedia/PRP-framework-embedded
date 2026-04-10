@@ -18,8 +18,6 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 **TODO:**
 
-- Move `PRPs` artifact directory out of `.github/` to project root as those do belong to the product.
-- Move `PRPs/templates/` and `PRPs/scripts/` to `.github/` as those are part of the PRP framework, not the PRPs themselves.
 - Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
 - Review remaining prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
     - `.github\prompts\prp-codebase-question.prompt.md`

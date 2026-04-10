@@ -17,7 +17,7 @@ Start an autonomous Ralph loop that executes a PRP plan iteratively until all va
 
 **Skill Reference**: The `prp-ralph-loop` skill provides detailed execution guidance. It will be automatically available during loop iterations.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -49,7 +49,7 @@ Create one first:
   /prp-prd "your product idea"           # Creates PRD with phases
 
 Then run:
-  /prp-ralph .github/PRPs/plans/your-feature.plan.md --max-iterations 20
+  /prp-ralph PRPs/plans/your-feature.plan.md --max-iterations 20
 ```
 
 ### 1.3 Verify File Exists
@@ -86,7 +86,7 @@ Create `.github/prp-ralph.state.md`:
 
 ```bash
 mkdir -p .github
-mkdir -p .github/PRPs/ralph-archives
+mkdir -p PRPs/ralph-archives
 ```
 
 Write state file with this structure:
@@ -127,7 +127,7 @@ Execute PRP plan and iterate until all validations pass.
 
 ### 2.2 Display Startup Message
 
-> **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-setup-template.md`
+> **Output Template**: See `.github/templates/prp-ralph.prompt-setup-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_2_CHECKPOINT:**
@@ -206,7 +206,7 @@ After each significant change:
 
 Append to Progress Log section using this format:
 
-> **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-progress-template.md`
+> **Output Template**: See `.github/templates/prp-ralph.prompt-progress-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ### 3.9 Consolidate Codebase Patterns
@@ -251,9 +251,9 @@ ALL of these must be true:
 
 1. **Generate Implementation Report**:
 
-   Create `.github/PRPs/reports/{plan-name}-report.md`:
+   Create `PRPs/reports/{plan-name}-report.md`:
 
-   > **Output Template**: See `.github/PRPs/templates/prp-ralph.prompt-report-template.md`
+   > **Output Template**: See `.github/templates/prp-ralph.prompt-report-template.md`
    > Load this file and use its structure exactly when generating output.
 
 2. **Archive the Ralph Run**:
@@ -262,7 +262,7 @@ ALL of these must be true:
    # Create archive directory
    DATE=$(date +%Y-%m-%d)
    PLAN_NAME=$(basename {plan_path} .plan.md)
-   ARCHIVE_DIR=".github/PRPs/ralph-archives/${DATE}-${PLAN_NAME}"
+   ARCHIVE_DIR="PRPs/ralph-archives/${DATE}-${PLAN_NAME}"
    mkdir -p "$ARCHIVE_DIR"
 
    # Copy state file (with all learnings)
@@ -273,7 +273,7 @@ ALL of these must be true:
 
    # Extract consolidated learnings
    # (The report serves as learnings.md)
-   cp .github/PRPs/reports/{plan-name}-report.md "$ARCHIVE_DIR/learnings.md"
+   cp PRPs/reports/{plan-name}-report.md "$ARCHIVE_DIR/learnings.md"
    ```
 
 3. **Update CLAUDE.md with Permanent Patterns (if applicable)**:
@@ -294,8 +294,8 @@ ALL of these must be true:
 4. **Archive Plan to Completed**:
 
    ```bash
-   mkdir -p .github/PRPs/plans/completed
-   mv {plan_path} .github/PRPs/plans/completed/
+   mkdir -p PRPs/plans/completed
+   mv {plan_path} PRPs/plans/completed/
    ```
 
 5. **Clean Up State**:
@@ -364,7 +364,7 @@ The Ralph loop captures learnings that can improve the system:
 
 ### After Completion
 
-- **Archive**: Full state preserved in `.github/PRPs/ralph-archives/`
+- **Archive**: Full state preserved in `PRPs/ralph-archives/`
 - **Report**: Consolidated learnings in report file
 - **CLAUDE.md Updates**: Permanent patterns added to project config
 
@@ -379,10 +379,10 @@ Archives can be used to:
 
 ```bash
 # List all Ralph archives
-ls -la .github/PRPs/ralph-archives/
+ls -la PRPs/ralph-archives/
 
 # Review learnings from a specific run
-cat .github/PRPs/ralph-archives/2024-01-12-feature-name/learnings.md
+cat PRPs/ralph-archives/2024-01-12-feature-name/learnings.md
 ```
 
 ---

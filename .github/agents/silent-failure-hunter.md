@@ -119,12 +119,12 @@ Look for these anti-patterns:
 
 ## Output Format
 
-> **Output Template**: See `.github/PRPs/templates/silent-failure-hunter.agent-report-template.md`
+> **Output Template**: See `.github/templates/silent-failure-hunter.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## If No Issues Found
 
-> **Output Template (No Issues)**: See `.github/PRPs/templates/silent-failure-hunter.agent-pass-template.md`
+> **Output Template (No Issues)**: See `.github/templates/silent-failure-hunter.agent-pass-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## Key Principles

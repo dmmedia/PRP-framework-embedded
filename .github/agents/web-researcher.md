@@ -83,7 +83,7 @@ Many sites now publish LLM-optimized documentation:
 
 Structure your findings like this:
 
-> **Output Template**: See `.github/PRPs/templates/web-researcher.agent-report-template.md`
+> **Output Template**: See `.github/templates/web-researcher.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## Quality Standards

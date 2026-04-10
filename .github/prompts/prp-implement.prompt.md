@@ -35,7 +35,7 @@ Execute the implementation plan end-to-end with rigorous self-validation.
 
 **Do not Git commit**: This is out of implementation scope. Git commit is a separate process handled by another agent.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 </constraints>
 
@@ -108,7 +108,7 @@ Read the plan file content into memory and report:
 Plan loaded from $ARGUMENTS
 ```
 
-Derive `{plan-name}` from a plan file name by discarding folder path and `.plan.md` suffix. Should already be kebab-case, but convert, if it isn't. Example: `.github/PRPs/plans/my-feature.plan.md` → `{plan-name}` = `my-feature`.
+Derive `{plan-name}` from a plan file name by discarding folder path and `.plan.md` suffix. Should already be kebab-case, but convert, if it isn't. Example: `PRPs/plans/my-feature.plan.md` → `{plan-name}` = `my-feature`.
 
 ### 1.3 Extract Key Sections
 
@@ -364,14 +364,14 @@ Run any edge case tests specified in the plan.
 ### 5.1 Create Report Directory
 
 ```bash
-mkdir -p .github/PRPs/reports
+mkdir -p PRPs/reports
 ```
 
 ### 5.2 Generate Report
 
-**Path**: `.github/PRPs/reports/{plan-name}-report.md`
+**Path**: `PRPs/reports/{plan-name}-report.md`
 
-> **Output Template**: See `.github/PRPs/templates/prp-implement.prompt-report-template.md`
+> **Output Template**: See `.github/templates/prp-implement.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ### 5.3 Update Source PRD (if applicable)
@@ -393,19 +393,19 @@ mkdir -p .github/PRPs/reports
 
 ### 5.4 Archive Plan
 
-- Create an archive directory if it doesn't exist: `mkdir -p .github/PRPs/plans/completed`
-- Move the plan file ($ARGUMENTS) to `.github/PRPs/plans/completed/` directory.
+- Create an archive directory if it doesn't exist: `mkdir -p PRPs/plans/completed`
+- Move the plan file ($ARGUMENTS) to `PRPs/plans/completed/` directory.
 
 ### 5.5: Report to User
 
-> **Output Template**: See `.github/PRPs/templates/prp-implement.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-implement.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 <checkpoint phase="5">
 
 **PHASE_5_CHECKPOINT:**
 
-- [ ] Report created at `.github/PRPs/reports/`
+- [ ] Report created at `PRPs/reports/`
 - [ ] PRD updated (if applicable) - phase marked complete
 - [ ] Plan moved to completed folder
 - [ ] User reported with summary template

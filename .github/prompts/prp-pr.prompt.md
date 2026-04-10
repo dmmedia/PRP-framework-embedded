@@ -15,7 +15,7 @@ Create a well-formatted pull request from the current branch, using repository P
 
 **Golden Rule**: PRs should tell reviewers what changed and why. Use existing templates when available.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -163,7 +163,7 @@ git push -u origin HEAD
 
 ### 4.1 Output Format
 
-> **Output Template**: See `.github/PRPs/templates/prp-pr.prompt-pr-template.md`
+> **Output Template**: See `.github/templates/prp-pr.prompt-pr-template.md`
 > Load this file and use its content as the `--body` value for `gh pr create`.
 
 ### 4.2 Extract Issue References
@@ -221,7 +221,7 @@ gh pr checks
 
 ## Phase 6: OUTPUT - Report to User
 
-> **Output Template**: See `.github/PRPs/templates/prp-pr.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-pr.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ---

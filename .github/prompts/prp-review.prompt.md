@@ -21,7 +21,7 @@ Perform a thorough, senior-engineer-level code review:
 
 **Golden Rule**: Be constructive and actionable. Every issue should have a clear recommendation. Acknowledge good work too.
 
-**Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+**Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 ---
 
@@ -116,13 +116,13 @@ Look for implementation artifacts:
 
 ```bash
 # Find implementation report by branch name
-ls .github/PRPs/reports/*{branch-name}*.md 2>/dev/null
+ls PRPs/reports/*{branch-name}*.md 2>/dev/null
 
 # Find completed plans
-ls .github/PRPs/plans/completed/ 2>/dev/null
+ls PRPs/plans/completed/ 2>/dev/null
 
 # Find issue investigations
-ls .github/PRPs/issues/completed/ 2>/dev/null
+ls PRPs/issues/completed/ 2>/dev/null
 ```
 
 **If implementation report exists:**
@@ -352,14 +352,14 @@ npm test -- {relevant-test-pattern}
 ### 6.1 Create Report Directory
 
 ```bash
-mkdir -p .github/PRPs/reviews
+mkdir -p PRPs/reviews
 ```
 
 ### 6.2 Generate Report File
 
-**Path**: `.github/PRPs/reviews/pr-{NUMBER}-review.md`
+**Path**: `PRPs/reviews/pr-{NUMBER}-review.md`
 
-> **Output Template**: See `.github/PRPs/templates/prp-review.prompt-report-template.md`
+> **Output Template**: See `.github/templates/prp-review.prompt-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **PHASE_6_CHECKPOINT:**
@@ -377,13 +377,13 @@ Based on recommendation and flags:
 
 ```bash
 # If --approve flag AND no critical/high issues
-gh pr review {NUMBER} --approve --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr review {NUMBER} --approve --body-file PRPs/reviews/pr-{NUMBER}-review.md
 
 # If --request-changes flag OR high issues found
-gh pr review {NUMBER} --request-changes --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr review {NUMBER} --request-changes --body-file PRPs/reviews/pr-{NUMBER}-review.md
 
 # Otherwise just comment
-gh pr comment {NUMBER} --body-file .github/PRPs/reviews/pr-{NUMBER}-review.md
+gh pr comment {NUMBER} --body-file PRPs/reviews/pr-{NUMBER}-review.md
 ```
 
 ### 7.2 Get Comment URL
@@ -402,7 +402,7 @@ gh pr view {NUMBER} --json reviews,comments --jq '.reviews[-1].url // .comments[
 
 ## Phase 8: OUTPUT - Report to User
 
-> **Output Template**: See `.github/PRPs/templates/prp-review.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-review.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ---

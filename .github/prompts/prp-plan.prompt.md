@@ -29,7 +29,7 @@ Transform "$ARGUMENTS" into a battle-tested implementation plan through systemat
 
 - **Core Principle**: ***PLAN ONLY - no code written***. Create a context-rich document that enables one-pass implementation success.
 - **Execution Order**: **CODEBASE FIRST, RESEARCH SECOND**. Solutions must fit existing patterns before introducing new ones.
-- **Output Template Search**: Use `list_dir` on `.github/PRPs/templates/` to verify template files are present.
+- **Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
 
 </constraints>
 
@@ -264,7 +264,7 @@ Always wrap the output of your analysis in `<analysis>` tags.
 
 **CREATE ASCII diagrams showing user experience before and after for report to human:**
 
-> **Output Template**: See `.github/PRPs/templates/prp-plan.prompt-design-template.md`
+> **Output Template**: See `.github/templates/prp-plan.prompt-design-template.md`
 > Load this file and use its structure exactly when generating output.
 
 **DOCUMENT interaction changes:**
@@ -348,20 +348,20 @@ NOT_BUILDING (explicit scope limits):
 
 ## Phase 6: GENERATE - Implementation Plan File
 
-**OUTPUT_PATH**: `.github/PRPs/plans/{kebab-case-feature-name}.plan.md`
+**OUTPUT_PATH**: `PRPs/plans/{kebab-case-feature-name}.plan.md`
 
-Create directory if needed: `mkdir -p .github/PRPs/plans`
+Create directory if needed: `mkdir -p PRPs/plans`
 
 **PLAN_STRUCTURE** (the template to fill and save):
 
-> **Output Template**: See `.github/PRPs/templates/prp-plan.prompt-plan-template.md`
+> **Output Template**: See `.github/templates/prp-plan.prompt-plan-template.md`
 > Load this file and use its structure exactly when generating output.
 
 </process>
 
 <output>
 
-**OUTPUT_FILE**: `.github/PRPs/plans/{kebab-case-feature-name}.plan.md`
+**OUTPUT_FILE**: `PRPs/plans/{kebab-case-feature-name}.plan.md`
 
 **If input was from PRD file**, also update the PRD:
 
@@ -374,7 +374,7 @@ Create directory if needed: `mkdir -p .github/PRPs/plans`
 
 **REPORT_TO_USER** (display after creating plan):
 
-> **Output Template**: See `.github/PRPs/templates/prp-plan.prompt-summary-template.md`
+> **Output Template**: See `.github/templates/prp-plan.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
 </output>

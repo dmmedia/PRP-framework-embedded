@@ -101,12 +101,12 @@ Rate each recommendation 1-10:
 
 ## Output Format
 
-> **Output Template**: See `.github/PRPs/templates/pr-test-analyzer.agent-report-template.md`
+> **Output Template**: See `.github/templates/pr-test-analyzer.agent-report-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## If Coverage Is Adequate
 
-> **Output Template (Adequate Coverage)**: See `.github/PRPs/templates/pr-test-analyzer.agent-adequate-template.md`
+> **Output Template (Adequate Coverage)**: See `.github/templates/pr-test-analyzer.agent-adequate-template.md`
 > Load this file and use its structure exactly when generating output.
 
 ## Key Principles
