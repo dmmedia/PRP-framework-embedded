@@ -27,6 +27,7 @@ So that {benefit}
 | Systems Affected | {comma-separated list} |
 | Dependencies | {external libs/services with versions} |
 | Estimated Tasks | {count} |
+| Source PRD | {prd-file-path or N/A} |
 
 ---
 

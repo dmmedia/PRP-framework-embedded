@@ -363,6 +363,8 @@ Create directory if needed: `mkdir -p PRPs/plans`
 > **Output Template**: See `.github/templates/prp-plan.prompt-plan-template.md`
 > Load this file and use its structure exactly when generating output.
 
+**Source PRD field**: In the plan's Metadata table, set `Source PRD` to the actual PRD file path if input was from a PRD file, or `N/A` otherwise.
+
 </process>
 
 <output>
