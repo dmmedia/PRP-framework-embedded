@@ -35,6 +35,18 @@ Transform "$ARGUMENTS" into a battle-tested implementation plan through systemat
 
 ---
 
+## Agent Retry Policy
+
+If a subagent call (Task tool) fails, retry once with the same prompt. If it fails again, stop execution and report:
+
+```text
+Error: Agent `{agent-name}` failed after 1 retry. Aborting.
+```
+
+Do not skip failed agent results or proceed with incomplete data.
+
+---
+
 <context>
 
 **Codebase Discovery**
@@ -144,11 +156,11 @@ So that <benefit/value>
 
 **CRITICAL: Launch two specialized agents in parallel using multiple Task tool calls in a single message.**
 
-### Agent 1: `prp-core:codebase-explorer`
+### Agent 1: `codebase-explorer`
 
 Finds WHERE code lives and extracts implementation patterns.
 
-Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
+Use Task tool with `subagent_type="codebase-explorer"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Find all code relevant to implementing: [feature description].
@@ -169,11 +181,11 @@ Return ACTUAL code snippets from codebase, not generic examples.
 Always wrap the output of your analysis in `<analysis>` tags.
 ```
 
-### Agent 2: `prp-core:codebase-analyst`
+### Agent 2: `codebase-analyst`
 
 Analyzes HOW integration points work and traces data flow.
 
-Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
+Use Task tool with `subagent_type="codebase-analyst"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze the implementation details relevant to: [feature description].
@@ -205,7 +217,7 @@ Extract information from both agents analysis reports and combine findings into 
 
 **PHASE_2_CHECKPOINT:**
 
-- [ ] Both agents (`prp-core:codebase-explorer` and `prp-core:codebase-analyst`) launched in parallel and completed
+- [ ] Both agents (`codebase-explorer` and `codebase-analyst`) launched in parallel and completed
 - [ ] At least 3 similar implementations found with file:line refs
 - [ ] Code snippets are ACTUAL (copy-pasted from codebase, not invented)
 - [ ] Integration points mapped with data flow traces
@@ -217,7 +229,7 @@ Extract information from both agents analysis reports and combine findings into 
 
 **ONLY AFTER Phase 2 is complete** - solutions must fit existing codebase patterns first.
 
-**Use Task tool with `subagent_type="prp-core:web-researcher"`:**
+**Use Task tool with `subagent_type="web-researcher"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Research external documentation relevant to implementing: [feature description].
@@ -252,7 +264,7 @@ Always wrap the output of your analysis in `<analysis>` tags.
 
 **PHASE_3_CHECKPOINT:**
 
-- [ ] `prp-core:web-researcher` agent launched and completed
+- [ ] `web-researcher` agent launched and completed
 - [ ] Documentation versions match package.json
 - [ ] URLs include specific section anchors (not just homepage)
 - [ ] Gotchas documented with mitigation strategies
@@ -287,9 +299,9 @@ Always wrap the output of your analysis in `<analysis>` tags.
 
 **IF Complexity == LOW (from Phase 1)**: skip Task tool calls directly to **analysis** below.
 
-**For more complex features with multiple integration points**, use `prp-core:codebase-analyst` to trace how existing architecture works at the integration points identified in Phase 2:
+**For more complex features with multiple integration points**, use `codebase-analyst` to trace how existing architecture works at the integration points identified in Phase 2:
 
-Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
+Use Task tool with `subagent_type="codebase-analyst"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze the architecture around these integration points for: [feature description].
@@ -413,7 +425,7 @@ Create directory if needed: `mkdir -p PRPs/plans`
 
 ## Success Criteria
 
-- **CONTEXT_COMPLETE**: All patterns, gotchas, integration points documented from actual codebase via `prp-core:codebase-explorer` and `prp-core:codebase-analyst` agents
+- **CONTEXT_COMPLETE**: All patterns, gotchas, integration points documented from actual codebase via `codebase-explorer` and `codebase-analyst` agents
 - **IMPLEMENTATION_READY**: Tasks executable top-to-bottom without questions, research, or clarification
 - **PATTERN_FAITHFUL**: Every new file mirrors existing codebase style exactly
 - **VALIDATION_DEFINED**: Every task has executable verification command

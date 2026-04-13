@@ -89,7 +89,7 @@ If user specifies "parallel", launch all applicable agents simultaneously using 
 
 ## Agent Instructions
 
-When launching each agent via Task tool:
+When launching each agent via Task tool, if the call fails, retry once. If it fails again, skip that agent and note the failure in the aggregated summary.
 
 **code-reviewer**:
 

@@ -21,6 +21,18 @@ Answer codebase questions thoroughly by spawning parallel specialized agents, sy
 
 ---
 
+## Agent Retry Policy
+
+If a subagent call (Task tool) fails, retry once with the same prompt. If it fails again, stop execution and report:
+
+```text
+Error: Agent `{agent-name}` failed after 1 retry. Aborting.
+```
+
+Do not skip failed agent results or proceed with incomplete data.
+
+---
+
 ## CRITICAL: Documentarian Only
 
 - **DO NOT** suggest improvements or changes
@@ -42,11 +54,11 @@ If the user mentions specific files, read them FULLY first (no limit/offset) bef
 
 | Type | Indicators | Agent Focus |
 |---|---|---|
-| **Where** | "where is", "find", "locate" | `prp-core:codebase-explorer` primary |
-| **How** | "how does", "trace", "flow" | `prp-core:codebase-analyst` primary |
+| **Where** | "where is", "find", "locate" | `codebase-explorer` primary |
+| **How** | "how does", "trace", "flow" | `codebase-analyst` primary |
 | **What** | "what is", "explain", "describe" | Both agents in parallel |
-| **Pattern** | "how do we", "convention", "examples" | `prp-core:codebase-explorer` primary |
-| **External** | "docs", "best practice", "API" | Add `prp-core:web-researcher` |
+| **Pattern** | "how do we", "convention", "examples" | `codebase-explorer` primary |
+| **External** | "docs", "best practice", "API" | Add `web-researcher` |
 
 ### 1.3 Determine Scope
 
@@ -82,14 +94,14 @@ AREAS:
 
 | Agent | Use When |
 |---|---|
-| `prp-core:codebase-explorer` | Finding WHERE code lives, locating files, extracting patterns, discovering conventions |
-| `prp-core:codebase-analyst` | Understanding HOW code works, tracing data flow, mapping integration points |
-| `prp-core:web-researcher` | Only when `--web` flag is set or user explicitly asks for external docs |
+| `codebase-explorer` | Finding WHERE code lives, locating files, extracting patterns, discovering conventions |
+| `codebase-analyst` | Understanding HOW code works, tracing data flow, mapping integration points |
+| `web-researcher` | Only when `--web` flag is set or user explicitly asks for external docs |
 
 **Strategy:**
 
-1. Start with `prp-core:codebase-explorer` to find what exists
-2. Then use `prp-core:codebase-analyst` on the most relevant findings to trace how they work
+1. Start with `codebase-explorer` to find what exists
+2. Then use `codebase-analyst` on the most relevant findings to trace how they work
 3. Run agents in parallel when they're searching for different areas
 
 **PHASE_2_CHECKPOINT:**
@@ -108,7 +120,9 @@ AREAS:
 
 For each research area, use the appropriate agent:
 
-**`prp-core:codebase-explorer`:**
+**`codebase-explorer`:**
+
+Use Task tool with `subagent_type="codebase-explorer"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Find all code relevant to: {research area}
@@ -122,7 +136,9 @@ Categorize findings by purpose. Return ACTUAL code snippets with file:line refer
 Remember: Document what exists, no suggestions or improvements.
 ```
 
-**`prp-core:codebase-analyst`:**
+**`codebase-analyst`:**
+
+Use Task tool with `subagent_type="codebase-analyst"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze the implementation of: {research area}
@@ -137,7 +153,9 @@ Document what exists with precise file:line references. No suggestions.
 
 ### 3.2 Launch Web Research (if --web or explicitly requested)
 
-**`prp-core:web-researcher`:**
+**`web-researcher`:**
+
+Use Task tool with `subagent_type="web-researcher"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Research external documentation for: {topic}

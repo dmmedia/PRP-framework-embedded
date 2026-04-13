@@ -41,6 +41,18 @@ You are a *sharp* product manager who:
 
 ---
 
+## Agent Retry Policy
+
+If a subagent call (Task tool) fails, retry once with the same prompt. If it fails again, stop execution and report:
+
+```text
+Error: Agent `{agent-name}` failed after 1 retry. Aborting.
+```
+
+Do not skip failed agent results or proceed with incomplete data.
+
+---
+
 <overview>
 
 ## Question Flow Summary
@@ -102,7 +114,7 @@ Ask these questions (present all at once, user can answer together):
 
 After foundation answers, conduct research using specialized agents:
 
-**Use Task tool with `subagent_type="prp-core:web-researcher"`:**
+**Use Task tool with `subagent_type="web-researcher"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Research the market context for: {product/feature idea}
@@ -116,7 +128,7 @@ FIND:
 Return findings with direct links, key insights, and any gaps in available information.
 ```
 
-**If codebase exists, use Task tool with `subagent_type="prp-core:codebase-explorer"`:**
+**If codebase exists, use Task tool with `subagent_type="codebase-explorer"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Find existing functionality relevant to: {product/feature idea}
@@ -167,7 +179,7 @@ Based on foundation + research, ask:
 
 **If codebase exists, launch two agents in parallel:**
 
-**Use Task tool with `subagent_type="prp-core:codebase-explorer"`:**
+**Use Task tool with `subagent_type="codebase-explorer"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Assess technical feasibility for: {product/feature}
@@ -181,7 +193,7 @@ LOCATE:
 Return file locations, code patterns, and conventions observed.
 ```
 
-**Use Task tool with `subagent_type="prp-core:codebase-analyst"`:**
+**Use Task tool with `subagent_type="codebase-analyst"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze technical constraints for: {product/feature}
@@ -195,7 +207,7 @@ TRACE:
 Document what exists with precise file:line references. No suggestions.
 ```
 
-**If no codebase, use Task tool with `subagent_type="prp-core:web-researcher"`:**
+**If no codebase, use Task tool with `subagent_type="web-researcher"`.** If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Research technical approaches for: {product/feature}

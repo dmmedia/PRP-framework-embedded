@@ -406,7 +406,7 @@ PR_NUMBER=$(gh pr view --json number -q '.number')
 
 ### 8.1 Run Code Review
 
-Use Task tool with subagent_type="code-reviewer":
+Use Task tool with subagent_type="code-reviewer". If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Review the changes in this PR for issue #{number}.

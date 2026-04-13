@@ -23,6 +23,18 @@ Investigate the issue/problem and produce a comprehensive implementation plan th
 
 ---
 
+## Agent Retry Policy
+
+If a subagent call (Task tool) fails, retry once with the same prompt. If it fails again, stop execution and report:
+
+```text
+Error: Agent `{agent-name}` failed after 1 retry. Aborting.
+```
+
+Do not skip failed agent results or proceed with incomplete data.
+
+---
+
 ## Phase 1: PARSE - Understand Input
 
 ### 1.1 Determine Input Type
@@ -116,11 +128,11 @@ Each assessment requires a **one-sentence reasoning** explaining WHY you chose t
 
 **CRITICAL: Launch two specialized agents in parallel using multiple Task tool calls in a single message.**
 
-### 2.1 Agent 1: `prp-core:codebase-explorer`
+### 2.1 Agent 1: `codebase-explorer`
 
 Finds WHERE relevant code lives and extracts patterns to mirror.
 
-Use Task tool with `subagent_type="prp-core:codebase-explorer"`:
+Use Task tool with `subagent_type="codebase-explorer"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Find all code relevant to this issue:
@@ -138,11 +150,11 @@ Categorize findings by purpose (implementation, tests, config, types, docs).
 Return ACTUAL code snippets from codebase, not generic examples.
 ```
 
-### 2.2 Agent 2: `prp-core:codebase-analyst`
+### 2.2 Agent 2: `codebase-analyst`
 
 Analyzes HOW the affected code works and traces data flow for root cause analysis.
 
-Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
+Use Task tool with `subagent_type="codebase-analyst"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze the implementation details related to this issue:
@@ -172,7 +184,7 @@ Document what exists with precise file:line references. No suggestions.
 
 **PHASE_2_CHECKPOINT:**
 
-- [ ] Both agents (`prp-core:codebase-explorer` and `prp-core:codebase-analyst`) launched in parallel and completed
+- [ ] Both agents (`codebase-explorer` and `codebase-analyst`) launched in parallel and completed
 - [ ] Core files identified with line numbers
 - [ ] Integration points mapped with data flow traces
 - [ ] Similar patterns found to mirror

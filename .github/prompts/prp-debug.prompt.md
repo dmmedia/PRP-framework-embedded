@@ -17,6 +17,18 @@ Find the **actual root cause** - the specific code, config, or logic that, if ch
 
 ---
 
+## Agent Retry Policy
+
+If a subagent call (Task tool) fails, retry once with the same prompt. If it fails again, stop execution and report:
+
+```text
+Error: Agent `{agent-name}` failed after 1 retry. Aborting.
+```
+
+Do not skip failed agent results or proceed with incomplete data.
+
+---
+
 ## Phase 1: CLASSIFY - Parse Input
 
 ### 1.1 Determine Input Type
@@ -113,9 +125,9 @@ WHY 5: Why does [intermediate cause D] happen?
 
 ### Investigation Techniques
 
-**For tracing complex code paths**, use `prp-core:codebase-analyst` to understand how the suspected code works before diving into the 5 Whys:
+**For tracing complex code paths**, use `codebase-analyst` to understand how the suspected code works before diving into the 5 Whys:
 
-Use Task tool with `subagent_type="prp-core:codebase-analyst"`:
+Use Task tool with `subagent_type="codebase-analyst"`. If the call fails, retry once. If it fails again, stop and report the failure.
 
 ```text
 Analyze the implementation around: [suspected area / error location]
