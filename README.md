@@ -20,6 +20,7 @@ Refer to the new adapter at `PRPs/scripts/invoke_copilot.py` for Copilot CLI int
 
 - Guard prompts against subagent failures to retry once and then bail out. Otherwise prompt tries to do everything itself and pollutes the context.
 - Although implementation prompt is defined as *autonomous*, let it go interactive or bail out if some substantial problem is encountered, that is not covered by PRD and plan.
+- Replace plan template ascii diagrams with mermaid or similar.
 - Review agents Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
 - Review remaining prompts Markdown according to `agents_md_files/HOW-TO-WRITE-AGENT.md` guide "Syntax and XML Tags" section.
     - `.github\prompts\prp-codebase-question.prompt.md`
