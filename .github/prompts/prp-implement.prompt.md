@@ -33,6 +33,19 @@ Execute the implementation plan end-to-end with rigorous self-validation.
 
 **Golden Rule**: ***If a validation fails, fix it before moving on. Never accumulate broken state.***
 
+**Escalation Policy**: Not every problem should be solved autonomously.
+
+- **Handle autonomously** — if the fix is clear, requires ≤ 2 attempts, stays within the plan's scope, and needs no external research or architectural rethinking.
+- **Escalate to the user** — if after 2 fix attempts the root cause remains unclear; the fix would require a significant architectural change not covered by the plan; the blocker reveals a fundamental flaw in the PRD's assumptions; or external research or a human decision is needed to proceed.
+
+**How to escalate:** Pause execution immediately. Present to the user:
+  1. What was being implemented
+  2. What problem was encountered
+  3. What was already attempted and why it didn't work
+  4. What specific decision or information is needed to unblock
+
+Then **wait for the user's response** before continuing or abandoning the run.
+
 **Do not Git commit**: This is out of implementation scope. Git commit is a separate process handled by another agent.
 
 **Output Template Search**: Use `list_dir` on `.github/templates/` to verify template files are present.
@@ -216,11 +229,12 @@ Log each task as you complete it:
 > Task 3: UPDATE src/routes/index.ts ✅
 
 **Deviation Handling:**
-If you must deviate from the plan:
+If you must deviate from the plan, triage the situation first:
 
-- Note WHAT changed
-- Note WHY it changed
-- Continue with the deviation documented
+| Type | Criteria | Action |
+| --- | --- | --- |
+| **Simple** | Fix is clear, ≤ 2 attempts, no architectural impact | Apply fix, document (WHAT + WHY), continue |
+| **Substantial** | Root cause unclear after 2 attempts; requires architectural change; needs research; or reveals a PRD flaw | Apply the **Escalation Policy** (see Constraints) |
 
 <checkpoint phase="3">
 
@@ -235,6 +249,8 @@ If you must deviate from the plan:
 ---
 
 ## Phase 4: VALIDATE - Full Verification
+
+> **Failure Escalation**: Apply the **Escalation Policy** from Constraints if any failure persists after **2 fix attempts**.
 
 ### 4.1 Static Analysis
 
