@@ -16,5 +16,11 @@
   "python.defaultInterpreterPath": ".venv/bin/python",
   "terminal.integrated.env.windows": {
     "PRP_TOOL_ADAPTER": "copilot"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "scminput": false,
+    "markdown": true
   }
 }
