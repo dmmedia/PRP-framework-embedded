@@ -32,22 +32,6 @@ So that {benefit}
 
 ## UX Design
 
-### Before State
-
-```text
-
-{ASCII diagram - current user experience with data flows}
-
-```
-
-### After State
-
-```text
-
-{ASCII diagram - new user experience with data flows}
-
-```
-
 ### Interaction Changes
 
 | Location | Before | After | User Impact |

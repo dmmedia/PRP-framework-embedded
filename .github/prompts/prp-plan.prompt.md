@@ -274,12 +274,7 @@ Always wrap the output of your analysis in `<analysis>` tags.
 
 ## Phase 4: DESIGN - UX Transformation
 
-**CREATE ASCII diagrams showing user experience before and after for report to human:**
-
-> **Output Template**: See `.github/templates/prp-plan.prompt-design-template.md`
-> Load this file and use its structure exactly when generating output.
-
-**DOCUMENT interaction changes:**
+**DOCUMENT interaction changes in the plan:**
 
 | Location | Before | After | User_Action | Impact |
 | --- | --- | --- | --- | --- |
@@ -289,8 +284,7 @@ Always wrap the output of your analysis in `<analysis>` tags.
 **PHASE_4_CHECKPOINT:**
 
 - [ ] Before state accurately reflects current system behavior
-- [ ] After state shows ALL new capabilities
-- [ ] Data flows are traceable from input to output
+- [ ] After state shows all new capabilities
 - [ ] User value is explicit and measurable
 
 ---
@@ -389,6 +383,11 @@ Create directory if needed: `mkdir -p PRPs/plans`
 > **Output Template**: See `.github/templates/prp-plan.prompt-summary-template.md`
 > Load this file and use its structure exactly when generating output.
 
+For the **UX Transformation** field in the summary, choose based on complexity:
+
+- **Simple change** (single step, obvious before/after): use the one-liner format from the template.
+- **Complex change** (multi-step flow, branching, or new components): replace the one-liners with a concise Mermaid `graph LR` showing the key flow change.
+
 </output>
 
 <verification>
@@ -429,7 +428,7 @@ Create directory if needed: `mkdir -p PRPs/plans`
 - **IMPLEMENTATION_READY**: Tasks executable top-to-bottom without questions, research, or clarification
 - **PATTERN_FAITHFUL**: Every new file mirrors existing codebase style exactly
 - **VALIDATION_DEFINED**: Every task has executable verification command
-- **UX_DOCUMENTED**: Before/After transformation is visually clear with data flows
+- **UX_DOCUMENTED**: Before/After transformation captured in the Interaction Changes table; summary uses one-liners for simple changes or Mermaid for complex flows
 - **ONE_PASS_TARGET**: Confidence score 8+ indicates high likelihood of first-attempt success
 
 </success_criteria>

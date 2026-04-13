@@ -33,6 +33,11 @@ To start: `git worktree add -b phase-{X} ../project-phase-{X} && cd ../project-p
 
 **UX Transformation**:
 
+<!--
+  Simple change (single step, obvious before/after): use one-liners below.
+  Complex change (multi-step flow, branching, new components): replace with a Mermaid graph LR.
+-->
+
 - BEFORE: {one-line current state}
 - AFTER: {one-line new state}
 
