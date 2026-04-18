@@ -66,12 +66,10 @@ Examples:
   "Use Zephyr SDK 0.16.4 installed at ~/zephyr-sdk-0.16.4."
   "Toolchain is arm-zephyr-eabi from the Zephyr SDK; do NOT use system gcc."
   "CMake ≥ 3.20 and Ninja are required."
-  "Python venv is managed by west; activate with `source .venv/bin/activate`."
 -->
 - Toolchain: **[TOOLCHAIN_NAME + VERSION]** (e.g. Zephyr SDK 0.16.4, arm-zephyr-eabi)
 - CMake: **[CMAKE_MIN_VERSION]+**
 - Build backend: **Ninja** (default) or **make**
-- Python: managed by west; activate venv before running west commands.
 
 <!-- FILL: If a container / Docker image is the expected dev environment,
 name it here and point to the Dockerfile or image tag.
@@ -82,21 +80,45 @@ Example: "Use the project Docker image: ghcr.io/acme/zephyr-dev:0.16.4" -->
 <!-- FILL: Replace BOARD and APP_DIR with real values, or keep as placeholders
 with an explanatory note like "substitute your target board identifier."
 List every variant an agent might need: debug, release, size-optimised, etc.
-The `-- -v` suffix enables verbose Ninja output for diagnosing build failures. -->
+The `-- -v` suffix enables verbose Ninja output for diagnosing build failures.
+Replace NCS_DIR with real SDK location (e.g., ~/ncs), NCS_VER with a SDK
+version (e.g., v3.2.4) and TOOLCHAIN_VER with toolchain version (e.g.,
+2ac5840438). Use or remove optional `--no-sysbuild` argument to disable
+Sysbuild. Add Kconfig flags EXTRA_KCONF_FLAGS to the end of command after "--"
+separated with spaces to override file settings
+(e.g., -DCONFIG_DEBUG_THREAD_INFO=y). Use OVERLAY and EXTRA flags to build
+with a specific overlay (hardware variant, debug config, etc.). Build with
+VERBOSE set to appropriate level (-v / -vv / -vvv) to enable verbose output
+for diagnosing CMake/Ninja features. -->
+
+## Build Commands
+
+### Linux / WSL
+
+- **Configure + build** (first time or after Kconfig/DTS/prj.conf changes):
 
 ```bash
-# Configure + build (first time or after Kconfig/DTS changes)
-west build -b [BOARD] [APP_DIR] --pristine
+ZEPHYR_BASE=[NCS_DIR]/[NCS_VER]/zephyr/ [NCS_DIR]/toolchains/[TOOLCHAIN_VER]/nrfutil/bin/nrfutil toolchain-manager launch --ncs-version [NCS_VER] --chdir $PWD -- west [VERBOSE] build --build-dir $PWD/build $PWD --pristine --board [BOARD] <--no-sysbuild> <-- [EXTRA_KCONF_FLAGS] -DDTC_OVERLAY_FILE=[OVERLAY].overlay -DEXTRA_CONF_FILE=[EXTRA].conf>
+```
 
-# Incremental build
-west build
+- **Incremental build**:
 
-# Build with a specific overlay (hardware variant, debug config, etc.)
-west build -b [BOARD] [APP_DIR] -- -DDTC_OVERLAY_FILE=[OVERLAY].overlay \
-    -DEXTRA_CONF_FILE=[EXTRA].conf
+```bash
+ZEPHYR_BASE=[NCS_DIR]/[NCS_VER]/zephyr/ [NCS_DIR]/toolchains/[TOOLCHAIN_VER]/nrfutil/bin/nrfutil toolchain-manager launch --ncs-version [NCS_VER] --chdir $PWD -- west build <--no-sysbuild>
+```
 
-# Build with verbose output (use when diagnosing CMake/Ninja failures)
-west build -b [BOARD] [APP_DIR] -- -v
+### Windows (PowerShell)
+
+- **Configure + build** (first time or after Kconfig/DTS/prj.conf changes):
+
+```powershell
+$env:ZEPHYR_BASE = "[NCS_DIR]\[NCS_VER]\zephyr\"; [NCS_DIR]\toolchains\[TOOLCHAIN_VER]\nrfutil\bin\nrfutil.exe toolchain-manager launch --ncs-version [NCS_VER] --chdir "$PWD" -- west [VERBOSE] build --build-dir "$PWD\build" "$PWD" --pristine --board [BOARD] <--no-sysbuild> <-- [EXTRA_KCONF_FLAGS] -DDTC_OVERLAY_FILE=[OVERLAY].overlay -DEXTRA_CONF_FILE=[EXTRA].conf>
+```
+
+- **Incremental build**:
+
+```powershell
+$env:ZEPHYR_BASE = "[NCS_DIR]\[NCS_VER]\zephyr\"; [NCS_DIR]\toolchains\[TOOLCHAIN_VER]\nrfutil\bin\nrfutil.exe toolchain-manager launch --ncs-version [NCS_VER] --chdir "$PWD" -- west build <--no-sysbuild>
 ```
 
 <!-- FILL: Add any mandatory CMake cache variables your project always needs.
