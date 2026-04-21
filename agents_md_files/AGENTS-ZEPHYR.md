@@ -39,17 +39,15 @@ Example entries:
   west.yml      — west manifest (pin all module SHAs here)
 -->
 
-```
-[PROJECT_ROOT]/
-    app/                  <!-- FILL: per-app source trees, one per binary -->
-    boards/               <!-- FILL: present only if custom boards exist -->
-    drivers/              <!-- FILL: present only if out-of-tree drivers -->
-    dts/                  <!-- FILL: shared .dtsi / overlay files -->
-    tests/                <!-- FILL: Twister suites -->
-    west.yml              <!-- west manifest — single source of truth for deps -->
-    CMakeLists.txt        <!-- FILL: root or per-app; clarify which -->
-    prj.conf              <!-- FILL: default Kconfig fragment -->
-```
+- **[PROJECT_ROOT]/**
+  - `app/`                  <!-- FILL: per-app source trees, one per binary -->
+  - `boards/`               <!-- FILL: present only if custom boards exist -->
+  - `drivers/`              <!-- FILL: present only if out-of-tree drivers -->
+  - `dts/`                  <!-- FILL: shared .dtsi / overlay files -->
+  - `tests/`                <!-- FILL: Twister suites -->
+  - `west.yml`              <!-- west manifest — single source of truth for deps -->
+  - `CMakeLists.txt`        <!-- FILL: root or per-app; clarify which -->
+  - `prj.conf`              <!-- FILL: default Kconfig fragment -->
 
 <!-- FILL: If this is a T2 star topology (app repo + Zephyr as module),
 say so explicitly. Example:
